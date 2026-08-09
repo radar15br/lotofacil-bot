@@ -233,11 +233,18 @@ Estratégia de monetização e checklist completo das plataformas: veja
 
 ### Rotina completa do dia a dia
 
-Um comando só faz tudo:
+São **duas fases**, e a ordem importa:
 
 ```bash
-python -m src.executar
+python -m src.executar --sem-publicar    # 1. gera tudo e copia para docs/
+#    (envie docs/ para o GitHub — é isso que coloca as imagens no ar)
+python -m src.executar --somente-publicar # 2. publica nas redes
 ```
+
+**Por que separado:** o Instagram e o TikTok não recebem o arquivo da imagem —
+eles vão **buscar** a imagem numa URL pública. Se a publicação acontecesse junto
+da geração, a imagem ainda não estaria no ar e a API recusaria o post. O código
+espera a imagem ficar acessível antes de chamar a API.
 
 Se preferir passo a passo:
 

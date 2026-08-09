@@ -68,8 +68,13 @@ echo "      arquivos prontos para envio"
 echo
 echo "[3/5] Criando o repositório no GitHub e enviando"
 if gh repo view "$USUARIO/$NOME_REPO" >/dev/null 2>&1; then
-  echo "      o repositório já existe — apenas enviando as novidades"
+  echo "      o repositório já existe — sincronizando antes de enviar"
   git remote add origin "https://github.com/$USUARIO/$NOME_REPO.git" 2>/dev/null || true
+  # O próprio robô grava dados e imagens no repositório quando roda na nuvem.
+  # Por isso o remoto quase sempre está à frente: buscamos o que há lá e
+  # mantemos a SUA versão dos arquivos que existem dos dois lados.
+  git fetch origin main 2>/dev/null || true
+  git merge -X ours origin/main -m "sincroniza com o que o robô gravou" 2>/dev/null || true
   git push -u origin main 2>/dev/null || git push origin main
 else
   gh repo create "$NOME_REPO" --public --source=. --remote=origin --push || {

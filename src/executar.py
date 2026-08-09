@@ -13,7 +13,10 @@ Este é o arquivo que o GitHub Actions chama todo dia. Ele faz, em ordem:
   6. Atualiza os painéis HTML
   7. Roda o checklist de conformidade (trava a publicação se reprovar)
   8. Copia as imagens para a pasta pública (GitHub Pages)
-  9. Publica no Instagram e no TikTok
+
+A PUBLICAÇÃO é um comando separado (--somente-publicar), que roda DEPOIS que
+as imagens já estão no ar. Instagram e TikTok não recebem o arquivo: eles
+buscam a imagem por URL, então ela precisa existir antes.
 
 Se qualquer passo falhar, os anteriores já feitos permanecem. O robô informa
 onde parou em vez de desfazer tudo.
@@ -34,14 +37,56 @@ from src import conformidade, dashboard, desempenho, jogos, legendas, painel, pe
 from src.coleta import atualizar, carregar_base, reconferir
 
 
-def _ja_publicado(concurso: int) -> bool:
-    """Confere no registro se este concurso já teve post enviado (não simulado)."""
-    arquivo = publicar.ARQUIVO_PUBLICACOES
-    if not arquivo.exists():
-        return False
-    import json
-    registros = json.loads(arquivo.read_text(encoding="utf-8"))
-    return any(r["concurso"] == concurso and not r.get("simulado") for r in registros)
+def publicar_pendentes(simular: bool = False) -> int:
+    """
+    Fase de PUBLICAÇÃO, separada da geração.
+
+    Por que separada: o Instagram e o TikTok não recebem o arquivo — eles vão
+    BUSCAR a imagem numa URL pública. Ou seja, a imagem precisa estar no ar
+    ANTES de publicar. Como quem coloca a imagem no ar é o passo de envio para
+    o GitHub, a publicação tem que acontecer depois dele, e não junto da geração.
+    """
+    base = carregar_base()
+    if not base:
+        print("Base vazia — nada a publicar.")
+        return 1
+
+    proximo = base[-1]["concurso"] + 1
+    erros = 0
+
+    print("=" * 62)
+    print("PUBLICAÇÃO" + (" (SIMULAÇÃO)" if simular else ""))
+    print("=" * 62)
+
+    # 1. resultados que já foram montados e ainda não foram ao ar
+    for arquivo in sorted(pecas.PASTA_SAIDAS.glob("*/resultado.json")):
+        concurso = int(arquivo.parent.name)
+        if publicar.ja_publicado(concurso, "resultado"):
+            continue
+        try:
+            publicar.registrar(concurso, publicar.publicar_resultado(concurso, "radar", simular))
+        except publicar.PublicacaoError as erro:
+            erros += 1
+            print(f"  resultado do {concurso} não publicou: {erro}")
+
+    # 2. o jogo do próximo concurso
+    if publicar.ja_publicado(proximo, "feed"):
+        print(f"\nJogo do concurso {proximo} já havia sido publicado. Nada a fazer.")
+    else:
+        for rede, funcao in (
+            ("Instagram", lambda: publicar.publicar_instagram(proximo, "radar", "feed", simular)),
+            ("TikTok", lambda: publicar.publicar_tiktok(proximo, "radar", simular)),
+        ):
+            try:
+                publicar.registrar(proximo, funcao())
+            except publicar.PublicacaoError as erro:
+                erros += 1
+                print(f"  {rede} não publicou: {erro}")
+
+    print("\n" + "=" * 62)
+    print(f"Publicação concluída · {erros} falha(s)")
+    print("=" * 62)
+    return 0 if erros == 0 else 1
 
 
 def executar(simular: bool = False, publicar_redes: bool = True) -> int:
@@ -156,42 +201,16 @@ def executar(simular: bool = False, publicar_redes: bool = True) -> int:
         publicar_redes = False
 
     # 8 e 9. publicação
-    # Trava de segurança: nunca publicar o mesmo concurso duas vezes.
-    # Sem isso, uma re-execução do workflow duplicaria o post.
-    if publicar_redes and _ja_publicado(proximo):
-        print(f"\n[9-10] Concurso {proximo} já foi publicado antes. Publicação cancelada.")
-        publicar_redes = False
+    # Copiar para a pasta pública SEMPRE: é isso que coloca as imagens no ar.
+    # Sem elas no ar, a publicação da etapa seguinte não tem o que buscar.
+    def copiar():
+        for numero in conferidos:
+            publicar.publicar_no_site(numero, verboso=False)
+        publicar.publicar_no_site(proximo)
+    passo(9, "Copiando imagens para a pasta pública", copiar, obrigatorio=False)
 
-    if publicar_redes:
-        def copiar():
-            for numero in conferidos:
-                publicar.publicar_no_site(numero, verboso=False)
-            publicar.publicar_no_site(proximo)
-        passo(9, "Copiando imagens para a pasta pública", copiar, obrigatorio=False)
-
-        def publicar_tudo():
-            # 1º o resultado do concurso que acabou de sair — é o que a
-            # audiência está esperando desde o post anterior
-            for numero in conferidos:
-                try:
-                    publicar.registrar(
-                        numero, publicar.publicar_resultado(numero, "radar", simular))
-                except publicar.PublicacaoError as erro:
-                    print(f"    resultado do {numero} não publicou: {erro}")
-
-            # 2º o jogo do próximo concurso
-            for rede, funcao in (
-                ("Instagram", lambda: publicar.publicar_instagram(proximo, "radar", "feed", simular)),
-                ("TikTok", lambda: publicar.publicar_tiktok(proximo, "radar", simular)),
-            ):
-                try:
-                    publicar.registrar(proximo, funcao())
-                except publicar.PublicacaoError as erro:
-                    print(f"    {rede} não publicou: {erro}")
-        passo(10, "Publicando nas redes" + (" (SIMULAÇÃO)" if simular else ""),
-              publicar_tudo, obrigatorio=False)
-    else:
-        print("\n[9-10] Publicação desligada")
+    print("\n[10] A publicação nas redes é um comando à parte "
+          "(--somente-publicar), executado depois que as imagens estiverem no ar.")
 
     duracao = (datetime.now() - inicio).total_seconds()
     print("\n" + "=" * 62)
@@ -204,6 +223,11 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Executa o robô inteiro")
     parser.add_argument("--simular", action="store_true", help="não publica de verdade")
     parser.add_argument("--sem-publicar", action="store_true", help="pula a etapa de publicação")
+    parser.add_argument("--somente-publicar", action="store_true",
+                        help="não gera nada; só publica o que já está pronto")
     args = parser.parse_args()
+
+    if args.somente_publicar:
+        raise SystemExit(publicar_pendentes(simular=args.simular))
 
     raise SystemExit(executar(simular=args.simular, publicar_redes=not args.sem_publicar))

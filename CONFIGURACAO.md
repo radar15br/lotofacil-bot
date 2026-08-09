@@ -255,7 +255,8 @@ independentemente disso.
 
 | Sintoma | Causa provável | Solução |
 |---|---|---|
-| `The image_url is not accessible` | GitHub Pages ainda não publicou | Espere 5 min e rode de novo. Teste abrindo a URL da imagem no navegador |
+| `The image_url is not accessible` | GitHub Pages ainda não publicou | O robô já espera até 5 min sozinho. Se persistir, confira se o Pages está ligado em Settings > Pages |
+| Execução verde mas nenhum post | imagem não estava no ar na hora de publicar | Corrigido: a publicação agora roda numa etapa separada, depois do envio das imagens |
 | `Media type not supported` | está mandando PNG | O robô já gera `.jpg` — confira se `URL_BASE_PUBLICA` está correta |
 | `(#10) Application does not have permission` | falta permissão no app | Revise o passo 2.4 |
 | `Invalid OAuth access token` | token expirou (60 dias) | Rode `python -m src.publicar --renovar-token` e atualize o segredo |

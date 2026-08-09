@@ -233,6 +233,13 @@ def publicar_instagram(concurso: int, estilo: str = "dia", formato: str = "carro
     legenda, estilo_legenda = legenda_do_concurso(concurso)
 
     print(f"Instagram · concurso {concurso} · visual {estilo} · copy {estilo_legenda}")
+    primeira = urls["carrossel"][0] if formato == "carrossel" else (
+        urls["feed"] if formato == "feed" else urls["stories"])
+    if not simular and not esperar_site(primeira):
+        raise PublicacaoError(
+            "As imagens ainda não estão acessíveis na web. O Instagram precisa "
+            "buscá-las por URL — sem isso ele recusa a publicação."
+        )
     print(f"  modo: {IG_MODO} ({IG_HOST})")
 
     if formato == "carrossel":
@@ -293,6 +300,8 @@ def publicar_resultado(concurso: int, estilo: str = "radar", simular: bool = Fal
     legenda = legenda_arquivo.read_text(encoding="utf-8")
 
     print(f"Instagram · RESULTADO do concurso {concurso} · {dados['acertos']} acertos")
+    if not simular and not esperar_site(imagem):
+        raise PublicacaoError("A imagem do resultado ainda não está acessível na web.")
     container = _ig_post(f"{IG_USER_ID}/media",
                          {"image_url": imagem, "caption": legenda}, simular)["id"]
     if not simular:
@@ -346,8 +355,8 @@ def publicar_tiktok(concurso: int, estilo: str = "noite", simular: bool = False)
     if simular:
         print("  [SIMULADO] POST https://open.tiktokapis.com/v2/post/publish/content/init/")
         print("  " + json.dumps(corpo, ensure_ascii=False)[:400] + " ...")
-        return {"rede": "tiktok", "publish_id": "simulado", "estilo": estilo,
-                "estilo_legenda": estilo_legenda, "simulado": True}
+        return {"rede": "tiktok", "formato": "tiktok", "publish_id": "simulado",
+                "estilo": estilo, "estilo_legenda": estilo_legenda, "simulado": True}
 
     resposta = requests.post(
         "https://open.tiktokapis.com/v2/post/publish/content/init/",
@@ -361,8 +370,8 @@ def publicar_tiktok(concurso: int, estilo: str = "noite", simular: bool = False)
 
     publish_id = dados.get("data", {}).get("publish_id", "")
     print(f"  PUBLICADO -> publish_id {publish_id}")
-    return {"rede": "tiktok", "publish_id": publish_id, "estilo": estilo,
-            "estilo_legenda": estilo_legenda, "simulado": False}
+    return {"rede": "tiktok", "formato": "tiktok", "publish_id": publish_id,
+            "estilo": estilo, "estilo_legenda": estilo_legenda, "simulado": False}
 
 
 # ---------------------------------------------------------------------------
@@ -394,8 +403,51 @@ def renovar_token_instagram(token: str | None = None) -> dict[str, Any]:
 
 
 # ---------------------------------------------------------------------------
+# ESPERAR O SITE PUBLICAR
+# ---------------------------------------------------------------------------
+
+
+def esperar_site(url: str, tentativas: int = 30, espera: int = 10,
+                 verboso: bool = True) -> bool:
+    """
+    Só adianta pedir para o Instagram buscar a imagem depois que ela realmente
+    está no ar. O GitHub Pages leva de alguns segundos a poucos minutos para
+    publicar o que acabou de ser enviado — este laço espera por isso.
+    """
+    for tentativa in range(1, tentativas + 1):
+        try:
+            resposta = requests.head(url, timeout=15, allow_redirects=True)
+            if resposta.status_code == 200:
+                if verboso:
+                    print(f"  imagem disponível na web após {tentativa * espera - espera}s")
+                return True
+        except requests.RequestException:
+            pass
+        if verboso and tentativa == 1:
+            print(f"  aguardando o site publicar a imagem... ({url})")
+        time.sleep(espera)
+
+    if verboso:
+        print(f"  AVISO: a imagem não ficou acessível em {tentativas * espera}s.")
+    return False
+
+
+# ---------------------------------------------------------------------------
 # REGISTRO
 # ---------------------------------------------------------------------------
+
+
+def ja_publicado(concurso: int, formato: str | None = None) -> bool:
+    """Já existe publicação REAL (não simulada) deste concurso/formato?"""
+    if not ARQUIVO_PUBLICACOES.exists():
+        return False
+    registros = json.loads(ARQUIVO_PUBLICACOES.read_text(encoding="utf-8"))
+    return any(
+        r.get("concurso") == concurso
+        and not r.get("simulado")
+        and (formato is None or r.get("formato") == formato)
+        for r in registros
+    )
 
 
 def registrar(concurso: int, resultado: dict[str, Any]) -> None:

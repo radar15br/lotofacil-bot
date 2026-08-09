@@ -59,8 +59,13 @@ if errorlevel 1 (
   gh repo create %NOME_REPO% --public --source=. --remote=origin --push
   if errorlevel 1 ( echo ERRO ao criar o repositorio. & pause & exit /b 1 )
 ) else (
-  echo       o repositorio ja existe - apenas enviando as novidades
+  echo       o repositorio ja existe - sincronizando antes de enviar
   git remote add origin https://github.com/!USUARIO!/%NOME_REPO%.git 2>nul
+  REM O proprio robo grava dados e imagens no repositorio quando roda na nuvem.
+  REM Por isso o remoto quase sempre esta a frente: buscamos o que ha la e
+  REM mantemos a SUA versao dos arquivos que existem dos dois lados.
+  git fetch origin main 2>nul
+  git merge -X ours origin/main -m "sincroniza com o que o robo gravou" 2>nul
   git push -u origin main
 )
 echo       https://github.com/!USUARIO!/%NOME_REPO%

@@ -50,7 +50,26 @@ jobs:
           pip install -r requirements.txt
           playwright install --with-deps chromium
 
-      - name: Executar o robô
+      # ETAPA 1 — gera tudo, mas AINDA NÃO publica.
+      # O Instagram e o TikTok não recebem o arquivo: eles buscam a imagem
+      # numa URL pública. Então a imagem precisa estar no ar antes.
+      - name: Gerar os jogos, as imagens e as legendas
+        env:
+          URL_BASE_PUBLICA: ${{ vars.URL_BASE_PUBLICA }}
+        run: python -m src.executar --sem-publicar
+
+      # ETAPA 2 — coloca as imagens no ar (GitHub Pages serve a pasta docs/)
+      - name: Publicar as imagens no site
+        run: |
+          git config user.name  "lotofacil-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data/ docs/ || true
+          git diff --staged --quiet || git commit -m "Concurso automatico $(date +%d/%m/%Y)"
+          git push
+
+      # ETAPA 3 — só agora publica nas redes. O próprio código espera a imagem
+      # ficar acessível antes de chamar a API.
+      - name: Publicar no Instagram e no TikTok
         env:
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
           IG_TOKEN: ${{ secrets.IG_TOKEN }}
@@ -60,18 +79,10 @@ jobs:
           URL_BASE_PUBLICA: ${{ vars.URL_BASE_PUBLICA }}
         run: |
           if [ "${{ inputs.simular }}" = "true" ]; then
-            python -m src.executar --simular
+            python -m src.executar --somente-publicar --simular
           else
-            python -m src.executar
+            python -m src.executar --somente-publicar
           fi
-
-      - name: Guardar o que foi gerado
-        run: |
-          git config user.name  "lotofacil-bot"
-          git config user.email "bot@users.noreply.github.com"
-          git add data/ docs/ || true
-          git diff --staged --quiet || git commit -m "Concurso automatico $(date +%d/%m/%Y)"
-          git push
 
       - name: Anexar as imagens ao histórico da execução
         if: always()
