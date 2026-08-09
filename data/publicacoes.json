@@ -1,0 +1,31 @@
+[
+ {
+  "concurso": 3757,
+  "quando": "2026-08-09 00:33",
+  "rede": "instagram",
+  "formato": "carrossel",
+  "estilo": "dia",
+  "estilo_legenda": "chamativo",
+  "id": "simulado_11265",
+  "simulado": true
+ },
+ {
+  "concurso": 3757,
+  "quando": "2026-08-09 00:35",
+  "rede": "instagram",
+  "formato": "carrossel",
+  "estilo": "dia",
+  "estilo_legenda": "chamativo",
+  "id": "simulado_25935",
+  "simulado": true
+ },
+ {
+  "concurso": 3757,
+  "quando": "2026-08-09 00:35",
+  "rede": "tiktok",
+  "publish_id": "simulado",
+  "estilo": "noite",
+  "estilo_legenda": "chamativo",
+  "simulado": true
+ }
+]

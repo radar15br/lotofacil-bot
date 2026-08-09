@@ -1,0 +1,8 @@
+# Etapa 1 - coleta de dados
+requests>=2.31.0
+
+# Etapa 1B - importação da planilha Excel
+openpyxl>=3.1.0
+
+# Etapa 5 - geração das peças visuais (HTML -> PNG)
+playwright>=1.44.0

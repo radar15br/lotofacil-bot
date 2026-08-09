@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+*.tmp
+tests/_temp/
+.env
+
+# As imagens de trabalho ficam só na sua máquina.
+# O que vai para o repositório é a pasta docs/, que o GitHub Pages publica.
+saidas/

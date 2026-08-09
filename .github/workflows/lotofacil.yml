@@ -1,0 +1,73 @@
+# ---------------------------------------------------------------------------
+# ROBÔ DA LOTOFÁCIL — execução automática
+# ---------------------------------------------------------------------------
+# Roda de segunda a sábado, 21h30 de Brasília (o sorteio é às 20h).
+# O GitHub trabalha em UTC, e Brasília é UTC-3 — por isso 00:30 UTC do dia
+# seguinte, de terça a domingo.
+# ---------------------------------------------------------------------------
+
+name: Lotofacil Bot
+
+on:
+  schedule:
+    - cron: "30 0 * * 2-7"
+  workflow_dispatch:        # permite rodar na mão pelo site do GitHub
+    inputs:
+      simular:
+        description: "Rodar sem publicar de verdade"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write           # necessário para o robô salvar os dados no repositório
+
+jobs:
+  rodar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Baixar o repositório
+        uses: actions/checkout@v4
+
+      - name: Instalar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Instalar dependências
+        run: |
+          pip install -r requirements.txt
+          playwright install --with-deps chromium
+
+      - name: Executar o robô
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          IG_MODO: ${{ vars.IG_MODO || 'instagram_login' }}
+          TIKTOK_TOKEN: ${{ secrets.TIKTOK_TOKEN }}
+          TIKTOK_PRIVACIDADE: ${{ vars.TIKTOK_PRIVACIDADE || 'SELF_ONLY' }}
+          URL_BASE_PUBLICA: ${{ vars.URL_BASE_PUBLICA }}
+        run: |
+          if [ "${{ inputs.simular }}" = "true" ]; then
+            python -m src.executar --simular
+          else
+            python -m src.executar
+          fi
+
+      - name: Guardar o que foi gerado
+        run: |
+          git config user.name  "lotofacil-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data/ docs/ || true
+          git diff --staged --quiet || git commit -m "Concurso automatico $(date +%d/%m/%Y)"
+          git push
+
+      - name: Anexar as imagens ao histórico da execução
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pecas-do-dia
+          path: saidas/
+          retention-days: 14
