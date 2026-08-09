@@ -1,16 +1,25 @@
 # ---------------------------------------------------------------------------
 # ROBÔ DA LOTOFÁCIL — execução automática
 # ---------------------------------------------------------------------------
-# Roda de segunda a sábado, 21h30 de Brasília (o sorteio é às 20h).
-# O GitHub trabalha em UTC, e Brasília é UTC-3 — por isso 00:30 UTC do dia
-# seguinte, de terça a domingo.
+# CALENDÁRIO DA LOTOFÁCIL (desde 19/07/2026):
+#   segunda a sexta -> sorteio às 20h
+#   domingo         -> sorteio às 11h
+#   sábado          -> não há sorteio
+#
+# O robô roda depois de cada apuração, no horário de Brasília:
+#   segunda a sexta -> 21h30  (= 00:30 UTC do dia seguinte, terça a sábado)
+#   domingo         -> 12h30  (= 15:30 UTC do mesmo domingo)
+#
+# Atenção ao formato: o GitHub numera os dias de 0 a 6, sendo 0 = domingo.
+# Não existe o dia 7 — usar "2-7" faz o GitHub rejeitar o arquivo inteiro.
 # ---------------------------------------------------------------------------
 
 name: Lotofacil Bot
 
 on:
   schedule:
-    - cron: "30 0 * * 2-7"
+    - cron: "30 0 * * 2-6"    # seg a sex, 21h30 de Brasília
+    - cron: "30 15 * * 0"    # domingo, 12h30 de Brasília
   workflow_dispatch:        # permite rodar na mão pelo site do GitHub
     inputs:
       simular:

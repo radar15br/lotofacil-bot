@@ -181,6 +181,7 @@ def urls_do_concurso(concurso: int, estilo: str) -> dict[str, Any]:
     return {
         "feed": url(arquivos["feed"]),
         "stories": url(arquivos["stories"]),
+        # "vip_13_jogos" fica de fora de propósito: é material do grupo pago
         "carrossel": [url(c) for c in arquivos["carrossel"]][:MAX_ITENS_CARROSSEL],
     }
 
@@ -268,6 +269,39 @@ def publicar_instagram(concurso: int, estilo: str = "dia", formato: str = "carro
 
     return {"rede": "instagram", "formato": formato, "estilo": estilo,
             "estilo_legenda": estilo_legenda, "id": publicado["id"], "simulado": simular}
+
+
+def publicar_resultado(concurso: int, estilo: str = "radar", simular: bool = False) -> dict[str, Any]:
+    """Publica no Instagram a peça única de RESULTADO (imagem simples)."""
+    if not simular and (not IG_USER_ID or not IG_TOKEN):
+        raise PublicacaoError("Faltam IG_USER_ID e IG_TOKEN.")
+    if not URL_BASE:
+        raise PublicacaoError("Defina URL_BASE_PUBLICA.")
+
+    indice = PASTA_SAIDAS / str(concurso) / "resultado.json"
+    if not indice.exists():
+        raise PublicacaoError(f"Peça de resultado do concurso {concurso} não foi gerada.")
+    dados = json.loads(indice.read_text(encoding="utf-8"))
+
+    caminho = Path(dados["estilos"][estilo])
+    relativo = caminho.relative_to(PASTA_SAIDAS / str(concurso))
+    imagem = f"{URL_BASE}/{concurso}/{relativo.as_posix()}"
+
+    legenda_arquivo = PASTA_SAIDAS / str(concurso) / "legenda-resultado.txt"
+    if not legenda_arquivo.exists():
+        raise PublicacaoError("Legenda do resultado não foi gerada.")
+    legenda = legenda_arquivo.read_text(encoding="utf-8")
+
+    print(f"Instagram · RESULTADO do concurso {concurso} · {dados['acertos']} acertos")
+    container = _ig_post(f"{IG_USER_ID}/media",
+                         {"image_url": imagem, "caption": legenda}, simular)["id"]
+    if not simular:
+        time.sleep(8)
+    publicado = _ig_post(f"{IG_USER_ID}/media_publish", {"creation_id": container}, simular)
+    print(f"  PUBLICADO -> id {publicado['id']}")
+
+    return {"rede": "instagram", "formato": "resultado", "estilo": estilo,
+            "acertos": dados["acertos"], "id": publicado["id"], "simulado": simular}
 
 
 # ---------------------------------------------------------------------------

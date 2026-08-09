@@ -1,0 +1,14 @@
+COLOQUE AQUI O LOGOTIPO
+=======================
+
+Salve o arquivo do logotipo do Radar 15 nesta pasta com o nome:
+
+    logo.png
+
+Recomendações:
+  - fundo transparente (PNG com transparência)
+  - altura mínima de 400 pixels
+  - o logo completo: símbolo do radar + palavra RADAR 15
+
+Existindo este arquivo, o robô usa o SEU logotipo nas peças.
+Sem ele, o robô desenha um logotipo próprio automaticamente.

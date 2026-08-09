@@ -215,16 +215,21 @@ Nada a fazer — o agendamento já está no arquivo
 `.github/workflows/lotofacil.yml`:
 
 ```
-cron: "30 0 * * 2-7"
+cron: "30 0 * * 2-6"    # seg a sex, 21h30 de Brasília
+cron: "30 15 * * 0"     # domingo, 12h30 de Brasília
 ```
 
-Isso significa **21h30 de Brasília, de segunda a sábado** (o GitHub trabalha em
-UTC, e Brasília é UTC-3; por isso 00:30 UTC do dia seguinte). O sorteio da
-Lotofácil é às 20h, então dá uma hora e meia de folga para a Caixa publicar o
-resultado.
+Desde **19/07/2026** a Caixa mudou o calendário: os sorteios de sábado passaram
+para **domingo às 11h**. De segunda a sexta continuam às 20h. Por isso são dois
+agendamentos — cada um roda cerca de uma hora e meia depois da apuração.
+
+O GitHub trabalha em UTC e Brasília é UTC-3, por isso os horários aparecem
+deslocados.
 
 Para mudar o horário, altere só esse número: o primeiro campo é o minuto, o
-segundo é a hora **em UTC**.
+segundo é a hora **em UTC**. O último campo são os dias da semana, numerados
+de 0 a 6, sendo **0 = domingo**. O dia 7 não existe — usar `2-7` faz o GitHub
+rejeitar o arquivo inteiro.
 
 ---
 

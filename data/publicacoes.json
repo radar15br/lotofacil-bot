@@ -27,5 +27,34 @@
   "estilo": "noite",
   "estilo_legenda": "chamativo",
   "simulado": true
+ },
+ {
+  "concurso": 3756,
+  "quando": "2026-08-09 04:16",
+  "rede": "instagram",
+  "formato": "resultado",
+  "estilo": "radar",
+  "acertos": 8,
+  "id": "simulado_70761",
+  "simulado": true
+ },
+ {
+  "concurso": 3757,
+  "quando": "2026-08-09 04:16",
+  "rede": "instagram",
+  "formato": "feed",
+  "estilo": "radar",
+  "estilo_legenda": "chamativo",
+  "id": "simulado_70761",
+  "simulado": true
+ },
+ {
+  "concurso": 3757,
+  "quando": "2026-08-09 04:16",
+  "rede": "tiktok",
+  "publish_id": "simulado",
+  "estilo": "radar",
+  "estilo_legenda": "chamativo",
+  "simulado": true
  }
 ]

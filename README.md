@@ -114,8 +114,16 @@ Segundos. Baixa só o que saiu depois da última execução.
 ### 8. Conferir o que está guardado
 
 ```bash
-python -m src.coleta --status
+python -m src.coleta --status       # resumo + % verificado na fonte oficial
+python -m src.coleta --reconferir   # confere 25 concursos contra a API da Caixa
+python tests/test_reconferencia.py
 ```
+
+**Reconferência:** todo concurso guarda a etiqueta de onde veio (`caixa`,
+`espelho` ou `excel`). A cada execução o robô pega um lote do que ainda não veio
+direto da Caixa e confere contra a API oficial — espelho primeiro, depois a
+planilha do mais recente para o mais antigo. Divergência é corrigida na hora e
+**reportada no log**, nunca em silêncio.
 
 ### 9. Análise estatística (Etapa 2)
 

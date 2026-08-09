@@ -191,7 +191,13 @@ def gerar_jogos(
             "As regras podem estar restritivas demais."
         )
 
+    # O destaque é fixado AGORA e gravado em disco. Se fosse recalculado depois
+    # do sorteio, a base já teria mudado e poderia apontar outro jogo — o post
+    # de resultado precisa conferir exatamente o jogo que foi publicado.
+    destaque = an.escolher_destaque(jogos, base)
+
     return {
+        "destaque": destaque,
         "concurso_alvo": concurso_alvo,
         "gerado_a_partir_do_concurso": ultimo_registro["concurso"],
         "data_base": ultimo_registro["data"],

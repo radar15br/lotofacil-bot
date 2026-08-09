@@ -483,3 +483,135 @@ if __name__ == "__main__":
         destino = Path(PASTA_DADOS) / "analise.json"
         destino.write_text(json.dumps(resultado, ensure_ascii=False, indent=1), encoding="utf-8")
         print(f"\nAnálise salva em {destino}")
+
+
+# ---------------------------------------------------------------------------
+# 9. NOTA DO RADAR — o quanto um jogo se parece com um sorteio típico
+# ---------------------------------------------------------------------------
+
+def _frequencia_relativa(valores: list[int], x: float) -> tuple[float, float]:
+    """
+    O quanto este valor é COMUM na história, comparado ao valor mais comum
+    de todos. Devolve (pontuação 0-100, percentil 0-100).
+
+    Por que não usar percentil puro: a soma 189 e a soma 195 são igualmente
+    corriqueiras, mas o percentil puniria a 189 por não ser exatamente a
+    mediana. Aqui o que conta é a frequência com que aquele valor aparece.
+    """
+    if not valores:
+        return 50.0, 50.0
+
+    # Janela de suavização proporcional à dispersão do critério
+    desvio = statistics.pstdev(valores) or 1
+    janela = max(0, round(desvio / 3))
+
+    def quantos(centro: float) -> int:
+        return sum(1 for v in valores if abs(v - centro) <= janela)
+
+    pico = max(quantos(c) for c in set(valores))
+    pontos = 100 * quantos(x) / pico if pico else 0
+
+    menores = sum(1 for v in valores if v < x)
+    iguais = sum(1 for v in valores if v == x)
+    percentil = 100 * (menores + iguais / 2) / len(valores)
+    return round(pontos, 1), round(percentil, 1)
+
+
+def maior_sequencia(dezenas: list[int]) -> int:
+    """Maior sequência de números consecutivos dentro do jogo (ex.: 7-8-9 = 3)."""
+    ordenado = sorted(dezenas)
+    maior = atual = 1
+    for anterior, seguinte in zip(ordenado, ordenado[1:]):
+        atual = atual + 1 if seguinte == anterior + 1 else 1
+        maior = max(maior, atual)
+    return maior
+
+
+def nota_do_radar(jogo: list[int], base: list[dict]) -> dict[str, Any]:
+    """
+    Mede o quanto o jogo se PARECE com um resultado real, de 0 a 100.
+
+    Para cada critério, mede o quanto aquele valor é COMUM nos sorteios reais.
+    Valor tão frequente quanto o mais frequente de todos = 100 pontos.
+    Valor que quase nunca aparece = perto de 0.
+
+    ATENÇÃO — o que esta nota NÃO é:
+    Ela não mede chance de prêmio. Um jogo com nota 100 e outro com nota 40
+    têm exatamente a mesma probabilidade de serem sorteados. A nota mede
+    semelhança com o padrão histórico, nada além disso.
+    """
+    ultimo = set(base[-1]["dezenas"]) if base else set()
+    conjunto = set(jogo)
+
+    # Valor do jogo e a série histórica correspondente, para cada critério
+    criterios = {
+        "soma": (
+            sum(jogo),
+            [sum(c["dezenas"]) for c in base],
+        ),
+        "pares": (
+            sum(1 for d in jogo if d % 2 == 0),
+            [sum(1 for d in c["dezenas"] if d % 2 == 0) for c in base],
+        ),
+        "primos": (
+            len(conjunto & set(PRIMOS)),
+            [len(set(c["dezenas"]) & set(PRIMOS)) for c in base],
+        ),
+        "repetidas": (
+            len(conjunto & ultimo),
+            [len(set(b["dezenas"]) & set(a["dezenas"])) for a, b in zip(base, base[1:])],
+        ),
+        "moldura": (
+            len(conjunto & set(MOLDURA)),
+            [len(set(c["dezenas"]) & set(MOLDURA)) for c in base],
+        ),
+        "miolo": (
+            len(conjunto & set(MIOLO)),
+            [len(set(c["dezenas"]) & set(MIOLO)) for c in base],
+        ),
+        # Sem este critério, um jogo absurdo como 01,02,...,15 passaria batido:
+        # todos os outros indicadores dele ficam dentro do normal.
+        "sequencia": (
+            maior_sequencia(jogo),
+            [maior_sequencia(c["dezenas"]) for c in base],
+        ),
+    }
+
+    detalhes: dict[str, Any] = {}
+    for nome, (valor, serie) in criterios.items():
+        pontos, percentil = _frequencia_relativa(serie, valor)
+        detalhes[nome] = {
+            "valor": valor,
+            "percentil": percentil,
+            "pontos": pontos,
+            "media_historica": round(statistics.mean(serie), 2),
+        }
+
+    nota = round(sum(d["pontos"] for d in detalhes.values()) / len(detalhes))
+
+    # Distribuição por faixas de dezenas (1-6, 7-12, 13-18, 19-25)
+    faixas = [
+        len([d for d in jogo if 1 <= d <= 6]),
+        len([d for d in jogo if 7 <= d <= 12]),
+        len([d for d in jogo if 13 <= d <= 18]),
+        len([d for d in jogo if 19 <= d <= 25]),
+    ]
+
+    return {
+        "nota": nota,
+        "detalhes": detalhes,
+        "faixas": faixas,
+        "pares": detalhes["pares"]["valor"],
+        "impares": 15 - detalhes["pares"]["valor"],
+        "aviso": (
+            "A nota mede semelhança com o padrão histórico dos sorteios. "
+            "NÃO mede chance de prêmio — todos os jogos têm a mesma probabilidade."
+        ),
+    }
+
+
+def escolher_destaque(jogos: list[list[int]], base: list[dict]) -> dict[str, Any]:
+    """Entre os 13 jogos, devolve o de maior aderência ao padrão histórico."""
+    avaliados = [{"dezenas": j, **nota_do_radar(j, base)} for j in jogos]
+    avaliados.sort(key=lambda x: -x["nota"])
+    return avaliados[0]

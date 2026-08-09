@@ -252,6 +252,70 @@ GERADORES = {
 
 
 # ---------------------------------------------------------------------------
+# LEGENDA DO POST DE RESULTADO
+# ---------------------------------------------------------------------------
+
+
+def copy_resultado(concurso: int) -> str:
+    """Texto do post que confere o jogo publicado antes do sorteio."""
+    from src.pecas import contexto_resultado
+
+    c = contexto_resultado(concurso)
+    d = c["desempenho"]
+    acertos = c["acertos"]
+    premiado = acertos >= 11
+
+    sorteadas = " ".join(f"{n:02d}" for n in c["sorteadas"])
+    nosso = " ".join(f"{n:02d}" for n in c["publicado"])
+    acertadas = " ".join(f"{n:02d}" for n in c["acertadas"])
+
+    abertura = (
+        f"✅ {acertos} ACERTOS no concurso {concurso}"
+        if premiado else
+        f"RESULTADO do concurso {concurso} — {acertos} acertos"
+    )
+    linha_premio = (
+        f"\nPrêmio da faixa: {c['premio_texto']} por aposta." if premiado and c["premio_texto"] else ""
+    )
+    historico = (
+        f"Média dos últimos {d['janela']} concursos: {num(d['media_de_acertos'])} acertos por jogo."
+        if not d.get("vazio") else ""
+    )
+
+    return f"""{abertura}
+
+O jogo tinha sido publicado {PERFIL} ANTES do sorteio. Conferimos agora, dê no que der — é assim toda vez.
+
+Dezenas sorteadas:
+{sorteadas}
+
+Nosso jogo:
+{nosso}
+
+Acertamos: {acertadas}{linha_premio}
+
+{historico}
+
+Por que publicamos o resultado mesmo quando não é bom: qualquer perfil acerta se só mostrar os dias bons. O placar aberto é o que dá para conferir.
+
+O jogo do próximo concurso já está no perfil. Salve e volte depois.
+
+{AVISO_LEGENDA}{_bloco_cta()}
+
+{_hashtags('prova_social')}"""
+
+
+def gerar_resultado(concurso: int) -> dict[str, Any]:
+    """Gera e salva a legenda do post de resultado."""
+    texto = validar(copy_resultado(concurso))
+    conteudo = copy_resultado(concurso)
+    pasta = PASTA_SAIDAS / str(concurso)
+    pasta.mkdir(parents=True, exist_ok=True)
+    (pasta / "legenda-resultado.txt").write_text(conteudo, encoding="utf-8")
+    return {"concurso": concurso, "texto": conteudo, **texto}
+
+
+# ---------------------------------------------------------------------------
 # VALIDAÇÃO
 # ---------------------------------------------------------------------------
 

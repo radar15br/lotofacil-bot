@@ -99,9 +99,16 @@ def _traduzir_caixa(bruto: dict[str, Any]) -> dict[str, Any]:
         if descricao.startswith("15"):
             ganhadores_15 = int(faixa.get("numeroDeGanhadores", 0))
 
+    proxima = bruto.get("dataProximoConcurso") or ""
+    try:
+        proxima = datetime.strptime(proxima, "%d/%m/%Y").strftime("%Y-%m-%d")
+    except ValueError:
+        proxima = ""
+
     return {
         "concurso": int(bruto["numero"]),
         "data": data,
+        "data_proximo": proxima,
         "dezenas": dezenas,
         "acumulado": bool(bruto.get("acumulado", False)),
         "ganhadores_15": ganhadores_15,
@@ -179,13 +186,17 @@ def _pedir_json(url: str) -> dict[str, Any]:
     raise ColetaError(f"Falha ao acessar {url}: {ultimo_erro}")
 
 
-def buscar_concurso(numero: int | None = None) -> dict[str, Any]:
+def buscar_concurso(numero: int | None = None,
+                    apenas_oficial: bool = False) -> dict[str, Any]:
     """
     Busca um concurso específico. Se `numero` for None, busca o mais recente.
     Tenta a Caixa primeiro; se falhar, cai para o espelho.
+
+    apenas_oficial=True desliga o espelho — usado na reconferência, onde o
+    objetivo é justamente comparar contra a fonte oficial.
     """
     erros = []
-    for fonte in FONTES:
+    for fonte in (FONTES[:1] if apenas_oficial else FONTES):
         try:
             bruto = _pedir_json(fonte["url"](numero))
             # O espelho às vezes devolve lista em vez de objeto
@@ -301,6 +312,109 @@ def atualizar(completo: bool = False, verboso: bool = True) -> dict[str, Any]:
     }
 
 
+# ---------------------------------------------------------------------------
+# RECONFERÊNCIA — garantir que tudo bata com a fonte oficial
+# ---------------------------------------------------------------------------
+
+# Quantos concursos são reconferidos por execução. Um número baixo mantém a
+# rotina rápida; com 25 por dia, uma base de 3.700 fica toda verificada em
+# poucos meses, começando sempre pelos mais recentes.
+RECONFERIR_POR_EXECUCAO = 25
+
+
+def _pendentes_de_verificacao(base: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """
+    Quem precisa ser reconferido, em ordem de prioridade:
+      1. o que veio do espelho (terceiro, não é a Caixa)
+      2. o que veio da planilha, do mais recente para o mais antigo
+    O que já veio direto da Caixa não precisa: já é a fonte oficial.
+    """
+    pendentes = [
+        r for r in base
+        if r.get("fonte") != "caixa" and not r.get("verificado")
+    ]
+    prioridade = {"espelho": 0, "excel": 1}
+    pendentes.sort(key=lambda r: (prioridade.get(r.get("fonte"), 2), -r["concurso"]))
+    return pendentes
+
+
+def reconferir(limite: int = RECONFERIR_POR_EXECUCAO, verboso: bool = True) -> dict[str, Any]:
+    """
+    Confere contra a API OFICIAL da Caixa os concursos que entraram por outra
+    via (planilha ou espelho). Divergência encontrada é corrigida na hora e
+    reportada — nunca corrigida em silêncio.
+    """
+    base = carregar_base()
+    por_numero = {r["concurso"]: r for r in base}
+    pendentes = _pendentes_de_verificacao(base)[:limite]
+
+    if not pendentes:
+        if verboso:
+            print("Toda a base já foi verificada contra a fonte oficial.")
+        return {"verificados": 0, "divergencias": [], "restantes": 0, "falhas": 0}
+
+    if verboso:
+        print(f"Reconferindo {len(pendentes)} concursos contra a API da Caixa...")
+
+    divergencias: list[dict[str, Any]] = []
+    verificados = falhas = seguidas = 0
+
+    for registro in pendentes:
+        # Se a Caixa está fora do ar, não adianta insistir: cada tentativa
+        # gasta segundos e a rotina do dia não pode ficar presa aqui.
+        if seguidas >= 3:
+            if verboso:
+                print("  API da Caixa não está respondendo — reconferência adiada.")
+            break
+
+        numero = registro["concurso"]
+        try:
+            oficial = buscar_concurso(numero, apenas_oficial=True)
+            seguidas = 0
+        except ColetaError:
+            falhas += 1
+            seguidas += 1
+            continue
+
+        if not validar_concurso(oficial):
+            falhas += 1
+            continue
+
+        if oficial["dezenas"] != registro["dezenas"]:
+            divergencias.append({
+                "concurso": numero,
+                "tinhamos": registro["dezenas"],
+                "oficial": oficial["dezenas"],
+                "fonte_anterior": registro.get("fonte"),
+            })
+            oficial["verificado"] = True
+            por_numero[numero] = oficial       # a Caixa manda
+        else:
+            registro["verificado"] = True
+            registro["fonte"] = "caixa"        # confirmado na origem oficial
+
+        verificados += 1
+        time.sleep(PAUSA_ENTRE_PEDIDOS)
+
+    salvar_base(list(por_numero.values()))
+    restantes = len(_pendentes_de_verificacao(carregar_base()))
+
+    if verboso:
+        print(f"  {verificados} conferidos · {len(divergencias)} divergência(s) · "
+              f"{falhas} sem resposta · {restantes} ainda por verificar")
+        for d in divergencias:
+            print(f"  CORRIGIDO concurso {d['concurso']} (vinha de '{d['fonte_anterior']}')")
+            print(f"    tínhamos: {d['tinhamos']}")
+            print(f"    oficial : {d['oficial']}")
+
+    return {
+        "verificados": verificados,
+        "divergencias": divergencias,
+        "restantes": restantes,
+        "falhas": falhas,
+    }
+
+
 def status() -> None:
     """Mostra um resumo do que já está guardado localmente."""
     base = carregar_base()
@@ -315,6 +429,13 @@ def status() -> None:
     print(f"Último sorteio: {base[-1]['data']} -> {base[-1]['dezenas']}")
     print(f"Concursos faltando no meio: {len(buracos)}" + (f" {buracos[:10]}" if buracos else ""))
 
+    from collections import Counter
+    fontes = Counter(c.get("fonte", "?") for c in base)
+    oficiais = sum(1 for c in base if c.get("fonte") == "caixa")
+    print(f"Origem dos dados: " + " · ".join(f"{k}: {v}" for k, v in fontes.items()))
+    print(f"Verificados na fonte oficial: {oficiais} de {len(base)} "
+          f"({100 * oficiais / len(base):.1f}%)")
+
 
 # ---------------------------------------------------------------------------
 # LINHA DE COMANDO
@@ -325,9 +446,13 @@ if __name__ == "__main__":
     parser.add_argument("--completo", action="store_true", help="baixa todo o histórico do zero")
     parser.add_argument("--atualizar", action="store_true", help="baixa só o que falta")
     parser.add_argument("--status", action="store_true", help="mostra o que já está salvo")
+    parser.add_argument("--reconferir", type=int, nargs="?", const=RECONFERIR_POR_EXECUCAO,
+                        help="reconfere N concursos contra a API oficial da Caixa")
     args = parser.parse_args()
 
-    if args.status:
+    if args.reconferir:
+        reconferir(args.reconferir)
+    elif args.status:
         status()
     elif args.completo:
         atualizar(completo=True)
