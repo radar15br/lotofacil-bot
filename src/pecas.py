@@ -258,7 +258,7 @@ DIAS = ["segunda-feira", "terça-feira", "quarta-feira", "quinta-feira",
 
 # Horário do sorteio por dia da semana (0=segunda ... 6=domingo).
 # Desde 19/07/2026 a Caixa passou os sorteios de sábado para domingo, às 11h.
-HORARIOS = {0: "20h", 1: "20h", 2: "20h", 3: "20h", 4: "20h", 5: "20h", 6: "11h"}
+HORARIOS = {0: "21h", 1: "21h", 2: "21h", 3: "21h", 4: "21h", 5: "21h", 6: "11h"}
 
 
 def dias_de_sorteio(base: list[dict], amostra: int = 20) -> set[int]:
@@ -296,7 +296,7 @@ def _data_do_sorteio(ultimo: dict, base: list[dict] | None = None) -> dict[str, 
             "iso": d.strftime("%Y-%m-%d"),
             "br": d.strftime("%d/%m/%Y"),
             "dia": DIAS[d.weekday()],
-            "hora": HORARIOS.get(d.weekday(), "20h"),
+            "hora": HORARIOS.get(d.weekday(), "21h"),
             "estimada": estimada,
         }
 
