@@ -430,6 +430,7 @@ ICONES = {
     "pizza": '<path d="M12 3a9 9 0 1 0 9 9h-9z"/><path d="M12 3v9h9A9 9 0 0 0 12 3z"/>',
     "barras": '<path d="M5 20V11M10 20V5M15 20V14M20 20V8"/>',
     "escudo": '<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/>',
+    "soma": '<path d="M17 4H7l5 8-5 8h10"/>',
     "alvo": '<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>',
     "calendario": '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
     "check": '<circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-5"/>',
@@ -671,13 +672,13 @@ def html_destaque(ctx: dict, e: dict) -> str:
     </div>
 
     <div class="painel">
-      <div class="tit">{_icone('radar', e['destaque'], 26)} O que <em>analisamos</em></div>
+      <div class="tit">O que <em>analisamos</em></div>
       <div class="stats">
-      {_linha_stat("Nota do Radar", f"<em>{d['nota']}</em> / 100 de aderência", e, "radar")}
-      {_linha_stat("Equilíbrio ímpar/par", f"<em>{d['impares']} ímpares</em> · {d['pares']} pares", e, "balanca")}
-      {_linha_stat("Distribuição por faixas", " · ".join(str(x) for x in d['faixas']), e, "pizza")}
-      {_linha_stat("Soma das dezenas", f"<em>{det['soma']['valor']}</em> · típico {ctx['perfil']['soma_dezenas']['faixa'][0]}–{ctx['perfil']['soma_dezenas']['faixa'][1]}", e, "barras")}
-      {_linha_stat("Cobertura histórica", f"<em>{_n(len(ctx['base']), 0)}</em> concursos analisados", e, "escudo")}
+      {_linha_stat("Equilíbrio ímpar/par", f"<em>{d['impares']} ímpares</em> / {d['pares']} pares", e, "balanca")}
+      {_linha_stat("Distribuição por faixas", " • ".join(str(x) for x in d['faixas']), e, "pizza")}
+      {_linha_stat("Frequências analisadas", "quentes • mornas • frias", e, "barras")}
+      {_linha_stat("Soma", f"<em>{det['soma']['valor']}</em>", e, "soma")}
+      {_linha_stat("Análise estatística LI-15", "critérios de recorrência<br>e distribuição histórica", e, "escudo")}
       </div>
     </div>
   </div>
