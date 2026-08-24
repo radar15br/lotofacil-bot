@@ -1068,145 +1068,176 @@ def html_resultado(ctx: dict, e: dict) -> str:
     L = A = 1080
     acertos = ctx["acertos"]
     acertadas = set(ctx["acertadas"])
+    proximo = ctx["concurso"] + 1
 
-    # Faixa premiada começa em 11 acertos
-    premiado = acertos >= 11
-    titulo = "ACERTAMOS" if premiado else "RESULTADO"
-
-    sorteadas = "".join(f'<div class="bola sort">{n:02d}</div>' for n in ctx["sorteadas"])
-    nosso = "".join(
-        f'<div class="bola{" hit" if n in acertadas else " miss"}">{n:02d}</div>'
+    sorteadas = "".join(f'<div class="bola">{n:02d}</div>' for n in ctx["sorteadas"])
+    jogo = "".join(f'<div class="bola-plana">{n:02d}</div>' for n in ctx["publicado"])
+    comparativo = "".join(
+        (f'<div class="bola-comp hit">{n:02d}{_icone("check", e["chip_alto_texto"], 14, 2.4)}</div>'
+         if n in acertadas else f'<div class="bola-comp miss">{n:02d}</div>')
         for n in ctx["publicado"]
     )
 
-    if premiado and ctx["premio_texto"]:
-        valor_premio = ctx["premio_texto"]
-        linha_premio = _linha_stat("Prêmio da faixa",
-                                   f"<em>{valor_premio}</em> por aposta", e, "check")
-    else:
-        linha_premio = _linha_stat("Faixa premiada",
-                                   "a partir de <em>11 acertos</em>", e, "check")
-
-    d = ctx["desempenho"]
-    media = _n(d.get("media_de_acertos", 0)) if not d.get("vazio") else "—"
+    marca_feed = _logo_html(e, 96) or _radar_svg(e["destaque"], 92)
 
     estilo_extra = f"""
-.pad {{ padding:26px 28px 22px; gap:12px; }}
+.pad {{ padding:30px 34px 26px; gap:14px; }}
 .painel {{
-  background:{e['superficie']}; border:1.5px solid {e['borda']};
-  border-radius:22px; padding:16px 20px; display:flex; flex-direction:column; min-height:0;
+  background:#000; border:2px solid {e['borda']};
+  border-radius:20px; padding:16px 20px; display:flex; flex-direction:column; min-height:0;
 }}
-.topo {{ display:grid; grid-template-columns:1.42fr 1fr; gap:12px; }}
-.meio {{ display:grid; grid-template-columns:1fr 1fr; gap:12px; flex:1; min-height:0; }}
-.marca {{ display:flex; flex-direction:row; align-items:center; gap:18px; }}
-.marca-txt h1 {{ font-size:62px; line-height:.9; font-weight:800; letter-spacing:-.02em; }}
-.marca-txt .quinze {{ font-size:62px; line-height:.9; font-weight:800; color:{e['destaque']}; letter-spacing:-.02em; }}
-.marca-sub {{ font-size:16.5px; letter-spacing:.2em; color:{e['texto2']}; margin-top:9px; text-transform:uppercase; font-weight:600; }}
-.rot {{ font-size:17.5px; letter-spacing:.15em; text-transform:uppercase; color:{e['texto2']}; font-weight:700; text-align:center; }}
-.concurso-num {{ font-size:70px; font-weight:800; line-height:1; color:{e['destaque']}; text-align:center; letter-spacing:-.02em; }}
-.data-linha {{ text-align:center; font-size:19px; color:{e['texto2']}; margin-top:4px; font-weight:700; }}
-.placar {{
-  border:2px solid {e['destaque']}; background:{e['chip_alto_tint']};
-  border-radius:14px; padding:8px 0; text-align:center; margin-top:10px;
+.topo {{ display:flex; justify-content:space-between; align-items:center; gap:14px; }}
+.marca-linha {{ display:flex; align-items:center; gap:14px; }}
+.marca-linha .wordmark {{ display:flex; align-items:baseline; gap:9px; font-style:italic; font-weight:800; letter-spacing:-.02em; transform:skewX(-6deg); }}
+.marca-linha .wordmark .radar {{ font-size:34px; color:#fff; }}
+.marca-linha .wordmark .quinze {{ font-size:34px; color:{e['destaque']}; }}
+.marca-linha .marca-sub {{ font-size:14px; letter-spacing:.15em; text-transform:uppercase; color:{e['texto2']}; font-weight:700; margin-top:2px; }}
+.badge-ok {{ display:flex; align-items:center; gap:12px; text-align:right; }}
+.badge-txt .tit-ok {{ font-size:24px; font-weight:800; color:{e['destaque']}; letter-spacing:-.01em; }}
+.badge-txt .sub-ok {{ font-size:14px; letter-spacing:.1em; text-transform:uppercase; color:{e['texto2']}; font-weight:700; margin-top:2px; }}
+.info-row {{ display:flex; justify-content:space-around; padding:14px 6px; }}
+.info-item {{ text-align:center; flex:1; }}
+.info-item + .info-item {{ border-left:1.5px solid {e['borda']}; }}
+.info-rot {{ font-size:13.5px; letter-spacing:.12em; text-transform:uppercase; color:{e['texto2']}; font-weight:700; }}
+.info-val {{ font-size:26px; font-weight:800; margin-top:4px; }}
+.info-val.dest {{ color:{e['destaque']}; }}
+.faixa-banner {{
+  align-self:center; background:{e['destaque']}; color:{e['chip_alto_texto']};
+  padding:6px 24px; border-radius:8px; font-size:15px; font-weight:800;
+  letter-spacing:.1em; text-transform:uppercase; margin-bottom:10px;
 }}
-.placar b {{ font-size:56px; font-weight:800; color:{e['destaque']}; line-height:1; }}
-.placar span {{ display:block; font-size:16px; letter-spacing:.13em; text-transform:uppercase; color:{e['texto2']}; font-weight:700; margin-top:2px; }}
-.grade {{ display:grid; grid-template-columns:repeat(5,1fr); gap:9px; flex:1; align-content:space-evenly; margin-top:8px; }}
+.grade {{ display:flex; flex-wrap:wrap; justify-content:center; gap:8px; }}
 .bola {{
-  aspect-ratio:1; border-radius:50%; display:flex; align-items:center; justify-content:center;
-  font-size:32px; font-weight:800; font-variant-numeric:tabular-nums;
+  width:68px; height:68px; flex:0 0 auto; border-radius:50%; background:#fff; color:#000;
+  display:flex; align-items:center; justify-content:center;
+  font-size:26px; font-weight:800; font-variant-numeric:tabular-nums;
+  border:2.5px solid #000; box-shadow:0 0 0 2.5px {e['destaque']};
 }}
-.bola.sort {{ background:{e['chip_fundo']}; color:{e['chip_texto']}; box-shadow:0 0 0 3px {e['destaque']}55; }}
-.bola.hit  {{ background:{e['destaque']}; color:{e['chip_alto_texto']}; box-shadow:0 0 18px {e['destaque']}55; }}
-.bola.miss {{ background:transparent; color:{e['texto3']}; border:2px solid {e['borda']}; }}
-.legenda-bolas {{ display:flex; gap:16px; justify-content:center; margin-top:8px; font-size:14px; color:{e['texto2']}; }}
-.pt {{ display:inline-flex; align-items:center; gap:6px; }}
-.pt i {{ width:12px; height:12px; border-radius:50%; display:inline-block; }}
-.stats {{ display:flex; flex-direction:column; justify-content:space-evenly; flex:1; }}
-.stat {{ display:flex; gap:11px; align-items:center; }}
-.ico {{ flex:0 0 30px; }}
-.stat-rot {{ font-size:13.5px; letter-spacing:.1em; text-transform:uppercase; color:{e['texto2']}; font-weight:700; }}
-.stat-val {{ font-size:18.5px; font-weight:750; margin-top:1px; }}
-.stat-val em {{ font-style:normal; color:{e['destaque']}; }}
-.cta {{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }}
-.cta .painel {{ padding:13px 18px; flex-direction:row; align-items:center; gap:13px; }}
-.cta-tit {{ font-size:23px; font-weight:800; }}
-.cta-sub {{ font-size:15px; color:{e['texto2']}; margin-top:2px; line-height:1.28; }}
-.cta-sub em {{ font-style:normal; color:{e['destaque']}; font-weight:700; }}
-.aviso-final {{
-  border:1.5px solid {e['borda']}; border-radius:14px; padding:9px 16px;
-  font-size:15px; color:{e['texto2']}; text-align:center; line-height:1.35;
+.duo {{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }}
+.tit {{ font-size:15px; letter-spacing:.12em; text-transform:uppercase; color:{e['texto2']}; font-weight:800; text-align:center; margin-bottom:8px; }}
+.grade-mini {{ display:flex; flex-wrap:wrap; justify-content:center; gap:7px; }}
+.bola-plana {{
+  width:48px; height:48px; flex:0 0 auto; border-radius:50%; border:2px solid {e['borda']}; color:{e['texto2']};
+  display:flex; align-items:center; justify-content:center;
+  font-size:18px; font-weight:800; font-variant-numeric:tabular-nums;
 }}
-.aviso-final em {{ font-style:normal; color:{e['destaque']}; font-weight:700; }}
+.bola-comp {{
+  width:48px; height:48px; flex:0 0 auto; border-radius:50%; position:relative;
+  display:flex; align-items:center; justify-content:center;
+  font-size:18px; font-weight:800; font-variant-numeric:tabular-nums;
+}}
+.bola-comp.hit {{ background:{e['destaque']}; color:{e['chip_alto_texto']}; box-shadow:0 0 14px {e['destaque']}66; }}
+.bola-comp.hit svg {{ position:absolute; bottom:-3px; right:-3px; background:#000; border-radius:50%; padding:1px; }}
+.bola-comp.miss {{ border:2px solid {e['borda']}; color:{e['texto3']}; }}
+.trofeu {{
+  display:grid; grid-template-columns:1fr auto 1.15fr; align-items:center; gap:16px;
+  border:2px solid {e['destaque']}; padding:14px 22px;
+}}
+.ac-rot {{ font-size:16px; letter-spacing:.1em; text-transform:uppercase; color:{e['destaque']}; font-weight:800; }}
+.ac-num {{ font-size:66px; font-weight:800; line-height:1; margin-top:2px; }}
+.ac-de {{ font-size:16px; letter-spacing:.1em; text-transform:uppercase; color:{e['texto2']}; font-weight:700; margin-top:2px; }}
+.emoji-trofeu {{ font-size:74px; line-height:1; }}
+.conf-rot {{ font-size:14px; letter-spacing:.1em; text-transform:uppercase; color:{e['texto2']}; font-weight:700; }}
+.conf-num {{ font-size:34px; font-weight:800; color:{e['destaque']}; margin-top:2px; }}
+.conf-banner {{
+  margin-top:8px; background:{e['destaque']}; color:{e['chip_alto_texto']};
+  border-radius:8px; padding:6px 16px; font-size:14px; font-weight:800;
+  letter-spacing:.08em; text-transform:uppercase; text-align:center;
+}}
+.rodape-final {{ display:flex; justify-content:space-between; align-items:center; gap:14px; }}
+.rf-txt {{ font-size:14px; color:{e['texto2']}; line-height:1.4; }}
+.rf-txt b {{ color:#fff; }}
+.rf-num {{ text-align:right; }}
+.rf-rot {{ font-size:13px; letter-spacing:.1em; text-transform:uppercase; color:{e['texto2']}; font-weight:700; }}
+.rf-val {{ font-size:30px; font-weight:800; color:{e['destaque']}; }}
+.barra-ig {{
+  background:{e['destaque']}; color:{e['chip_alto_texto']}; border-radius:16px;
+  padding:12px 22px; display:flex; justify-content:space-between; align-items:center;
+  font-size:14.5px; font-weight:800; letter-spacing:.06em; text-transform:uppercase;
+}}
 """
 
     corpo = f"""
 <style>{estilo_extra}</style>
 <div class="pad">
 
-  <div class="topo">
-    <div class="painel marca">
-      {_radar_svg(e['destaque'], 118)}
-      <div class="marca-txt">
-        <h1>RADAR</h1>
-        <div class="quinze">15</div>
-        <div class="marca-sub">Resultado conferido</div>
+  <div class="painel">
+    <div class="topo">
+      <div class="marca-linha">
+        {marca_feed}
+        <div>
+          <div class="wordmark"><div class="radar" style="font-size:34px">RADAR</div>
+            <div class="quinze" style="font-size:34px">15</div></div>
+          <div class="marca-sub" style="margin-top:2px">Análises · Padrões · Resultados</div>
+        </div>
+      </div>
+      <div class="badge-ok">
+        <div class="badge-txt">
+          <div class="tit-ok">Resultado conferido</div>
+          <div class="sub-ok">Comparativo oficial</div>
+        </div>
+        {_icone('check', e['destaque'], 38)}
       </div>
     </div>
-    <div class="painel">
-      <div class="rot">{titulo} · Concurso</div>
-      <div class="concurso-num">{ctx['concurso']}</div>
-      <div class="data-linha">{ctx['data']}</div>
-      <div class="placar">
-        <b>{acertos}</b>
-        <span>acertos no nosso jogo</span>
+    <div class="info-row">
+      <div class="info-item">
+        <div class="info-rot">Concurso</div>
+        <div class="info-val dest">{ctx['concurso']}</div>
       </div>
-    </div>
-  </div>
-
-  <div class="meio">
-    <div class="painel">
-      <div class="rot">Dezenas sorteadas</div>
-      <div class="grade">{sorteadas}</div>
-    </div>
-    <div class="painel">
-      <div class="rot">O jogo que publicamos</div>
-      <div class="grade">{nosso}</div>
-      <div class="legenda-bolas">
-        <span class="pt"><i style="background:{e['destaque']}"></i>acertou</span>
-        <span class="pt"><i style="border:2px solid {e['borda']}"></i>não saiu</span>
+      <div class="info-item">
+        <div class="info-rot">Data do sorteio</div>
+        <div class="info-val">{ctx['data']}</div>
       </div>
-    </div>
-  </div>
-
-  <div class="painel" style="padding:12px 20px">
-    <div class="stats" style="flex-direction:row; justify-content:space-between; gap:18px">
-      {_linha_stat("Acertos de hoje", f"<em>{acertos}</em> de 15", e, "alvo")}
-      {linha_premio}
-      {_linha_stat("Média dos últimos 10", f"<em>{media}</em> acertos por jogo", e, "barras")}
-    </div>
-  </div>
-
-  <div class="cta">
-    <div class="painel">
-      {_icone('salvar', e['destaque'], 34)}
-      <div>
-        <div class="cta-tit">O JOGO ESTAVA NO AR ANTES</div>
-        <div class="cta-sub">publicado <em>antes do sorteio</em>, conferido depois</div>
-      </div>
-    </div>
-    <div class="painel">
-      {_icone('instagram', e['destaque'], 34)}
-      <div>
-        <div class="cta-tit">SIGA {PERFIL.upper()}</div>
-        <div class="cta-sub">o próximo jogo sai <em>hoje mesmo</em></div>
+      <div class="info-item">
+        <div class="info-rot">Resultado oficial</div>
+        <div class="info-val">Caixa</div>
       </div>
     </div>
   </div>
 
-  <div class="aviso-final">
-    Publicamos o resultado <em>dê no que der</em>. Análise estatística de dados históricos,
-    sem garantia de premiação. +18. <em>Jogue com responsabilidade.</em>
+  <div class="painel">
+    <div class="faixa-banner">Dezenas sorteadas</div>
+    <div class="grade">{sorteadas}</div>
+  </div>
+
+  <div class="duo">
+    <div class="painel">
+      <div class="tit">Jogo do Radar 15</div>
+      <div class="grade-mini">{jogo}</div>
+    </div>
+    <div class="painel">
+      <div class="tit">Comparativo</div>
+      <div class="grade-mini">{comparativo}</div>
+    </div>
+  </div>
+
+  <div class="painel trofeu">
+    <div>
+      <div class="ac-rot">Acertos</div>
+      <div class="ac-num">{acertos}</div>
+      <div class="ac-de">de 15</div>
+    </div>
+    <div class="emoji-trofeu">🏆</div>
+    <div>
+      <div class="conf-rot">Conferência oficial</div>
+      <div class="conf-num">{acertos} acertos</div>
+      <div class="conf-banner">Resultado conferido</div>
+    </div>
+  </div>
+
+  <div class="painel">
+    <div class="rodape-final">
+      <div class="rf-txt"><b>Analisamos padrões. Entregamos resultados.</b><br>Radar 15 · mais que um jogo, uma estratégia!</div>
+      <div class="rf-num">
+        <div class="rf-rot">Próximo concurso</div>
+        <div class="rf-val">{proximo}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="barra-ig">
+    <span>Siga {PERFIL} no Instagram</span>
+    <span>Compartilhe e boa sorte!</span>
   </div>
 </div>"""
     return _pagina(e, L, A, corpo)
