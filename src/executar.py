@@ -5,6 +5,7 @@ ETAPA 7B — O ROBÔ COMPLETO, EM UM COMANDO
 Este é o arquivo que o GitHub Actions chama todo dia. Ele faz, em ordem:
 
   0. Reconfere um lote da base contra a API oficial da Caixa
+  0B. Roda a auditoria estatística (qui-quadrado) e salva data/analise.json
   1. Busca o resultado do concurso que acabou de sair
   2. Confere os jogos gerados na véspera E publica o post de RESULTADO
   3. Gera os 13 jogos do PRÓXIMO concurso
@@ -30,11 +31,13 @@ Como rodar:
 from __future__ import annotations
 
 import argparse
+import json
 import traceback
 from datetime import datetime
+from pathlib import Path
 
-from src import conformidade, dashboard, desempenho, jogos, legendas, painel, pecas, publicar
-from src.coleta import atualizar, carregar_base, reconferir
+from src import analise, conformidade, dashboard, desempenho, jogos, legendas, painel, pecas, publicar
+from src.coleta import PASTA_DADOS, atualizar, carregar_base, reconferir
 
 
 def publicar_pendentes(simular: bool = False) -> int:
@@ -117,6 +120,24 @@ def executar(simular: bool = False, publicar_redes: bool = True) -> int:
             print(f"    ATENÇÃO: {len(r['divergencias'])} divergência(s) corrigida(s)")
         return r
     passo(0, "Reconferindo a base na fonte oficial", verificar_base, obrigatorio=False)
+
+    # 0B. auditoria estatística — roda os testes qui-quadrado (dezenas quentes,
+    # moldura/miolo/primos/pares) e salva o relatório em data/analise.json.
+    # É diagnóstico: nunca bloqueia a publicação, só registra se a base
+    # continua se comportando como um sorteio honesto.
+    def auditoria_estatistica():
+        base_auditoria = carregar_base()
+        if not base_auditoria:
+            print("    base vazia — pulando")
+            return None
+        relatorio = analise.analisar(base_auditoria, janela=100)
+        destino = Path(PASTA_DADOS) / "analise.json"
+        destino.write_text(json.dumps(relatorio, ensure_ascii=False, indent=1), encoding="utf-8")
+        for rotulo, t in relatorio["testes_aderencia_grupos"].items():
+            marca = "ok" if t["compativel_com_hipergeometrica"] else "DESVIO"
+            print(f"    {rotulo:8} p={t['p_valor']:.4f} -> {marca}")
+        return relatorio
+    passo("0B", "Auditoria estatística (qui-quadrado)", auditoria_estatistica, obrigatorio=False)
 
     # 1. resultado novo
     # Não é obrigatório: se a Caixa estiver fora do ar, seguimos com a base que
