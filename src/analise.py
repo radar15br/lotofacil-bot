@@ -18,6 +18,7 @@ O que este módulo calcula:
   5. REPETIÇÃO   — quantas dezenas se repetem do concurso anterior
   6. GEOGRAFIA   — linhas, colunas, quadrantes e moldura x miolo do volante
   7. PRIMOS      — quantidade de números primos por sorteio
+  7B. ADERÊNCIA  — moldura/miolo/primos/pares batem com a hipergeométrica teórica?
   8. PERFIL-ALVO — resumo dos padrões que a Etapa 3 usará para gerar os jogos
 
 Como rodar:
@@ -253,21 +254,81 @@ def primos(base: list[dict], n: int | None = None) -> dict[str, Any]:
 # ---------------------------------------------------------------------------
 
 
-def _qui2_p_valor(x: float, gl: int = 24) -> float:
+def _log_gamma(x: float) -> float:
+    """log(Γ(x)) pela aproximação de Lanczos (precisão dupla, sem scipy)."""
+    import math
+
+    coef = [0.99999999999980993, 676.5203681218851, -1259.1392167224028,
+            771.32342877765313, -176.61502916214059, 12.507343278686905,
+            -0.13857109526572012, 9.9843695780195716e-6, 1.5056327351493116e-7]
+    if x < 0.5:
+        return math.log(math.pi / math.sin(math.pi * x)) - _log_gamma(1 - x)
+    x -= 1
+    a = coef[0]
+    t = x + 7.5
+    for i in range(1, 9):
+        a += coef[i] / (x + i)
+    return 0.5 * math.log(2 * math.pi) + (x + 0.5) * math.log(t) - t + math.log(a)
+
+
+def _gamma_incompleta_regularizada(a: float, x: float) -> float:
     """
-    Probabilidade de um sorteio 100% justo produzir um desvio tão grande quanto
-    o observado. Fórmula exata para graus de liberdade pares — evita instalar
-    a biblioteca scipy só para isto.
+    P(a, x) — função gama incompleta regularizada (inferior). Série de
+    potências para x pequeno, fração continuada de Lentz para x grande —
+    é o mesmo algoritmo usado por bibliotecas científicas (Numerical
+    Recipes), reimplementado aqui para não depender do scipy.
     """
     import math
 
-    k = gl // 2
-    termo = 1.0
-    soma = 1.0
-    for i in range(1, k):
-        termo *= (x / 2) / i
-        soma += termo
-    return math.exp(-x / 2) * soma
+    if x <= 0 or a <= 0:
+        return 0.0
+    if x < a + 1:
+        termo = 1.0 / a
+        soma = termo
+        n = a
+        for _ in range(500):
+            n += 1
+            termo *= x / n
+            soma += termo
+            if abs(termo) < abs(soma) * 1e-14:
+                break
+        return soma * math.exp(-x + a * math.log(x) - _log_gamma(a))
+
+    tiny = 1e-300
+    b = x + 1 - a
+    c = 1 / tiny
+    d = 1 / b
+    h = d
+    for i in range(1, 500):
+        an = -i * (i - a)
+        b += 2
+        d = an * d + b
+        if abs(d) < tiny:
+            d = tiny
+        c = b + an / c
+        if abs(c) < tiny:
+            c = tiny
+        d = 1 / d
+        delta = d * c
+        h *= delta
+        if abs(delta - 1) < 1e-14:
+            break
+    q = math.exp(-x + a * math.log(x) - _log_gamma(a)) * h
+    return 1 - q
+
+
+def _qui2_p_valor(estatistica: float, gl: int) -> float:
+    """
+    p-valor de uma estatística qui-quadrado com `gl` graus de liberdade —
+    para QUALQUER gl, par ou ímpar. Antes esta função só valia para gl par
+    (fórmula fechada); agora usa a função gama incompleta regularizada,
+    que é o cálculo correto e geral, e permite testar grupos de qualquer
+    tamanho (moldura, miolo, primos, pares...), não só as 25 dezenas.
+    """
+    if estatistica <= 0:
+        return 1.0
+    p_inferior = _gamma_incompleta_regularizada(gl / 2, estatistica / 2)
+    return max(0.0, min(1.0, 1 - p_inferior))
 
 
 def teste_aleatoriedade(base: list[dict], n: int | None = None) -> dict[str, Any]:
@@ -287,7 +348,7 @@ def teste_aleatoriedade(base: list[dict], n: int | None = None) -> dict[str, Any
 
     soma_quadrados = sum((contagem[d] - esperado) ** 2 for d in range(1, TOTAL_DEZENAS + 1))
     estatistica = soma_quadrados / (total * 0.25)
-    p_valor = _qui2_p_valor(estatistica)
+    p_valor = _qui2_p_valor(estatistica, gl=24)
 
     return {
         "concursos_testados": total,
@@ -300,6 +361,109 @@ def teste_aleatoriedade(base: list[dict], n: int | None = None) -> dict[str, Any
             if p_valor > 0.05
             else "Há desvio estatístico além do esperado pelo acaso nesta janela — "
                  "mas o tamanho do efeito é pequeno e não se sustenta em todas as épocas."
+        ),
+    }
+
+
+# ---------------------------------------------------------------------------
+# 7C. ADERÊNCIA DE GRUPOS — moldura, miolo, primos e pares batem com o acaso?
+# ---------------------------------------------------------------------------
+
+PARES_DEZENAS = [d for d in range(1, TOTAL_DEZENAS + 1) if d % 2 == 0]  # 12 dezenas pares
+
+
+def _hipergeometrica_pmf(x: int, tamanho_grupo: int, universo: int = TOTAL_DEZENAS,
+                          sorteadas: int = DEZENAS_POR_JOGO) -> float:
+    """
+    P(sair exatamente x dezenas de um grupo de `tamanho_grupo`) em um
+    sorteio de `sorteadas` dezenas dentre `universo`, sem reposição — o
+    valor TEÓRICO exato, direto da distribuição hipergeométrica. Não
+    depende dos dados históricos: é o que já se sabe de antemão sobre um
+    sorteio honesto.
+    """
+    from math import comb
+
+    minimo = max(0, sorteadas - (universo - tamanho_grupo))
+    maximo = min(sorteadas, tamanho_grupo)
+    if x < minimo or x > maximo:
+        return 0.0
+    return (comb(tamanho_grupo, x) * comb(universo - tamanho_grupo, sorteadas - x)
+            / comb(universo, sorteadas))
+
+
+def _agrupar_caudas(esperado: dict[int, float], observado: Counter,
+                     minimo: float = 5.0) -> list[tuple[float, float, str]]:
+    """
+    Funde categorias vizinhas até cada uma acumular pelo menos `minimo` de
+    frequência esperada — exigência padrão do teste qui-quadrado (categoria
+    com poucos casos esperados infla a estatística de forma artificial).
+    """
+    xs = sorted(esperado)
+    bins: list[tuple[float, float, str]] = []
+    obs_acc = esp_acc = 0.0
+    inicio = None
+    for x in xs:
+        if inicio is None:
+            inicio = x
+        obs_acc += observado.get(x, 0)
+        esp_acc += esperado[x]
+        if esp_acc >= minimo or x == xs[-1]:
+            rotulo = str(inicio) if inicio == x else f"{inicio}–{x}"
+            bins.append((obs_acc, esp_acc, rotulo))
+            obs_acc = esp_acc = 0.0
+            inicio = None
+    if inicio is not None and bins:
+        obs_prev, esp_prev, rot_prev = bins[-1]
+        bins[-1] = (obs_prev + obs_acc, esp_prev + esp_acc, f"{rot_prev}+")
+    elif inicio is not None:
+        bins.append((obs_acc, esp_acc, str(inicio)))
+    return bins
+
+
+def teste_aderencia_grupo(base: list[dict], grupo: list[int], n: int | None = None) -> dict[str, Any]:
+    """
+    Testa se a QUANTIDADE de dezenas de um grupo (moldura, miolo, primos,
+    pares...) que sai por sorteio bate com a distribuição hipergeométrica
+    teórica de um sorteio honesto e sem reposição.
+
+    Diferença para o `teste_aleatoriedade`: aquele testa cada dezena
+    isoladamente; este testa o padrão de AGRUPAMENTO. Serve tanto para
+    auditar a base de dados (um desvio grande pode indicar erro de
+    importação, não viés real do sorteio) quanto para embasar com rigor
+    estatístico — e não só "faixa mais comum" — as regras do perfil-alvo.
+    """
+    amostra = _janela(base, n)
+    total = len(amostra)
+    tamanho = len(grupo)
+    conjunto = set(grupo)
+
+    observado = Counter(len(conjunto & set(c["dezenas"])) for c in amostra)
+    minimo_x = max(0, DEZENAS_POR_JOGO - (TOTAL_DEZENAS - tamanho))
+    maximo_x = min(DEZENAS_POR_JOGO, tamanho)
+    esperado = {
+        x: total * _hipergeometrica_pmf(x, tamanho)
+        for x in range(minimo_x, maximo_x + 1)
+    }
+
+    bins = _agrupar_caudas(esperado, observado)
+    estatistica = sum((obs - esp) ** 2 / esp for obs, esp, _ in bins if esp > 0)
+    gl = max(1, len(bins) - 1)
+    p_valor = _qui2_p_valor(estatistica, gl)
+
+    return {
+        "tamanho_do_grupo": tamanho,
+        "concursos_testados": total,
+        "categorias_apos_fusao": len(bins),
+        "estatistica": round(estatistica, 2),
+        "graus_de_liberdade": gl,
+        "p_valor": round(p_valor, 5),
+        "compativel_com_hipergeometrica": p_valor > 0.05,
+        "leitura": (
+            "A quantidade deste grupo por sorteio bate com o esperado por "
+            "puro acaso (sorteio sem reposição)."
+            if p_valor > 0.05 else
+            "Há desvio estatístico além do esperado pelo acaso nesta janela "
+            "— vale checar a base de dados antes de assumir viés real."
         ),
     }
 
@@ -369,6 +533,12 @@ def analisar(base: list[dict] | None = None, janela: int = 100) -> dict[str, Any
             "historico_completo": teste_aleatoriedade(base),
             "ultimos_1000": teste_aleatoriedade(base, 1000),
             "ultimos_500": teste_aleatoriedade(base, 500),
+        },
+        "testes_aderencia_grupos": {
+            "moldura": teste_aderencia_grupo(base, MOLDURA),
+            "miolo": teste_aderencia_grupo(base, MIOLO),
+            "primos": teste_aderencia_grupo(base, PRIMOS),
+            "pares": teste_aderencia_grupo(base, PARES_DEZENAS),
         },
         "perfil_alvo": perfil_alvo(base, janela),
         "aviso": (
@@ -456,6 +626,13 @@ def imprimir_relatorio(a: dict[str, Any]) -> None:
         marca = "compatível com acaso" if t["compativel_com_acaso"] else "desvio além do acaso"
         print(f"  {rotulo:20} n={t['concursos_testados']:5d}  "
               f"estatística={t['estatistica']:6.2f}  p={t['p_valor']:.4f}  -> {marca}")
+
+    # --- Aderência de grupos (moldura, miolo, primos, pares) ---
+    print("\n[9] MOLDURA, MIOLO, PRIMOS E PARES BATEM COM O ESPERADO POR ACASO?")
+    for rotulo, t in a["testes_aderencia_grupos"].items():
+        marca = "compatível com acaso" if t["compativel_com_hipergeometrica"] else "desvio além do acaso"
+        print(f"  {rotulo:10} n={t['concursos_testados']:5d}  estatística={t['estatistica']:7.2f}  "
+              f"gl={t['graus_de_liberdade']:2d}  p={t['p_valor']:.4f}  -> {marca}")
 
     # --- Perfil-alvo ---
     pa = a["perfil_alvo"]
