@@ -76,10 +76,17 @@ def publicar_pendentes(simular: bool = False) -> int:
     if publicar.ja_publicado(proximo, "feed"):
         print(f"\nJogo do concurso {proximo} já havia sido publicado. Nada a fazer.")
     else:
-        for rede, funcao in (
-            ("Instagram", lambda: publicar.publicar_instagram(proximo, "radar", "feed", simular)),
-            ("TikTok", lambda: publicar.publicar_tiktok(proximo, "radar", simular)),
-        ):
+        redes = [("Instagram", lambda: publicar.publicar_instagram(proximo, "radar", "feed", simular))]
+        # TikTok é opcional: sem TIKTOK_TOKEN configurado, o robô só avisa e
+        # segue — isso não é uma falha da execução, é uma rede desativada.
+        # Antes, essa ausência incrementava "erros" e derrubava o status da
+        # execução inteira no GitHub Actions mesmo com o Instagram publicado.
+        if simular or publicar.TIKTOK_TOKEN:
+            redes.append(("TikTok", lambda: publicar.publicar_tiktok(proximo, "radar", simular)))
+        else:
+            print("  TikTok desativado (TIKTOK_TOKEN não configurado) — pulando, sem contar como falha.")
+
+        for rede, funcao in redes:
             try:
                 publicar.registrar(proximo, funcao())
             except publicar.PublicacaoError as erro:
