@@ -1,136 +1,136 @@
 {
  "meta": {
-  "concursos_analisados": 3785,
+  "concursos_analisados": 3786,
   "primeiro": 1,
-  "ultimo": 3785,
-  "data_ultimo": "2026-09-21",
+  "ultimo": 3786,
+  "data_ultimo": "2026-09-22",
   "janela_recente": 100
  },
  "frequencia_historica": {
   "1": {
-   "vezes": 2295,
-   "pct": 60.63,
-   "desvio_vs_esperado": 1.06
+   "vezes": 2296,
+   "pct": 60.64,
+   "desvio_vs_esperado": 1.07
   },
   "2": {
    "vezes": 2270,
-   "pct": 59.97,
-   "desvio_vs_esperado": -0.04
+   "pct": 59.96,
+   "desvio_vs_esperado": -0.07
   },
   "3": {
-   "vezes": 2282,
-   "pct": 60.29,
-   "desvio_vs_esperado": 0.48
+   "vezes": 2283,
+   "pct": 60.3,
+   "desvio_vs_esperado": 0.5
   },
   "4": {
    "vezes": 2289,
-   "pct": 60.48,
-   "desvio_vs_esperado": 0.79
+   "pct": 60.46,
+   "desvio_vs_esperado": 0.77
   },
   "5": {
    "vezes": 2283,
-   "pct": 60.32,
-   "desvio_vs_esperado": 0.53
+   "pct": 60.3,
+   "desvio_vs_esperado": 0.5
   },
   "6": {
-   "vezes": 2224,
-   "pct": 58.76,
-   "desvio_vs_esperado": -2.07
+   "vezes": 2225,
+   "pct": 58.77,
+   "desvio_vs_esperado": -2.05
   },
   "7": {
-   "vezes": 2233,
-   "pct": 59.0,
-   "desvio_vs_esperado": -1.67
+   "vezes": 2234,
+   "pct": 59.01,
+   "desvio_vs_esperado": -1.66
   },
   "8": {
-   "vezes": 2191,
-   "pct": 57.89,
-   "desvio_vs_esperado": -3.52
+   "vezes": 2192,
+   "pct": 57.9,
+   "desvio_vs_esperado": -3.5
   },
   "9": {
-   "vezes": 2260,
-   "pct": 59.71,
-   "desvio_vs_esperado": -0.48
+   "vezes": 2261,
+   "pct": 59.72,
+   "desvio_vs_esperado": -0.47
   },
   "10": {
    "vezes": 2349,
-   "pct": 62.06,
-   "desvio_vs_esperado": 3.43
+   "pct": 62.04,
+   "desvio_vs_esperado": 3.41
   },
   "11": {
    "vezes": 2329,
-   "pct": 61.53,
-   "desvio_vs_esperado": 2.55
+   "pct": 61.52,
+   "desvio_vs_esperado": 2.53
   },
   "12": {
-   "vezes": 2275,
-   "pct": 60.11,
-   "desvio_vs_esperado": 0.18
+   "vezes": 2276,
+   "pct": 60.12,
+   "desvio_vs_esperado": 0.19
   },
   "13": {
-   "vezes": 2303,
-   "pct": 60.85,
-   "desvio_vs_esperado": 1.41
+   "vezes": 2304,
+   "pct": 60.86,
+   "desvio_vs_esperado": 1.43
   },
   "14": {
-   "vezes": 2289,
-   "pct": 60.48,
-   "desvio_vs_esperado": 0.79
+   "vezes": 2290,
+   "pct": 60.49,
+   "desvio_vs_esperado": 0.81
   },
   "15": {
    "vezes": 2263,
-   "pct": 59.79,
-   "desvio_vs_esperado": -0.35
+   "pct": 59.77,
+   "desvio_vs_esperado": -0.38
   },
   "16": {
-   "vezes": 2165,
-   "pct": 57.2,
-   "desvio_vs_esperado": -4.67
+   "vezes": 2166,
+   "pct": 57.21,
+   "desvio_vs_esperado": -4.65
   },
   "17": {
    "vezes": 2224,
-   "pct": 58.76,
-   "desvio_vs_esperado": -2.07
+   "pct": 58.74,
+   "desvio_vs_esperado": -2.1
   },
   "18": {
-   "vezes": 2251,
-   "pct": 59.47,
-   "desvio_vs_esperado": -0.88
+   "vezes": 2252,
+   "pct": 59.48,
+   "desvio_vs_esperado": -0.86
   },
   "19": {
    "vezes": 2253,
-   "pct": 59.52,
-   "desvio_vs_esperado": -0.79
+   "pct": 59.51,
+   "desvio_vs_esperado": -0.82
   },
   "20": {
    "vezes": 2359,
-   "pct": 62.32,
-   "desvio_vs_esperado": 3.87
+   "pct": 62.31,
+   "desvio_vs_esperado": 3.85
   },
   "21": {
-   "vezes": 2252,
-   "pct": 59.5,
-   "desvio_vs_esperado": -0.84
+   "vezes": 2253,
+   "pct": 59.51,
+   "desvio_vs_esperado": -0.82
   },
   "22": {
    "vezes": 2263,
-   "pct": 59.79,
-   "desvio_vs_esperado": -0.35
+   "pct": 59.77,
+   "desvio_vs_esperado": -0.38
   },
   "23": {
-   "vezes": 2221,
-   "pct": 58.68,
-   "desvio_vs_esperado": -2.2
+   "vezes": 2222,
+   "pct": 58.69,
+   "desvio_vs_esperado": -2.18
   },
   "24": {
-   "vezes": 2299,
-   "pct": 60.74,
-   "desvio_vs_esperado": 1.23
+   "vezes": 2300,
+   "pct": 60.75,
+   "desvio_vs_esperado": 1.25
   },
   "25": {
-   "vezes": 2353,
-   "pct": 62.17,
-   "desvio_vs_esperado": 3.61
+   "vezes": 2354,
+   "pct": 62.18,
+   "desvio_vs_esperado": 3.63
   }
  },
  "frequencia_recente": {
@@ -140,24 +140,24 @@
    "desvio_vs_esperado": 1.67
   },
   "2": {
-   "vezes": 60,
-   "pct": 60.0,
-   "desvio_vs_esperado": 0.0
+   "vezes": 59,
+   "pct": 59.0,
+   "desvio_vs_esperado": -1.67
   },
   "3": {
-   "vezes": 64,
-   "pct": 64.0,
-   "desvio_vs_esperado": 6.67
+   "vezes": 65,
+   "pct": 65.0,
+   "desvio_vs_esperado": 8.33
   },
   "4": {
-   "vezes": 58,
-   "pct": 58.0,
-   "desvio_vs_esperado": -3.33
+   "vezes": 57,
+   "pct": 57.0,
+   "desvio_vs_esperado": -5.0
   },
   "5": {
-   "vezes": 74,
-   "pct": 74.0,
-   "desvio_vs_esperado": 23.33
+   "vezes": 73,
+   "pct": 73.0,
+   "desvio_vs_esperado": 21.67
   },
   "6": {
    "vezes": 59,
@@ -165,9 +165,9 @@
    "desvio_vs_esperado": -1.67
   },
   "7": {
-   "vezes": 54,
-   "pct": 54.0,
-   "desvio_vs_esperado": -10.0
+   "vezes": 55,
+   "pct": 55.0,
+   "desvio_vs_esperado": -8.33
   },
   "8": {
    "vezes": 55,
@@ -180,9 +180,9 @@
    "desvio_vs_esperado": 6.67
   },
   "10": {
-   "vezes": 51,
-   "pct": 51.0,
-   "desvio_vs_esperado": -15.0
+   "vezes": 50,
+   "pct": 50.0,
+   "desvio_vs_esperado": -16.67
   },
   "11": {
    "vezes": 59,
@@ -190,9 +190,9 @@
    "desvio_vs_esperado": -1.67
   },
   "12": {
-   "vezes": 59,
-   "pct": 59.0,
-   "desvio_vs_esperado": -1.67
+   "vezes": 60,
+   "pct": 60.0,
+   "desvio_vs_esperado": 0.0
   },
   "13": {
    "vezes": 61,
@@ -200,19 +200,19 @@
    "desvio_vs_esperado": 1.67
   },
   "14": {
-   "vezes": 63,
-   "pct": 63.0,
-   "desvio_vs_esperado": 5.0
+   "vezes": 64,
+   "pct": 64.0,
+   "desvio_vs_esperado": 6.67
   },
   "15": {
-   "vezes": 63,
-   "pct": 63.0,
-   "desvio_vs_esperado": 5.0
+   "vezes": 62,
+   "pct": 62.0,
+   "desvio_vs_esperado": 3.33
   },
   "16": {
-   "vezes": 57,
-   "pct": 57.0,
-   "desvio_vs_esperado": -5.0
+   "vezes": 58,
+   "pct": 58.0,
+   "desvio_vs_esperado": -3.33
   },
   "17": {
    "vezes": 60,
@@ -225,9 +225,9 @@
    "desvio_vs_esperado": -1.67
   },
   "19": {
-   "vezes": 56,
-   "pct": 56.0,
-   "desvio_vs_esperado": -6.67
+   "vezes": 55,
+   "pct": 55.0,
+   "desvio_vs_esperado": -8.33
   },
   "20": {
    "vezes": 54,
@@ -235,9 +235,9 @@
    "desvio_vs_esperado": -10.0
   },
   "21": {
-   "vezes": 63,
-   "pct": 63.0,
-   "desvio_vs_esperado": 5.0
+   "vezes": 64,
+   "pct": 64.0,
+   "desvio_vs_esperado": 6.67
   },
   "22": {
    "vezes": 58,
@@ -267,27 +267,27 @@
    "atraso_medio": 0.65
   },
   "2": {
-   "atraso_atual": 1,
+   "atraso_atual": 2,
    "maior_atraso_historico": 8,
    "atraso_medio": 0.67
   },
   "3": {
-   "atraso_atual": 2,
+   "atraso_atual": 0,
    "maior_atraso_historico": 8,
    "atraso_medio": 0.66
   },
   "4": {
-   "atraso_atual": 0,
+   "atraso_atual": 1,
    "maior_atraso_historico": 7,
    "atraso_medio": 0.65
   },
   "5": {
-   "atraso_atual": 2,
+   "atraso_atual": 3,
    "maior_atraso_historico": 9,
    "atraso_medio": 0.66
   },
   "6": {
-   "atraso_atual": 2,
+   "atraso_atual": 0,
    "maior_atraso_historico": 10,
    "atraso_medio": 0.7
   },
@@ -302,17 +302,17 @@
    "atraso_medio": 0.73
   },
   "9": {
-   "atraso_atual": 4,
+   "atraso_atual": 0,
    "maior_atraso_historico": 8,
    "atraso_medio": 0.67
   },
   "10": {
-   "atraso_atual": 1,
+   "atraso_atual": 2,
    "maior_atraso_historico": 8,
    "atraso_medio": 0.61
   },
   "11": {
-   "atraso_atual": 0,
+   "atraso_atual": 1,
    "maior_atraso_historico": 8,
    "atraso_medio": 0.63
   },
@@ -322,7 +322,7 @@
    "atraso_medio": 0.66
   },
   "13": {
-   "atraso_atual": 4,
+   "atraso_atual": 0,
    "maior_atraso_historico": 7,
    "atraso_medio": 0.64
   },
@@ -332,17 +332,17 @@
    "atraso_medio": 0.65
   },
   "15": {
-   "atraso_atual": 0,
+   "atraso_atual": 1,
    "maior_atraso_historico": 9,
    "atraso_medio": 0.67
   },
   "16": {
-   "atraso_atual": 1,
+   "atraso_atual": 0,
    "maior_atraso_historico": 9,
    "atraso_medio": 0.75
   },
   "17": {
-   "atraso_atual": 0,
+   "atraso_atual": 1,
    "maior_atraso_historico": 10,
    "atraso_medio": 0.7
   },
@@ -352,22 +352,22 @@
    "atraso_medio": 0.68
   },
   "19": {
-   "atraso_atual": 0,
+   "atraso_atual": 1,
    "maior_atraso_historico": 12,
    "atraso_medio": 0.68
   },
   "20": {
-   "atraso_atual": 1,
+   "atraso_atual": 2,
    "maior_atraso_historico": 8,
    "atraso_medio": 0.6
   },
   "21": {
-   "atraso_atual": 1,
+   "atraso_atual": 0,
    "maior_atraso_historico": 10,
    "atraso_medio": 0.68
   },
   "22": {
-   "atraso_atual": 0,
+   "atraso_atual": 1,
    "maior_atraso_historico": 7,
    "atraso_medio": 0.67
   },
@@ -390,7 +390,7 @@
  "paridade": {
   "resumo": {
    "media": 7.19,
-   "mediana": 7,
+   "mediana": 7.0,
    "desvio_padrao": 1.25,
    "minimo": 3,
    "maximo": 11,
@@ -401,7 +401,7 @@
    "mais_comuns": [
     [
      7,
-     1186
+     1187
     ],
     [
      8,
@@ -440,19 +440,19 @@
    },
    "6 pares / 9 ímpares": {
     "vezes": 780,
-    "pct": 20.61
+    "pct": 20.6
    },
    "7 pares / 8 ímpares": {
-    "vezes": 1186,
-    "pct": 31.33
+    "vezes": 1187,
+    "pct": 31.35
    },
    "8 pares / 7 ímpares": {
     "vezes": 962,
-    "pct": 25.42
+    "pct": 25.41
    },
    "9 pares / 6 ímpares": {
     "vezes": 431,
-    "pct": 11.39
+    "pct": 11.38
    },
    "10 pares / 5 ímpares": {
     "vezes": 102,
@@ -466,7 +466,7 @@
  },
  "soma": {
   "media": 195.13,
-  "mediana": 195,
+  "mediana": 195.0,
   "desvio_padrao": 17.82,
   "minimo": 133,
   "maximo": 257,
@@ -509,7 +509,7 @@
  "repeticao": {
   "resumo": {
    "media": 8.97,
-   "mediana": 9.0,
+   "mediana": 9,
    "desvio_padrao": 1.22,
    "minimo": 5,
    "maximo": 14,
@@ -520,7 +520,7 @@
    "mais_comuns": [
     [
      9,
-     1228
+     1229
     ],
     [
      8,
@@ -559,15 +559,15 @@
    },
    "8 repetidas": {
     "vezes": 930,
-    "pct": 24.58
+    "pct": 24.57
    },
    "9 repetidas": {
-    "vezes": 1228,
-    "pct": 32.45
+    "vezes": 1229,
+    "pct": 32.47
    },
    "10 repetidas": {
     "vezes": 832,
-    "pct": 21.99
+    "pct": 21.98
    },
    "11 repetidas": {
     "vezes": 317,
@@ -605,7 +605,7 @@
      ],
      [
       2,
-      853
+      854
      ]
     ]
    },
@@ -621,7 +621,7 @@
      ],
      [
       4,
-      963
+      964
      ],
      [
       2,
@@ -637,7 +637,7 @@
     "faixa_mais_comum": [
      [
       3,
-      1467
+      1468
      ],
      [
       4,
@@ -665,7 +665,7 @@
      ],
      [
       2,
-      925
+      926
      ]
     ]
    },
@@ -681,7 +681,7 @@
      ],
      [
       4,
-      972
+      973
      ],
      [
       2,
@@ -703,7 +703,7 @@
      ],
      [
       4,
-      954
+      955
      ],
      [
       2,
@@ -727,7 +727,7 @@
      ],
      [
       2,
-      914
+      915
      ]
     ]
    },
@@ -759,7 +759,7 @@
     "faixa_mais_comum": [
      [
       3,
-      1457
+      1458
      ],
      [
       4,
@@ -805,7 +805,7 @@
      ],
      [
       3,
-      1369
+      1370
      ],
      [
       1,
@@ -829,7 +829,7 @@
      ],
      [
       1,
-      531
+      532
      ]
     ]
    },
@@ -841,7 +841,7 @@
     "faixa_mais_comum": [
      [
       2,
-      1435
+      1436
      ],
      [
       3,
@@ -861,7 +861,7 @@
     "faixa_mais_comum": [
      [
       2,
-      1399
+      1400
      ],
      [
       3,
@@ -938,7 +938,7 @@
  "primos": {
   "resumo": {
    "media": 5.39,
-   "mediana": 5,
+   "mediana": 5.0,
    "desvio_padrao": 1.2,
    "minimo": 0,
    "maximo": 9,
@@ -957,7 +957,7 @@
     ],
     [
      4,
-     651
+     652
     ],
     [
      7,
@@ -991,12 +991,12 @@
     "pct": 4.7
    },
    "4 primos": {
-    "vezes": 651,
-    "pct": 17.2
+    "vezes": 652,
+    "pct": 17.22
    },
    "5 primos": {
     "vezes": 1174,
-    "pct": 31.02
+    "pct": 31.01
    },
    "6 primos": {
     "vezes": 1102,
@@ -1018,26 +1018,26 @@
  },
  "teste_aleatoriedade": {
   "historico_completo": {
-   "concursos_testados": 3785,
-   "estatistica": 57.66,
+   "concursos_testados": 3786,
+   "estatistica": 57.29,
    "graus_de_liberdade": 24,
-   "p_valor": 0.00014,
+   "p_valor": 0.00015,
    "compativel_com_acaso": false,
    "leitura": "Há desvio estatístico além do esperado pelo acaso nesta janela — mas o tamanho do efeito é pequeno e não se sustenta em todas as épocas."
   },
   "ultimos_1000": {
    "concursos_testados": 1000,
-   "estatistica": 29.0,
+   "estatistica": 28.78,
    "graus_de_liberdade": 24,
-   "p_valor": 0.22013,
+   "p_valor": 0.22868,
    "compativel_com_acaso": true,
    "leitura": "As diferenças de frequência entre as dezenas são compatíveis com o acaso."
   },
   "ultimos_500": {
    "concursos_testados": 500,
-   "estatistica": 20.93,
+   "estatistica": 20.14,
    "graus_de_liberdade": 24,
-   "p_valor": 0.64297,
+   "p_valor": 0.68856,
    "compativel_com_acaso": true,
    "leitura": "As diferenças de frequência entre as dezenas são compatíveis com o acaso."
   }
@@ -1045,41 +1045,41 @@
  "testes_aderencia_grupos": {
   "moldura": {
    "tamanho_do_grupo": 16,
-   "concursos_testados": 3785,
+   "concursos_testados": 3786,
    "categorias_apos_fusao": 9,
-   "estatistica": 14.49,
+   "estatistica": 14.22,
    "graus_de_liberdade": 8,
-   "p_valor": 0.06997,
+   "p_valor": 0.0763,
    "compativel_com_hipergeometrica": true,
    "leitura": "A quantidade deste grupo por sorteio bate com o esperado por puro acaso (sorteio sem reposição)."
   },
   "miolo": {
    "tamanho_do_grupo": 9,
-   "concursos_testados": 3785,
+   "concursos_testados": 3786,
    "categorias_apos_fusao": 8,
-   "estatistica": 14.39,
+   "estatistica": 14.12,
    "graus_de_liberdade": 7,
-   "p_valor": 0.04469,
+   "p_valor": 0.04909,
    "compativel_com_hipergeometrica": false,
    "leitura": "Há desvio estatístico além do esperado pelo acaso nesta janela — vale checar a base de dados antes de assumir viés real."
   },
   "primos": {
    "tamanho_do_grupo": 9,
-   "concursos_testados": 3785,
+   "concursos_testados": 3786,
    "categorias_apos_fusao": 8,
-   "estatistica": 0.68,
+   "estatistica": 0.73,
    "graus_de_liberdade": 7,
-   "p_valor": 0.99845,
+   "p_valor": 0.99811,
    "compativel_com_hipergeometrica": true,
    "leitura": "A quantidade deste grupo por sorteio bate com o esperado por puro acaso (sorteio sem reposição)."
   },
   "pares": {
    "tamanho_do_grupo": 12,
-   "concursos_testados": 3785,
+   "concursos_testados": 3786,
    "categorias_apos_fusao": 9,
-   "estatistica": 2.78,
+   "estatistica": 2.79,
    "graus_de_liberdade": 8,
-   "p_valor": 0.94762,
+   "p_valor": 0.94709,
    "compativel_com_hipergeometrica": true,
    "leitura": "A quantidade deste grupo por sorteio bate com o esperado por puro acaso (sorteio sem reposição)."
   }
