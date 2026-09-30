@@ -120289,5 +120289,30 @@
   "ganhadores_15": 0,
   "rateios": {},
   "fonte": "espelho"
+ },
+ {
+  "concurso": 3792,
+  "data": "2026-09-29",
+  "dezenas": [
+   2,
+   4,
+   6,
+   7,
+   8,
+   10,
+   11,
+   12,
+   14,
+   15,
+   16,
+   20,
+   23,
+   24,
+   25
+  ],
+  "acumulado": false,
+  "ganhadores_15": 0,
+  "rateios": {},
+  "fonte": "espelho"
  }
 ]
