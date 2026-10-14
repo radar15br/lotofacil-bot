@@ -3469,7 +3469,8 @@
    "14": 2198.57,
    "15": 1749331.36
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 113,
@@ -3500,7 +3501,8 @@
    "14": 1514.81,
    "15": 514867.34
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 114,
@@ -3531,7 +3533,8 @@
    "14": 2542.69,
    "15": 0.0
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 115,
@@ -3562,7 +3565,8 @@
    "14": 1388.24,
    "15": 4081776.78
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 116,
@@ -3593,7 +3597,8 @@
    "14": 1503.24,
    "15": 848830.45
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 117,
@@ -3624,7 +3629,8 @@
    "14": 1470.79,
    "15": 569686.18
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 118,
@@ -3655,7 +3661,8 @@
    "14": 928.1,
    "15": 357319.0
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 119,
@@ -3686,7 +3693,8 @@
    "14": 1926.43,
    "15": 1663143.71
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 120,
@@ -3717,7 +3725,8 @@
    "14": 844.38,
    "15": 746715.01
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 121,
@@ -3748,7 +3757,8 @@
    "14": 760.04,
    "15": 492515.31
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 122,
@@ -3779,7 +3789,8 @@
    "14": 360.18,
    "15": 136137.23
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 123,
@@ -3810,7 +3821,8 @@
    "14": 1081.2,
    "15": 422565.92
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 124,
@@ -3841,7 +3853,8 @@
    "14": 2243.64,
    "15": 1036561.02
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 125,
@@ -3872,7 +3885,8 @@
    "14": 2274.07,
    "15": 1047965.76
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 126,
@@ -3903,7 +3917,8 @@
    "14": 1516.7,
    "15": 0.0
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 127,
@@ -3934,7 +3949,8 @@
    "14": 574.65,
    "15": 519339.5
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 128,
@@ -3965,7 +3981,8 @@
    "14": 1686.77,
    "15": 830452.68
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 129,
@@ -3996,7 +4013,8 @@
    "14": 634.05,
    "15": 448986.01
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 130,
@@ -4027,7 +4045,8 @@
    "14": 561.87,
    "15": 417614.17
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 131,
@@ -4058,7 +4077,8 @@
    "14": 871.13,
    "15": 1341544.37
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 132,
@@ -4089,7 +4109,8 @@
    "14": 733.01,
    "15": 135976.17
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 133,
@@ -4120,7 +4141,8 @@
    "14": 517.9,
    "15": 217132.17
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 134,
@@ -4151,7 +4173,8 @@
    "14": 413.15,
    "15": 325378.91
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 135,
@@ -4182,7 +4205,8 @@
    "14": 906.41,
    "15": 234154.46
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 136,
@@ -4213,7 +4237,8 @@
    "14": 1750.35,
    "15": 671843.75
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 137,
