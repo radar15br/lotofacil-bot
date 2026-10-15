@@ -1919,7 +1919,8 @@
    "14": 1399.25,
    "15": 282087.66
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 63,
@@ -1950,7 +1951,8 @@
    "14": 1969.52,
    "15": 870856.42
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 64,
@@ -1981,7 +1983,8 @@
    "14": 1056.18,
    "15": 323455.35
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 65,
@@ -2012,7 +2015,8 @@
    "14": 2735.19,
    "15": 0.0
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 66,
@@ -2043,7 +2047,8 @@
    "14": 800.73,
    "15": 434105.49
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 67,
@@ -2074,7 +2079,8 @@
    "14": 2299.88,
    "15": 394429.73
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 68,
@@ -2105,7 +2111,8 @@
    "14": 1988.41,
    "15": 853689.74
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 69,
@@ -2136,7 +2143,8 @@
    "14": 820.4,
    "15": 296233.16
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 70,
@@ -2167,7 +2175,8 @@
    "14": 1112.42,
    "15": 264323.93
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 71,
@@ -2198,7 +2207,8 @@
    "14": 804.58,
    "15": 349187.58
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 72,
@@ -2229,7 +2239,8 @@
    "14": 1010.31,
    "15": 571665.39
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 73,
@@ -2260,7 +2271,8 @@
    "14": 1296.82,
    "15": 404461.66
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 74,
@@ -2291,7 +2303,8 @@
    "14": 575.18,
    "15": 165704.35
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 75,
@@ -2322,7 +2335,8 @@
    "14": 807.39,
    "15": 531264.65
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 76,
@@ -2353,7 +2367,8 @@
    "14": 101.71,
    "15": 49566.81
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 77,
@@ -2384,7 +2399,8 @@
    "14": 1004.63,
    "15": 434837.87
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 78,
@@ -2415,7 +2431,8 @@
    "14": 669.06,
    "15": 1007644.94
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 79,
@@ -2446,7 +2463,8 @@
    "14": 1383.22,
    "15": 1429789.18
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 80,
@@ -2477,7 +2495,8 @@
    "14": 1184.31,
    "15": 1387219.92
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 81,
@@ -2508,7 +2527,8 @@
    "14": 475.46,
    "15": 160734.67
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 82,
@@ -2539,7 +2559,8 @@
    "14": 1019.22,
    "15": 378128.77
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 83,
@@ -2570,7 +2591,8 @@
    "14": 943.79,
    "15": 370701.93
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 84,
@@ -2601,7 +2623,8 @@
    "14": 1190.52,
    "15": 729194.11
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 85,
@@ -2632,7 +2655,8 @@
    "14": 485.87,
    "15": 86488.6
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 86,
@@ -2663,7 +2687,8 @@
    "14": 337.18,
    "15": 81060.95
   },
-  "fonte": "excel"
+  "fonte": "caixa",
+  "verificado": true
  },
  {
   "concurso": 87,
@@ -121579,6 +121604,38 @@
   "rateios": {
    "15": 946676.32,
    "14": 1955.63,
+   "13": 35.0,
+   "12": 14.0,
+   "11": 7.0
+  },
+  "fonte": "caixa"
+ },
+ {
+  "concurso": 3804,
+  "data": "2026-10-14",
+  "data_proximo": "2026-10-15",
+  "dezenas": [
+   1,
+   2,
+   6,
+   7,
+   8,
+   12,
+   14,
+   15,
+   16,
+   17,
+   18,
+   19,
+   21,
+   24,
+   25
+  ],
+  "acumulado": true,
+  "ganhadores_15": 0,
+  "rateios": {
+   "15": 0.0,
+   "14": 2663.67,
    "13": 35.0,
    "12": 14.0,
    "11": 7.0
