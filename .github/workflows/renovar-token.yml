@@ -1,0 +1,78 @@
+# ---------------------------------------------------------------------------
+# RENOVAÇÃO AUTOMÁTICA DO TOKEN DO INSTAGRAM
+# ---------------------------------------------------------------------------
+# O token do "Login do Instagram" vale 60 dias. Ele pode ser renovado por mais
+# 60 dias a qualquer momento (depois das primeiras 24h), MAS SÓ ENQUANTO AINDA
+# ESTIVER VÁLIDO. Depois que vence, é preciso gerar outro na mão no Meta
+# Developers. Foi o que aconteceu em 24/10/2026.
+#
+# Este workflow renova o token nos dias 1 e 15 de cada mês e grava o novo
+# valor direto no segredo IG_TOKEN. Custo: zero (repositório público =
+# GitHub Actions gratuito e ilimitado).
+#
+# PRÉ-REQUISITO (uma vez só): o GitHub não deixa um workflow alterar os
+# próprios segredos com a permissão padrão. Por isso ele usa um token pessoal
+# do GitHub guardado no segredo GH_PAT:
+#   GitHub > Settings (da sua conta) > Developer settings >
+#   Personal access tokens > Fine-grained tokens > Generate new token
+#     - Repository access: Only select repositories > lotofacil-bot
+#     - Permissions > Repository > Secrets: Read and write
+#     - Expiration: o maior prazo disponível (ou "No expiration")
+#   Depois: repositório > Settings > Secrets and variables > Actions >
+#   New repository secret > Nome: GH_PAT > cole o token.
+# ---------------------------------------------------------------------------
+
+name: Renovar token do Instagram
+
+on:
+  schedule:
+    - cron: "17 13 1,15 * *"   # dias 1 e 15, 10h17 de Brasília
+  workflow_dispatch:           # permite renovar na mão pelo site do GitHub
+
+permissions:
+  contents: read
+
+jobs:
+  renovar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Conferir pré-requisitos
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          GH_PAT: ${{ secrets.GH_PAT }}
+        run: |
+          if [ -z "$IG_TOKEN" ]; then
+            echo "::error::Segredo IG_TOKEN não configurado."; exit 1
+          fi
+          if [ -z "$GH_PAT" ]; then
+            echo "::error::Segredo GH_PAT não configurado. Veja as instruções no topo deste arquivo."; exit 1
+          fi
+
+      - name: Renovar e gravar o novo token
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+          REPO: ${{ github.repository }}
+        run: |
+          RESPOSTA=$(curl -sS --get "https://graph.instagram.com/refresh_access_token" \
+            --data-urlencode "grant_type=ig_refresh_token" \
+            --data-urlencode "access_token=$IG_TOKEN")
+
+          NOVO=$(echo "$RESPOSTA" | jq -r '.access_token // empty')
+          SEGUNDOS=$(echo "$RESPOSTA" | jq -r '.expires_in // 0')
+
+          if [ -z "$NOVO" ]; then
+            ERRO=$(echo "$RESPOSTA" | jq -r '.error.message // "resposta inesperada"')
+            echo "::error::O Instagram recusou a renovação: $ERRO"
+            echo "::error::Se o token já venceu, gere um novo no Meta Developers e atualize o segredo IG_TOKEN."
+            exit 1
+          fi
+
+          echo "::add-mask::$NOVO"
+          printf '%s' "$NOVO" | gh secret set IG_TOKEN --repo "$REPO"
+
+          DIAS=$(( SEGUNDOS / 86400 ))
+          echo "Token renovado e salvo. Nova validade: $DIAS dias."
+          echo "### ✅ Token do Instagram renovado — válido por mais $DIAS dias" >> "$GITHUB_STEP_SUMMARY"

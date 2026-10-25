@@ -8,16 +8,16 @@
 #
 # O robô roda depois de cada apuração, no horário de Brasília, com 1h30 de
 # folga para a Caixa publicar o resultado oficial:
-#   segunda a sexta -> 22h30 (= 01:30 UTC do dia seguinte, terça a sábado)
-#   domingo         -> 12h30 (= 15:30 UTC do mesmo domingo)
+#   segunda a sexta -> 22h23 (= 01:23 UTC do dia seguinte, terça a sábado)
+#   domingo         -> 12h19 (= 15:19 UTC do mesmo domingo)
 #
-# TENTATIVAS EXTRAS (22h45, 23h00, 23h15 / 12h45): o agendamento nativo do
+# TENTATIVAS EXTRAS (22h41, 23h07, 23h37 / 12h43, 13h13): o agendamento nativo do
 # GitHub (schedule:) pode atrasar ou até deixar de disparar em períodos de
 # baixa atividade do repositório — já aconteceu aqui (ficou 13 dias sem
 # rodar sozinho, entre 11/08 e 24/08, sem nenhum aviso). Como a geração dos
 # jogos usa o número do concurso como semente (sempre dá o mesmo resultado)
 # e a publicação só acontece se ainda não tiver sido feita, rodar de novo
-# nesses horários extras é seguro: se a tentativa das 22h30 já publicou, as
+# nesses horários extras é seguro: se a primeira tentativa já publicou, as
 # seguintes só constatam isso e não fazem nada.
 #
 # Atenção ao formato: o GitHub numera os dias de 0 a 6, sendo 0 = domingo.
@@ -28,12 +28,15 @@ name: Lotofacil Bot
 
 on:
   schedule:
-    - cron: "30 1 * * 2-6"    # seg a sex, 22h30 de Brasília (tentativa 1)
-    - cron: "45 1 * * 2-6"    # seg a sex, 22h45 de Brasília (tentativa 2)
-    - cron: "0 2 * * 2-6"     # seg a sex, 23h00 de Brasília (tentativa 3)
-    - cron: "15 2 * * 2-6"    # seg a sex, 23h15 de Brasília (tentativa 4)
-    - cron: "30 15 * * 0"     # domingo, 12h30 de Brasília (tentativa 1)
-    - cron: "45 15 * * 0"     # domingo, 12h45 de Brasília (tentativa 2)
+    # Minutos "quebrados" de propósito: o GitHub congestiona nos minutos
+    # redondos (:00, :15, :30, :45) e chegou a atrasar ~5h em out/2026.
+    - cron: "23 1 * * 2-6"    # seg a sex, 22h23 de Brasília (tentativa 1)
+    - cron: "41 1 * * 2-6"    # seg a sex, 22h41 de Brasília (tentativa 2)
+    - cron: "7 2 * * 2-6"     # seg a sex, 23h07 de Brasília (tentativa 3)
+    - cron: "37 2 * * 2-6"    # seg a sex, 23h37 de Brasília (tentativa 4)
+    - cron: "19 15 * * 0"     # domingo, 12h19 de Brasília (tentativa 1)
+    - cron: "43 15 * * 0"     # domingo, 12h43 de Brasília (tentativa 2)
+    - cron: "13 16 * * 0"     # domingo, 13h13 de Brasília (tentativa 3)
   workflow_dispatch:        # permite rodar na mão pelo site do GitHub
     inputs:
       simular:
