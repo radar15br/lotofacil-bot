@@ -52,7 +52,8 @@ ARQUIVO_AB = PASTA_DADOS / "ab_testing.json"
 PERFIL = "@radar15br"
 
 LIMITE_CARACTERES = 2200
-LIMITE_HASHTAGS = 30
+# Desde dez/2025 o Instagram aceita no máximo 5 hashtags por post/Reel.
+LIMITE_HASHTAGS = 5
 
 ESTILOS = ("informativo", "chamativo", "prova_social")
 
@@ -135,7 +136,12 @@ def _linha_jogos(ctx: dict, quantos: int = 13) -> str:
 
 
 def _hashtags(estilo: str) -> str:
-    tags = HASHTAGS_BASE + HASHTAGS_NICHO + HASHTAGS_POR_ESTILO[estilo]
+    """
+    5 hashtags no máximo (regra do Instagram desde dez/2025). Ordem de
+    prioridade: marca, termo principal, buscas de resultado e uma do estilo.
+    """
+    tags = ["#radar15br", "#lotofacil", "#resultadolotofacil", "#lotofacilhoje",
+            HASHTAGS_POR_ESTILO[estilo][0]]
     return " ".join(tags[:LIMITE_HASHTAGS])
 
 

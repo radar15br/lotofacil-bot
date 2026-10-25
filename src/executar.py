@@ -36,7 +36,7 @@ import traceback
 from datetime import datetime
 from pathlib import Path
 
-from src import analise, conformidade, dashboard, desempenho, jogos, legendas, painel, pecas, publicar
+from src import analise, conformidade, dashboard, desempenho, jogos, legendas, painel, pecas, publicar, reels
 from src.coleta import PASTA_DADOS, atualizar, carregar_base, reconferir
 
 
@@ -195,6 +195,16 @@ def executar(simular: bool = False, publicar_redes: bool = True) -> int:
         print(f"    {total} imagens em {len(r['estilos'])} estilos")
         return r
     passo(5, "Gerando as peças visuais", gerar_pecas)
+
+    # 5B. Reel do resultado: usa a peça de resultado + o stories do próximo.
+    # Não é obrigatório: sem vídeo, o resultado sai como imagem.
+    def gerar_reels():
+        for numero in conferidos:
+            r = reels.gerar(numero, proximo)
+            print(f"    Reel do concurso {numero}: {r['tamanho_mb']} MB")
+        if not conferidos:
+            print("    nenhum resultado novo — sem Reel hoje")
+    passo("5B", "Montando o Reel do resultado", gerar_reels, obrigatorio=False)
 
     # 5. legendas
     def gerar_legendas():

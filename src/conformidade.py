@@ -50,7 +50,7 @@ from src.coleta import RAIZ, carregar_base
 PASTA_SAIDAS = RAIZ / "saidas"
 
 LIMITE_CARACTERES = 2200
-LIMITE_HASHTAGS = 30
+LIMITE_HASHTAGS = 5   # limite do Instagram desde dez/2025
 MAX_ITENS_CARROSSEL = 10
 
 

@@ -111,7 +111,8 @@ def publicar_no_site(concurso: int, verboso: bool = True) -> list[str]:
     destino = PASTA_SITE / str(concurso)
     urls: list[str] = []
 
-    for arquivo in sorted(origem.rglob("*.jpg")):
+    # .jpg = imagens · .mp4 = Reel (o Instagram também busca o vídeo por URL)
+    for arquivo in sorted([*origem.rglob("*.jpg"), *origem.rglob("*.mp4")]):
         relativo = arquivo.relative_to(origem)
         alvo = destino / relativo
         alvo.parent.mkdir(parents=True, exist_ok=True)
@@ -142,6 +143,7 @@ def publicar_no_site(concurso: int, verboso: bool = True) -> list[str]:
 # Quantos concursos ficam guardados no site público. Cada concurso ocupa ~5 MB;
 # 30 concursos são cerca de 5 semanas de conteúdo e ~150 MB de repositório.
 CONCURSOS_NO_SITE = int(os.getenv("CONCURSOS_NO_SITE", "30"))
+REELS_NO_SITE = 3
 
 
 def _limpar_antigos(verboso: bool = True) -> int:
@@ -160,6 +162,10 @@ def _limpar_antigos(verboso: bool = True) -> int:
     excedente = pastas[:-CONCURSOS_NO_SITE] if len(pastas) > CONCURSOS_NO_SITE else []
     for pasta in excedente:
         shutil.rmtree(pasta)
+    # Vídeos só precisam ficar no ar até o Instagram buscar: mantém os 3 últimos
+    for pasta in pastas[:-REELS_NO_SITE]:
+        for video in pasta.rglob("*.mp4"):
+            video.unlink()
     if excedente and verboso:
         print(f"{len(excedente)} concurso(s) antigo(s) removido(s) do site "
               f"(mantendo os últimos {CONCURSOS_NO_SITE})")
@@ -278,8 +284,64 @@ def publicar_instagram(concurso: int, estilo: str = "dia", formato: str = "carro
             "estilo_legenda": estilo_legenda, "id": publicado["id"], "simulado": simular}
 
 
+def _ig_status(container: str) -> dict:
+    url = f"https://{IG_HOST}/{IG_VERSAO_API}/{container}"
+    resposta = requests.get(url, params={"fields": "status_code,status",
+                                         "access_token": IG_TOKEN}, timeout=TIMEOUT)
+    return resposta.json()
+
+
+def _esperar_processamento(container: str, limite: int = 300, espera: int = 6) -> None:
+    """Vídeo não publica na hora: o Instagram processa e só então libera."""
+    inicio = time.time()
+    while time.time() - inicio < limite:
+        dados = _ig_status(container)
+        codigo = dados.get("status_code")
+        if codigo == "FINISHED":
+            print(f"  vídeo processado em {time.time() - inicio:.0f}s")
+            return
+        if codigo in ("ERROR", "EXPIRED") or "error" in dados:
+            raise PublicacaoError(f"Instagram não processou o vídeo: {dados}")
+        time.sleep(espera)
+    raise PublicacaoError(f"Instagram não terminou de processar o vídeo em {limite}s")
+
+
+def publicar_reel(concurso: int, estilo: str = "radar", simular: bool = False) -> dict[str, Any]:
+    """Publica o Reel do resultado (vídeo vertical) e compartilha no feed."""
+    pasta = PASTA_SAIDAS / str(concurso) / estilo / "reel"
+    if not (pasta / "reel.mp4").exists():
+        raise PublicacaoError(f"Reel do concurso {concurso} não foi gerado.")
+    legenda_arquivo = PASTA_SAIDAS / str(concurso) / "legenda-resultado.txt"
+    if not legenda_arquivo.exists():
+        raise PublicacaoError("Legenda do resultado não foi gerada.")
+
+    base_url = f"{URL_BASE}/{concurso}/{estilo}/reel"
+    video, capa = f"{base_url}/reel.mp4", f"{base_url}/1-gancho.jpg"
+
+    print(f"Instagram · REEL do resultado do concurso {concurso}")
+    if not simular and not esperar_site(video):
+        raise PublicacaoError("O vídeo do Reel ainda não está acessível na web.")
+
+    container = _ig_post(f"{IG_USER_ID}/media", {
+        "media_type": "REELS",
+        "video_url": video,
+        "cover_url": capa,
+        "caption": legenda_arquivo.read_text(encoding="utf-8"),
+        "share_to_feed": "true",
+    }, simular)["id"]
+    if not simular:
+        _esperar_processamento(container)
+    publicado = _ig_post(f"{IG_USER_ID}/media_publish", {"creation_id": container}, simular)
+    print(f"  PUBLICADO -> id {publicado['id']}")
+    return {"id": publicado["id"]}
+
+
 def publicar_resultado(concurso: int, estilo: str = "radar", simular: bool = False) -> dict[str, Any]:
-    """Publica no Instagram a peça única de RESULTADO (imagem simples)."""
+    """
+    Publica o RESULTADO. Preferência: Reel (alcança quem não segue). Se o Reel
+    não existir ou o Instagram recusar o vídeo, cai para a imagem simples —
+    o resultado nunca deixa de sair por causa do vídeo.
+    """
     if not simular and (not IG_USER_ID or not IG_TOKEN):
         raise PublicacaoError("Faltam IG_USER_ID e IG_TOKEN.")
     if not URL_BASE:
@@ -290,6 +352,15 @@ def publicar_resultado(concurso: int, estilo: str = "radar", simular: bool = Fal
         raise PublicacaoError(f"Peça de resultado do concurso {concurso} não foi gerada.")
     dados = json.loads(indice.read_text(encoding="utf-8"))
 
+    base = {"rede": "instagram", "formato": "resultado", "estilo": estilo,
+            "acertos": dados["acertos"], "simulado": simular}
+
+    if (PASTA_SAIDAS / str(concurso) / estilo / "reel" / "reel.mp4").exists():
+        try:
+            return {**base, "tipo": "reel", **publicar_reel(concurso, estilo, simular)}
+        except (PublicacaoError, requests.RequestException) as erro:
+            print(f"  Reel falhou ({erro}) — publicando a imagem no lugar.")
+
     caminho = Path(dados["estilos"][estilo])
     relativo = caminho.relative_to(PASTA_SAIDAS / str(concurso))
     imagem = f"{URL_BASE}/{concurso}/{relativo.as_posix()}"
@@ -299,7 +370,7 @@ def publicar_resultado(concurso: int, estilo: str = "radar", simular: bool = Fal
         raise PublicacaoError("Legenda do resultado não foi gerada.")
     legenda = legenda_arquivo.read_text(encoding="utf-8")
 
-    print(f"Instagram · RESULTADO do concurso {concurso} · {dados['acertos']} acertos")
+    print(f"Instagram · RESULTADO do concurso {concurso} · {dados['acertos']} acertos (imagem)")
     if not simular and not esperar_site(imagem):
         raise PublicacaoError("A imagem do resultado ainda não está acessível na web.")
     container = _ig_post(f"{IG_USER_ID}/media",
@@ -308,9 +379,7 @@ def publicar_resultado(concurso: int, estilo: str = "radar", simular: bool = Fal
         time.sleep(8)
     publicado = _ig_post(f"{IG_USER_ID}/media_publish", {"creation_id": container}, simular)
     print(f"  PUBLICADO -> id {publicado['id']}")
-
-    return {"rede": "instagram", "formato": "resultado", "estilo": estilo,
-            "acertos": dados["acertos"], "id": publicado["id"], "simulado": simular}
+    return {**base, "tipo": "imagem", "id": publicado["id"]}
 
 
 # ---------------------------------------------------------------------------

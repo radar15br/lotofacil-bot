@@ -1,42 +1,38 @@
 # ---------------------------------------------------------------------------
 # ROBÔ DA LOTOFÁCIL — execução automática
 # ---------------------------------------------------------------------------
-# CALENDÁRIO DA LOTOFÁCIL (desde 19/07/2026):
-#   segunda a sexta -> sorteio às 21h
-#   domingo         -> sorteio às 11h
-#   sábado          -> não há sorteio
+# COMO O HORÁRIO FUNCIONA AGORA (desde 24/10/2026)
 #
-# O robô roda depois de cada apuração, no horário de Brasília, com 1h30 de
-# folga para a Caixa publicar o resultado oficial:
-#   segunda a sexta -> 22h23 (= 01:23 UTC do dia seguinte, terça a sábado)
-#   domingo         -> 12h19 (= 15:19 UTC do mesmo domingo)
+# O agendador do GitHub atrasa — chegou a ~5h em out/2026 e já ficou 13 dias
+# sem disparar (11/08 a 24/08). Por isso o robô não depende mais do horário
+# exato: ele COMEÇA ANTES do sorteio e fica esperando a Caixa publicar o
+# resultado (src/aguardar.py). Assim que sai, gera e publica na hora.
 #
-# TENTATIVAS EXTRAS (22h41, 23h07, 23h37 / 12h43, 13h13): o agendamento nativo do
-# GitHub (schedule:) pode atrasar ou até deixar de disparar em períodos de
-# baixa atividade do repositório — já aconteceu aqui (ficou 13 dias sem
-# rodar sozinho, entre 11/08 e 24/08, sem nenhum aviso). Como a geração dos
-# jogos usa o número do concurso como semente (sempre dá o mesmo resultado)
-# e a publicação só acontece se ainda não tiver sido feita, rodar de novo
-# nesses horários extras é seguro: se a primeira tentativa já publicou, as
-# seguintes só constatam isso e não fazem nada.
+#   19h37 (todo dia)  -> execução principal das noites de sorteio (21h)
+#   09h37 (todo dia)  -> execução principal dos domingos (sorteio 11h)
+#   22h23, 23h07, 13h13 -> reservas, caso a principal atrase ou falhe
 #
+# Os disparos são diários: o próprio robô lê na Caixa se há sorteio no dia e,
+# se não houver, encerra em poucos segundos. Mudança de calendário (como o
+# sábado extra de 24/10) passa a ser tratada sozinha.
+#
+# Rodar de novo é seguro: os jogos usam o concurso como semente e o registro
+# de publicações (data/publicacoes.json) agora é salvo no repositório depois
+# de cada publicação — antes ele se perdia e as reservas publicavam de novo.
+#
+# Minutos "quebrados" de propósito: o GitHub congestiona nos minutos redondos.
 # Atenção ao formato: o GitHub numera os dias de 0 a 6, sendo 0 = domingo.
-# Não existe o dia 7 — usar "2-7" faz o GitHub rejeitar o arquivo inteiro.
 # ---------------------------------------------------------------------------
 
 name: Lotofacil Bot
 
 on:
   schedule:
-    # Minutos "quebrados" de propósito: o GitHub congestiona nos minutos
-    # redondos (:00, :15, :30, :45) e chegou a atrasar ~5h em out/2026.
-    - cron: "23 1 * * 2-6"    # seg a sex, 22h23 de Brasília (tentativa 1)
-    - cron: "41 1 * * 2-6"    # seg a sex, 22h41 de Brasília (tentativa 2)
-    - cron: "7 2 * * 2-6"     # seg a sex, 23h07 de Brasília (tentativa 3)
-    - cron: "37 2 * * 2-6"    # seg a sex, 23h37 de Brasília (tentativa 4)
-    - cron: "19 15 * * 0"     # domingo, 12h19 de Brasília (tentativa 1)
-    - cron: "43 15 * * 0"     # domingo, 12h43 de Brasília (tentativa 2)
-    - cron: "13 16 * * 0"     # domingo, 13h13 de Brasília (tentativa 3)
+    - cron: "37 22 * * *"     # 19h37 de Brasília — principal (sorteio 21h)
+    - cron: "37 12 * * *"     # 09h37 de Brasília — principal (domingo 11h)
+    - cron: "23 1 * * *"      # 22h23 de Brasília — reserva
+    - cron: "7 2 * * *"       # 23h07 de Brasília — reserva
+    - cron: "13 16 * * *"     # 13h13 de Brasília — reserva (domingo)
   workflow_dispatch:        # permite rodar na mão pelo site do GitHub
     inputs:
       simular:
@@ -47,10 +43,16 @@ on:
 permissions:
   contents: write           # necessário para o robô salvar os dados no repositório
 
+# Uma execução por vez: a reserva espera a principal terminar em vez de
+# rodar em paralelo e publicar em dobro.
+concurrency:
+  group: lotofacil-bot
+  cancel-in-progress: false
+
 jobs:
   rodar:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 330    # inclui até ~4h30 de espera pelo resultado
 
     steps:
       - name: Baixar o repositório
@@ -62,31 +64,47 @@ jobs:
           python-version: "3.12"
           cache: pip
 
+      - name: Aguardar o resultado da Caixa
+        id: espera
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "Execução manual — sem espera."
+            echo "seguir=true" >> "$GITHUB_OUTPUT"
+          else
+            pip install -q requests
+            python -m src.aguardar
+          fi
+
       - name: Instalar dependências
+        if: steps.espera.outputs.seguir == 'true'
         run: |
           pip install -r requirements.txt
           playwright install --with-deps chromium
 
-      # ETAPA 1 — gera tudo, mas AINDA NÃO publica.
+      # ETAPA 1 — gera tudo (jogos, imagens, Reel, legendas), mas AINDA NÃO publica.
       # O Instagram e o TikTok não recebem o arquivo: eles buscam a imagem
-      # numa URL pública. Então a imagem precisa estar no ar antes.
-      - name: Gerar os jogos, as imagens e as legendas
+      # (e o vídeo) numa URL pública. Então precisam estar no ar antes.
+      - name: Gerar os jogos, as imagens, o Reel e as legendas
+        if: steps.espera.outputs.seguir == 'true'
         env:
           URL_BASE_PUBLICA: ${{ vars.URL_BASE_PUBLICA }}
         run: python -m src.executar --sem-publicar
 
       # ETAPA 2 — coloca as imagens no ar (GitHub Pages serve a pasta docs/)
       - name: Publicar as imagens no site
+        if: steps.espera.outputs.seguir == 'true'
         run: |
           git config user.name  "lotofacil-bot"
           git config user.email "bot@users.noreply.github.com"
           git add data/ docs/ || true
           git diff --staged --quiet || git commit -m "Concurso automatico $(date +%d/%m/%Y)"
+          git pull --rebase --quiet || true
           git push
 
       # ETAPA 3 — só agora publica nas redes. O próprio código espera a imagem
       # ficar acessível antes de chamar a API.
       - name: Publicar no Instagram e no TikTok
+        if: steps.espera.outputs.seguir == 'true'
         env:
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
           IG_TOKEN: ${{ secrets.IG_TOKEN }}
@@ -101,8 +119,19 @@ jobs:
             python -m src.executar --somente-publicar
           fi
 
+      # ETAPA 4 — salva o registro do que foi publicado. Sem isso, a execução
+      # seguinte não sabe que já publicou e posta tudo de novo.
+      - name: Salvar o registro de publicações
+        if: always() && steps.espera.outputs.seguir == 'true'
+        run: |
+          git add data/publicacoes.json || true
+          git diff --staged --quiet && exit 0
+          git commit -m "Registro de publicacoes $(date +%d/%m/%Y)"
+          git pull --rebase --quiet || true
+          git push
+
       - name: Anexar as imagens ao histórico da execução
-        if: always()
+        if: always() && steps.espera.outputs.seguir == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: pecas-do-dia
