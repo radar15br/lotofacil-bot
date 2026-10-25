@@ -1,0 +1,52 @@
+# Publica os posts fixados do perfil ("Como funciona" e "Placar").
+# Rodar na mão em Actions > Posts fixados > Run workflow. Depois de publicado,
+# fixe o post no perfil pelo app (a API do Instagram não fixa posts).
+name: Posts fixados
+
+on:
+  workflow_dispatch:
+    inputs:
+      post:
+        description: "Qual post"
+        type: choice
+        options: [todos, como-funciona, placar]
+        default: todos
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lotofacil-bot
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      URL_BASE_PUBLICA: ${{ vars.URL_BASE_PUBLICA }}
+      IG_USER_ID: ${{ secrets.IG_USER_ID }}
+      IG_TOKEN: ${{ secrets.IG_TOKEN }}
+      IG_MODO: ${{ vars.IG_MODO || 'instagram_login' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Instalar dependências
+        run: |
+          pip install -r requirements.txt
+          playwright install --with-deps chromium
+      - name: Gerar as imagens
+        run: python -m src.fixados --etapa gerar --post ${{ inputs.post }}
+      - name: Colocar as imagens no ar
+        run: |
+          git config user.name  "lotofacil-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add docs/fixados
+          git diff --staged --quiet || git commit -m "Posts fixados $(date +%d/%m/%Y)"
+          git pull --rebase --quiet
+          git push
+      - name: Publicar no Instagram
+        run: python -m src.fixados --etapa postar --post ${{ inputs.post }}
