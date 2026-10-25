@@ -76,7 +76,18 @@ def decidir(agora: datetime | None = None) -> bool:
         return _saida(True, f"jogo do concurso {alvo} ainda não foi publicado")
 
     if agora > prazo:
-        return _saida(True, "sorteio já passou há tempo — rodando direto")
+        if _resultado_saiu(alvo):
+            return _saida(True, "sorteio já passou e o resultado saiu — rodando direto")
+        # A data informada pela Caixa passou e o resultado não veio (sorteio
+        # adiado ou data errada, como o "sábado" 24/10/2026). Passa a esperar
+        # pelo sorteio de HOJE, no horário normal do dia.
+        hoje = agora.replace(minute=0, second=0, microsecond=0)
+        sorteio = hoje.replace(hour=HORA_SORTEIO.get(hoje.weekday(), 21))
+        prazo = sorteio + timedelta(hours=PRAZO_APOS_H)
+        print(f"  resultado do {alvo} não saiu na data prevista — tratando como sorteio "
+              f"de hoje às {sorteio:%Hh}")
+        if agora > prazo:
+            return _saida(False, "resultado ainda indisponível — próxima execução tenta de novo")
     if sorteio - agora > timedelta(hours=JANELA_MAX_H):
         return _saida(False, "ainda falta muito para o sorteio")
 
