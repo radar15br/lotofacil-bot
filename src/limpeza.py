@@ -76,6 +76,13 @@ if __name__ == "__main__":
         for m in repetidos:
             print(f"  cópia {m['timestamp'][:16]}  {m['permalink']}")
 
+    import json
+    from src.coleta import PASTA_DADOS
+    (PASTA_DADOS / "duplicados.json").write_text(json.dumps([
+        {"manter": m["permalink"], "apagar": [r["permalink"] for r in rep],
+         "titulo": (m.get("caption") or "").split("\n")[0][:80]}
+        for m, rep in grupos], ensure_ascii=False, indent=1), encoding="utf-8")
+
     if args.apagar:
         print("\nApagando...")
         ok = falhas = 0

@@ -2,6 +2,9 @@
 # as cópias, mantendo o post mais antigo de cada grupo.
 name: Limpeza de duplicados
 
+permissions:
+  contents: write
+
 on:
   workflow_dispatch:
     inputs:
@@ -34,3 +37,12 @@ jobs:
           { echo '```'; cat resumo.txt; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
           head -1 resumo.txt | sed 's/^/::notice::/'
           grep -E "Apagados|NÃO apagou" resumo.txt | head -3 | sed 's/^/::notice::/' || true
+      - name: Salvar a lista de duplicados
+        run: |
+          git config user.name  "lotofacil-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data/duplicados.json
+          git diff --staged --quiet && exit 0
+          git commit -m "Lista de posts duplicados"
+          git pull --rebase --quiet
+          git push
