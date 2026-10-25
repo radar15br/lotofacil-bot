@@ -1,0 +1,36 @@
+# Encontra posts duplicados no Instagram (mesma legenda) e, se pedido, apaga
+# as cópias, mantendo o post mais antigo de cada grupo.
+name: Limpeza de duplicados
+
+on:
+  workflow_dispatch:
+    inputs:
+      apagar:
+        description: "Apagar as cópias (desmarcado = só listar)"
+        type: boolean
+        default: false
+
+jobs:
+  limpar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      IG_USER_ID: ${{ secrets.IG_USER_ID }}
+      IG_TOKEN: ${{ secrets.IG_TOKEN }}
+      IG_MODO: ${{ vars.IG_MODO || 'instagram_login' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q requests
+      - name: Duplicados
+        run: |
+          if [ "${{ inputs.apagar }}" = "true" ]; then
+            python -m src.limpeza --apagar | tee resumo.txt
+          else
+            python -m src.limpeza | tee resumo.txt
+          fi
+          { echo '```'; cat resumo.txt; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+          head -1 resumo.txt | sed 's/^/::notice::/'
+          grep -E "Apagados|NÃO apagou" resumo.txt | head -3 | sed 's/^/::notice::/' || true
