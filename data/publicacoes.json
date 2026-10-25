@@ -76,5 +76,15 @@
   "estilo": "radar",
   "estilo_legenda": "chamativo",
   "simulado": true
+ },
+ {
+  "concurso": 3813,
+  "quando": "2026-10-25 02:05",
+  "rede": "instagram",
+  "formato": "feed",
+  "estilo": "radar",
+  "estilo_legenda": "informativo",
+  "id": "18500310169100096",
+  "simulado": false
  }
 ]
