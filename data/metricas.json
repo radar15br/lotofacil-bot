@@ -1,10 +1,14 @@
 {
- "atualizado": "25/10/2026 14:03",
+ "atualizado": "26/10/2026 16:18",
  "conta": "radar15br",
  "posts_total": 244,
  "seguidores": [
   {
    "data": "2026-10-25",
+   "seguidores": 12
+  },
+  {
+   "data": "2026-10-26",
    "seguidores": 12
   }
  ],
@@ -20,8 +24,8 @@
    "estilo_legenda": "chamativo",
    "curtidas": 0,
    "comentarios": 0,
-   "reach": 2,
-   "views": 2,
+   "reach": 3,
+   "views": 3,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -37,8 +41,8 @@
    "estilo_legenda": null,
    "curtidas": 2,
    "comentarios": 0,
-   "reach": 3,
-   "views": 8,
+   "reach": 4,
+   "views": 11,
    "saved": 0,
    "shares": 0,
    "total_interactions": 2
@@ -54,8 +58,8 @@
    "estilo_legenda": null,
    "curtidas": 1,
    "comentarios": 0,
-   "reach": 3,
-   "views": 5,
+   "reach": 4,
+   "views": 6,
    "saved": 0,
    "shares": 0,
    "total_interactions": 1
@@ -122,8 +126,8 @@
    "estilo_legenda": null,
    "curtidas": 0,
    "comentarios": 0,
-   "reach": 2,
-   "views": 4,
+   "reach": 3,
+   "views": 5,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -156,8 +160,8 @@
    "estilo_legenda": null,
    "curtidas": 0,
    "comentarios": 0,
-   "reach": 2,
-   "views": 3,
+   "reach": 3,
+   "views": 4,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
