@@ -1,7 +1,7 @@
 {
- "atualizado": "26/10/2026 16:18",
+ "atualizado": "27/10/2026 15:42",
  "conta": "radar15br",
- "posts_total": 244,
+ "posts_total": 246,
  "seguidores": [
   {
    "data": "2026-10-25",
@@ -10,9 +10,47 @@
   {
    "data": "2026-10-26",
    "seguidores": 12
+  },
+  {
+   "data": "2026-10-27",
+   "seguidores": 12
   }
  ],
  "posts": [
+  {
+   "id": "17997331953106421",
+   "data": "2026-10-27T06:28:53+0000",
+   "link": "https://www.instagram.com/p/De_NvJZFMSu/",
+   "tipo": "Imagem",
+   "conteudo": "Jogo do dia",
+   "titulo": "O placar aberto — concurso 3815",
+   "concurso": 3815,
+   "estilo_legenda": "prova_social",
+   "curtidas": 1,
+   "comentarios": 0,
+   "reach": 2,
+   "views": 2,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 1
+  },
+  {
+   "id": "17914247805543676",
+   "data": "2026-10-27T06:28:36+0000",
+   "link": "https://www.instagram.com/reel/De_NrtBEQxV/",
+   "tipo": "Reel",
+   "conteudo": "Resultado",
+   "titulo": "RESULTADO do concurso 3814 — 8 acertos",
+   "concurso": 3814,
+   "estilo_legenda": null,
+   "curtidas": 1,
+   "comentarios": 0,
+   "reach": 2,
+   "views": 4,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 1
+  },
   {
    "id": "17872453611645078",
    "data": "2026-10-25T07:35:43+0000",
@@ -995,40 +1033,6 @@
    "comentarios": 0,
    "reach": 3,
    "views": 4,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 0
-  },
-  {
-   "id": "18173453818459633",
-   "data": "2026-10-10T07:33:45+0000",
-   "link": "https://www.instagram.com/p/DeTjpRsGxa_/",
-   "tipo": "Imagem",
-   "conteudo": "Resultado",
-   "titulo": "RESULTADO do concurso 3801 — 9 acertos",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 1,
-   "comentarios": 0,
-   "reach": 3,
-   "views": 3,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 1
-  },
-  {
-   "id": "17988936390025729",
-   "data": "2026-10-09T09:05:21+0000",
-   "link": "https://www.instagram.com/p/DeRJVM1m6U6/",
-   "tipo": "Imagem",
-   "conteudo": "Jogo do dia",
-   "titulo": "13 jogos para o concurso 3801 — o que os dados mostram",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 0,
-   "comentarios": 0,
-   "reach": 2,
-   "views": 6,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
