@@ -1,7 +1,7 @@
 {
- "atualizado": "28/10/2026 15:51",
+ "atualizado": "29/10/2026 15:57",
  "conta": "radar15br",
- "posts_total": 248,
+ "posts_total": 250,
  "seguidores": [
   {
    "data": "2026-10-25",
@@ -18,9 +18,47 @@
   {
    "data": "2026-10-28",
    "seguidores": 12
+  },
+  {
+   "data": "2026-10-29",
+   "seguidores": 12
   }
  ],
  "posts": [
+  {
+   "id": "17912762385488774",
+   "data": "2026-10-29T07:18:56+0000",
+   "link": "https://www.instagram.com/p/DfEdDWflcbC/",
+   "tipo": "Imagem",
+   "conteudo": "Jogo do dia",
+   "titulo": "🎯 13 JOGOS PRONTOS — CONCURSO 3817",
+   "concurso": 3817,
+   "estilo_legenda": "chamativo",
+   "curtidas": 1,
+   "comentarios": 0,
+   "reach": 2,
+   "views": 4,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 1
+  },
+  {
+   "id": "17884722438522866",
+   "data": "2026-10-29T07:18:37+0000",
+   "link": "https://www.instagram.com/reel/DfEc_g1jn-f/",
+   "tipo": "Reel",
+   "conteudo": "Resultado",
+   "titulo": "RESULTADO do concurso 3816 — 9 acertos",
+   "concurso": 3816,
+   "estilo_legenda": null,
+   "curtidas": 2,
+   "comentarios": 0,
+   "reach": 3,
+   "views": 3,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 2
+  },
   {
    "id": "18137955790635224",
    "data": "2026-10-28T01:40:51+0000",
@@ -30,13 +68,13 @@
    "titulo": "13 jogos para o concurso 3816 — o que os dados mostram",
    "concurso": 3816,
    "estilo_legenda": "informativo",
-   "curtidas": 1,
+   "curtidas": 2,
    "comentarios": 0,
-   "reach": 2,
-   "views": 3,
+   "reach": 3,
+   "views": 6,
    "saved": 0,
    "shares": 0,
-   "total_interactions": 1
+   "total_interactions": 2
   },
   {
    "id": "18038365814844389",
@@ -151,8 +189,8 @@
    "estilo_legenda": null,
    "curtidas": 1,
    "comentarios": 0,
-   "reach": 2,
-   "views": 4,
+   "reach": 3,
+   "views": 5,
    "saved": 0,
    "shares": 0,
    "total_interactions": 1
@@ -1003,40 +1041,6 @@
    "comentarios": 0,
    "reach": 3,
    "views": 4,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 0
-  },
-  {
-   "id": "18011546945963543",
-   "data": "2026-10-10T08:31:08+0000",
-   "link": "https://www.instagram.com/p/DeTqNfRleFg/",
-   "tipo": "Imagem",
-   "conteudo": "Jogo do dia",
-   "titulo": "🎯 13 JOGOS PRONTOS — CONCURSO 3802",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 0,
-   "comentarios": 0,
-   "reach": 2,
-   "views": 3,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 0
-  },
-  {
-   "id": "17911135074499178",
-   "data": "2026-10-10T08:23:34+0000",
-   "link": "https://www.instagram.com/p/DeTpWMulqdm/",
-   "tipo": "Imagem",
-   "conteudo": "Jogo do dia",
-   "titulo": "🎯 13 JOGOS PRONTOS — CONCURSO 3802",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 0,
-   "comentarios": 0,
-   "reach": 2,
-   "views": 2,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
