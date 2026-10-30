@@ -1,7 +1,7 @@
 {
- "atualizado": "29/10/2026 15:57",
+ "atualizado": "30/10/2026 15:37",
  "conta": "radar15br",
- "posts_total": 250,
+ "posts_total": 252,
  "seguidores": [
   {
    "data": "2026-10-25",
@@ -22,9 +22,47 @@
   {
    "data": "2026-10-29",
    "seguidores": 12
+  },
+  {
+   "data": "2026-10-30",
+   "seguidores": 12
   }
  ],
  "posts": [
+  {
+   "id": "17982947886133502",
+   "data": "2026-10-30T07:21:30+0000",
+   "link": "https://www.instagram.com/p/DfHCJAmkQg-/",
+   "tipo": "Imagem",
+   "conteudo": "Jogo do dia",
+   "titulo": "O placar aberto — concurso 3818",
+   "concurso": 3818,
+   "estilo_legenda": "prova_social",
+   "curtidas": 1,
+   "comentarios": 0,
+   "reach": 2,
+   "views": 3,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 1
+  },
+  {
+   "id": "17909922300566500",
+   "data": "2026-10-30T07:21:09+0000",
+   "link": "https://www.instagram.com/reel/DfHCFB3FRvQ/",
+   "tipo": "Reel",
+   "conteudo": "Resultado",
+   "titulo": "RESULTADO do concurso 3817 — 8 acertos",
+   "concurso": 3817,
+   "estilo_legenda": null,
+   "curtidas": 2,
+   "comentarios": 0,
+   "reach": 3,
+   "views": 3,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 2
+  },
   {
    "id": "17912762385488774",
    "data": "2026-10-29T07:18:56+0000",
@@ -85,13 +123,13 @@
    "titulo": "RESULTADO do concurso 3815 — 8 acertos",
    "concurso": 3815,
    "estilo_legenda": null,
-   "curtidas": 1,
+   "curtidas": 2,
    "comentarios": 0,
-   "reach": 2,
-   "views": 5,
+   "reach": 3,
+   "views": 7,
    "saved": 0,
    "shares": 0,
-   "total_interactions": 1
+   "total_interactions": 2
   },
   {
    "id": "17997331953106421",
@@ -104,8 +142,8 @@
    "estilo_legenda": "prova_social",
    "curtidas": 1,
    "comentarios": 0,
-   "reach": 2,
-   "views": 2,
+   "reach": 3,
+   "views": 3,
    "saved": 0,
    "shares": 0,
    "total_interactions": 1
@@ -1010,40 +1048,6 @@
    "saved": 0,
    "shares": 0,
    "total_interactions": 1
-  },
-  {
-   "id": "18118019632950481",
-   "data": "2026-10-13T08:08:38+0000",
-   "link": "https://www.instagram.com/p/DebWBR7Flh4/",
-   "tipo": "Imagem",
-   "conteudo": "Resultado",
-   "titulo": "RESULTADO do concurso 3802 — 8 acertos",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 1,
-   "comentarios": 0,
-   "reach": 2,
-   "views": 3,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 1
-  },
-  {
-   "id": "17883023709526603",
-   "data": "2026-10-11T19:44:58+0000",
-   "link": "https://www.instagram.com/p/DeXcH0eD0X2/",
-   "tipo": "Imagem",
-   "conteudo": "Jogo do dia",
-   "titulo": "🎯 13 JOGOS PRONTOS — CONCURSO 3802",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 0,
-   "comentarios": 0,
-   "reach": 3,
-   "views": 4,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 0
   }
  ],
  "avisos": []
