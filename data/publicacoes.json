@@ -191,5 +191,26 @@
   "estilo_legenda": "prova_social",
   "id": "17982947886133502",
   "simulado": false
+ },
+ {
+  "concurso": 3818,
+  "quando": "2026-10-31 07:08",
+  "rede": "instagram",
+  "formato": "resultado",
+  "estilo": "radar",
+  "acertos": 7,
+  "simulado": false,
+  "tipo": "reel",
+  "id": "17935588047141704"
+ },
+ {
+  "concurso": 3819,
+  "quando": "2026-10-31 07:09",
+  "rede": "instagram",
+  "formato": "feed",
+  "estilo": "radar",
+  "estilo_legenda": "informativo",
+  "id": "18107180885198241",
+  "simulado": false
  }
 ]
