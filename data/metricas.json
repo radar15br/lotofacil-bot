@@ -1,7 +1,7 @@
 {
- "atualizado": "30/10/2026 15:37",
+ "atualizado": "31/10/2026 14:43",
  "conta": "radar15br",
- "posts_total": 252,
+ "posts_total": 254,
  "seguidores": [
   {
    "data": "2026-10-25",
@@ -26,9 +26,47 @@
   {
    "data": "2026-10-30",
    "seguidores": 12
+  },
+  {
+   "data": "2026-10-31",
+   "seguidores": 12
   }
  ],
  "posts": [
+  {
+   "id": "18107180885198241",
+   "data": "2026-10-31T07:09:11+0000",
+   "link": "https://www.instagram.com/p/DfJlhtRHPZ7/",
+   "tipo": "Imagem",
+   "conteudo": "Jogo do dia",
+   "titulo": "13 jogos para o concurso 3819 — o que os dados mostram",
+   "concurso": 3819,
+   "estilo_legenda": "informativo",
+   "curtidas": 1,
+   "comentarios": 0,
+   "reach": 2,
+   "views": 3,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 1
+  },
+  {
+   "id": "17935588047141704",
+   "data": "2026-10-31T07:08:50+0000",
+   "link": "https://www.instagram.com/reel/DfJldznldLW/",
+   "tipo": "Reel",
+   "conteudo": "Resultado",
+   "titulo": "RESULTADO do concurso 3818 — 7 acertos",
+   "concurso": 3818,
+   "estilo_legenda": null,
+   "curtidas": 0,
+   "comentarios": 0,
+   "reach": 2,
+   "views": 2,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 0
+  },
   {
    "id": "17982947886133502",
    "data": "2026-10-30T07:21:30+0000",
@@ -1014,40 +1052,6 @@
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
-  },
-  {
-   "id": "18091255142212250",
-   "data": "2026-10-13T08:32:17+0000",
-   "link": "https://www.instagram.com/p/DebYufWmz_3/",
-   "tipo": "Imagem",
-   "conteudo": "Jogo do dia",
-   "titulo": "O placar aberto — concurso 3803",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 1,
-   "comentarios": 0,
-   "reach": 2,
-   "views": 2,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 1
-  },
-  {
-   "id": "18022102538920518",
-   "data": "2026-10-13T08:08:53+0000",
-   "link": "https://www.instagram.com/p/DebWDQalkMA/",
-   "tipo": "Imagem",
-   "conteudo": "Jogo do dia",
-   "titulo": "O placar aberto — concurso 3803",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 1,
-   "comentarios": 0,
-   "reach": 3,
-   "views": 5,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 1
   }
  ],
  "avisos": []
