@@ -1,7 +1,7 @@
 {
- "atualizado": "01/11/2026 15:26",
+ "atualizado": "02/11/2026 19:19",
  "conta": "radar15br",
- "posts_total": 254,
+ "posts_total": 256,
  "seguidores": [
   {
    "data": "2026-10-25",
@@ -34,9 +34,47 @@
   {
    "data": "2026-11-01",
    "seguidores": 12
+  },
+  {
+   "data": "2026-11-02",
+   "seguidores": 12
   }
  ],
  "posts": [
+  {
+   "id": "18115835408607331",
+   "data": "2026-11-02T07:49:48+0000",
+   "link": "https://www.instagram.com/p/DfOzxBcFDKt/",
+   "tipo": "Imagem",
+   "conteudo": "Jogo do dia",
+   "titulo": "🎯 13 JOGOS PRONTOS — CONCURSO 3820",
+   "concurso": 3820,
+   "estilo_legenda": "chamativo",
+   "curtidas": 1,
+   "comentarios": 0,
+   "reach": 3,
+   "views": 3,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 1
+  },
+  {
+   "id": "17989233197884849",
+   "data": "2026-11-02T07:49:30+0000",
+   "link": "https://www.instagram.com/reel/DfOztYlDOxQ/",
+   "tipo": "Reel",
+   "conteudo": "Resultado",
+   "titulo": "✅ 11 ACERTOS no concurso 3819",
+   "concurso": 3819,
+   "estilo_legenda": null,
+   "curtidas": 1,
+   "comentarios": 0,
+   "reach": 3,
+   "views": 4,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 1
+  },
   {
    "id": "18107180885198241",
    "data": "2026-10-31T07:09:11+0000",
@@ -1022,40 +1060,6 @@
    "saved": 0,
    "shares": 0,
    "total_interactions": 2
-  },
-  {
-   "id": "17949128253301982",
-   "data": "2026-10-13T09:26:24+0000",
-   "link": "https://www.instagram.com/p/Debe6yLG97o/",
-   "tipo": "Imagem",
-   "conteudo": "Jogo do dia",
-   "titulo": "O placar aberto — concurso 3803",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 1,
-   "comentarios": 0,
-   "reach": 2,
-   "views": 7,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 1
-  },
-  {
-   "id": "18127238165486241",
-   "data": "2026-10-13T09:17:36+0000",
-   "link": "https://www.instagram.com/p/Debd6ccFRuW/",
-   "tipo": "Imagem",
-   "conteudo": "Jogo do dia",
-   "titulo": "O placar aberto — concurso 3803",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 0,
-   "comentarios": 0,
-   "reach": 2,
-   "views": 2,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 0
   }
  ],
  "avisos": []
