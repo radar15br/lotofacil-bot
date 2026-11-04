@@ -1,7 +1,7 @@
 {
- "atualizado": "03/11/2026 17:09",
+ "atualizado": "04/11/2026 17:26",
  "conta": "radar15br",
- "posts_total": 256,
+ "posts_total": 258,
  "seguidores": [
   {
    "data": "2026-10-25",
@@ -42,9 +42,47 @@
   {
    "data": "2026-11-03",
    "seguidores": 12
+  },
+  {
+   "data": "2026-11-04",
+   "seguidores": 12
   }
  ],
  "posts": [
+  {
+   "id": "18035454737899828",
+   "data": "2026-11-04T07:38:37+0000",
+   "link": "https://www.instagram.com/p/DfT8EyvlYOg/",
+   "tipo": "Imagem",
+   "conteudo": "Jogo do dia",
+   "titulo": "O placar aberto — concurso 3821",
+   "concurso": 3821,
+   "estilo_legenda": "prova_social",
+   "curtidas": 1,
+   "comentarios": 0,
+   "reach": 3,
+   "views": 3,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 1
+  },
+  {
+   "id": "18501853159103108",
+   "data": "2026-11-04T07:38:18+0000",
+   "link": "https://www.instagram.com/reel/DfT8A87AbEV/",
+   "tipo": "Reel",
+   "conteudo": "Resultado",
+   "titulo": "RESULTADO do concurso 3820 — 10 acertos",
+   "concurso": 3820,
+   "estilo_legenda": null,
+   "curtidas": 1,
+   "comentarios": 0,
+   "reach": 4,
+   "views": 10,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 1
+  },
   {
    "id": "18115835408607331",
    "data": "2026-11-02T07:49:48+0000",
@@ -1030,40 +1068,6 @@
    "saved": 0,
    "shares": 0,
    "total_interactions": 1
-  },
-  {
-   "id": "18113927327035091",
-   "data": "2026-10-14T06:31:13+0000",
-   "link": "https://www.instagram.com/p/DedvqsCFbzu/",
-   "tipo": "Imagem",
-   "conteudo": "Jogo do dia",
-   "titulo": "13 jogos para o concurso 3804 — o que os dados mostram",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 0,
-   "comentarios": 0,
-   "reach": 3,
-   "views": 4,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 0
-  },
-  {
-   "id": "18129842881832358",
-   "data": "2026-10-14T06:30:58+0000",
-   "link": "https://www.instagram.com/p/Dedvo4QFYPs/",
-   "tipo": "Imagem",
-   "conteudo": "Resultado",
-   "titulo": "RESULTADO do concurso 3803 — 9 acertos",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 2,
-   "comentarios": 0,
-   "reach": 3,
-   "views": 3,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 2
   }
  ],
  "avisos": []
