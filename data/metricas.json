@@ -1,7 +1,7 @@
 {
- "atualizado": "04/11/2026 17:26",
+ "atualizado": "05/11/2026 17:39",
  "conta": "radar15br",
- "posts_total": 258,
+ "posts_total": 260,
  "seguidores": [
   {
    "data": "2026-10-25",
@@ -46,9 +46,47 @@
   {
    "data": "2026-11-04",
    "seguidores": 12
+  },
+  {
+   "data": "2026-11-05",
+   "seguidores": 12
   }
  ],
  "posts": [
+  {
+   "id": "18104648336529781",
+   "data": "2026-11-05T08:02:34+0000",
+   "link": "https://www.instagram.com/p/DfWjm9_FvBq/",
+   "tipo": "Imagem",
+   "conteudo": "Jogo do dia",
+   "titulo": "13 jogos para o concurso 3822 — o que os dados mostram",
+   "concurso": 3822,
+   "estilo_legenda": "informativo",
+   "curtidas": 1,
+   "comentarios": 0,
+   "reach": 3,
+   "views": 8,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 1
+  },
+  {
+   "id": "17884051497627137",
+   "data": "2026-11-05T08:02:13+0000",
+   "link": "https://www.instagram.com/reel/DfWjjCjkTzD/",
+   "tipo": "Reel",
+   "conteudo": "Resultado",
+   "titulo": "RESULTADO do concurso 3821 — 8 acertos",
+   "concurso": 3821,
+   "estilo_legenda": null,
+   "curtidas": 0,
+   "comentarios": 0,
+   "reach": 2,
+   "views": 5,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 0
+  },
   {
    "id": "18035454737899828",
    "data": "2026-11-04T07:38:37+0000",
@@ -61,7 +99,7 @@
    "curtidas": 1,
    "comentarios": 0,
    "reach": 3,
-   "views": 3,
+   "views": 6,
    "saved": 0,
    "shares": 0,
    "total_interactions": 1
@@ -78,7 +116,7 @@
    "curtidas": 1,
    "comentarios": 0,
    "reach": 4,
-   "views": 10,
+   "views": 12,
    "saved": 0,
    "shares": 0,
    "total_interactions": 1
@@ -95,7 +133,7 @@
    "curtidas": 1,
    "comentarios": 0,
    "reach": 3,
-   "views": 3,
+   "views": 6,
    "saved": 0,
    "shares": 0,
    "total_interactions": 1
@@ -112,7 +150,7 @@
    "curtidas": 1,
    "comentarios": 0,
    "reach": 3,
-   "views": 4,
+   "views": 7,
    "saved": 0,
    "shares": 0,
    "total_interactions": 1
@@ -129,7 +167,7 @@
    "curtidas": 1,
    "comentarios": 0,
    "reach": 2,
-   "views": 3,
+   "views": 6,
    "saved": 0,
    "shares": 0,
    "total_interactions": 1
@@ -146,7 +184,7 @@
    "curtidas": 0,
    "comentarios": 0,
    "reach": 2,
-   "views": 2,
+   "views": 5,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -163,7 +201,7 @@
    "curtidas": 1,
    "comentarios": 0,
    "reach": 3,
-   "views": 4,
+   "views": 7,
    "saved": 0,
    "shares": 0,
    "total_interactions": 1
@@ -180,7 +218,7 @@
    "curtidas": 2,
    "comentarios": 0,
    "reach": 3,
-   "views": 3,
+   "views": 6,
    "saved": 0,
    "shares": 0,
    "total_interactions": 2
@@ -197,7 +235,7 @@
    "curtidas": 1,
    "comentarios": 0,
    "reach": 2,
-   "views": 4,
+   "views": 7,
    "saved": 0,
    "shares": 0,
    "total_interactions": 1
@@ -214,7 +252,7 @@
    "curtidas": 2,
    "comentarios": 0,
    "reach": 3,
-   "views": 3,
+   "views": 6,
    "saved": 0,
    "shares": 0,
    "total_interactions": 2
@@ -231,7 +269,7 @@
    "curtidas": 2,
    "comentarios": 0,
    "reach": 3,
-   "views": 6,
+   "views": 9,
    "saved": 0,
    "shares": 0,
    "total_interactions": 2
@@ -248,7 +286,7 @@
    "curtidas": 2,
    "comentarios": 0,
    "reach": 3,
-   "views": 7,
+   "views": 10,
    "saved": 0,
    "shares": 0,
    "total_interactions": 2
@@ -265,7 +303,7 @@
    "curtidas": 1,
    "comentarios": 0,
    "reach": 3,
-   "views": 6,
+   "views": 9,
    "saved": 0,
    "shares": 0,
    "total_interactions": 1
@@ -282,7 +320,7 @@
    "curtidas": 1,
    "comentarios": 0,
    "reach": 3,
-   "views": 5,
+   "views": 7,
    "saved": 0,
    "shares": 0,
    "total_interactions": 1
@@ -299,7 +337,7 @@
    "curtidas": 0,
    "comentarios": 0,
    "reach": 3,
-   "views": 3,
+   "views": 5,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -333,7 +371,7 @@
    "curtidas": 1,
    "comentarios": 0,
    "reach": 4,
-   "views": 6,
+   "views": 7,
    "saved": 0,
    "shares": 0,
    "total_interactions": 1
@@ -350,7 +388,7 @@
    "curtidas": 1,
    "comentarios": 0,
    "reach": 3,
-   "views": 5,
+   "views": 6,
    "saved": 0,
    "shares": 0,
    "total_interactions": 1
@@ -367,7 +405,7 @@
    "curtidas": 1,
    "comentarios": 0,
    "reach": 2,
-   "views": 4,
+   "views": 5,
    "saved": 0,
    "shares": 0,
    "total_interactions": 1
@@ -384,7 +422,7 @@
    "curtidas": 1,
    "comentarios": 0,
    "reach": 2,
-   "views": 3,
+   "views": 4,
    "saved": 0,
    "shares": 0,
    "total_interactions": 1
@@ -401,7 +439,7 @@
    "curtidas": 0,
    "comentarios": 0,
    "reach": 3,
-   "views": 5,
+   "views": 6,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -418,7 +456,7 @@
    "curtidas": 0,
    "comentarios": 0,
    "reach": 3,
-   "views": 6,
+   "views": 7,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -435,7 +473,7 @@
    "curtidas": 0,
    "comentarios": 0,
    "reach": 3,
-   "views": 4,
+   "views": 5,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -452,7 +490,7 @@
    "curtidas": 0,
    "comentarios": 0,
    "reach": 2,
-   "views": 4,
+   "views": 5,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -469,7 +507,7 @@
    "curtidas": 0,
    "comentarios": 0,
    "reach": 3,
-   "views": 4,
+   "views": 5,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -486,7 +524,7 @@
    "curtidas": 0,
    "comentarios": 0,
    "reach": 2,
-   "views": 5,
+   "views": 6,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -503,7 +541,7 @@
    "curtidas": 0,
    "comentarios": 0,
    "reach": 3,
-   "views": 5,
+   "views": 6,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -520,7 +558,7 @@
    "curtidas": 0,
    "comentarios": 0,
    "reach": 2,
-   "views": 4,
+   "views": 5,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -537,7 +575,7 @@
    "curtidas": 0,
    "comentarios": 0,
    "reach": 2,
-   "views": 3,
+   "views": 4,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -554,7 +592,7 @@
    "curtidas": 1,
    "comentarios": 0,
    "reach": 2,
-   "views": 4,
+   "views": 5,
    "saved": 0,
    "shares": 0,
    "total_interactions": 1
@@ -571,7 +609,7 @@
    "curtidas": 0,
    "comentarios": 0,
    "reach": 2,
-   "views": 5,
+   "views": 6,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -588,7 +626,7 @@
    "curtidas": 0,
    "comentarios": 0,
    "reach": 2,
-   "views": 3,
+   "views": 5,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -605,7 +643,7 @@
    "curtidas": 0,
    "comentarios": 0,
    "reach": 2,
-   "views": 9,
+   "views": 11,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -622,7 +660,7 @@
    "curtidas": 0,
    "comentarios": 0,
    "reach": 3,
-   "views": 7,
+   "views": 9,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -639,7 +677,7 @@
    "curtidas": 0,
    "comentarios": 0,
    "reach": 2,
-   "views": 6,
+   "views": 8,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -656,7 +694,7 @@
    "curtidas": 0,
    "comentarios": 0,
    "reach": 2,
-   "views": 3,
+   "views": 5,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -673,7 +711,7 @@
    "curtidas": 0,
    "comentarios": 0,
    "reach": 2,
-   "views": 3,
+   "views": 4,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -690,7 +728,7 @@
    "curtidas": 0,
    "comentarios": 0,
    "reach": 2,
-   "views": 3,
+   "views": 4,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -707,7 +745,7 @@
    "curtidas": 0,
    "comentarios": 0,
    "reach": 2,
-   "views": 2,
+   "views": 3,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -724,7 +762,7 @@
    "curtidas": 1,
    "comentarios": 0,
    "reach": 4,
-   "views": 6,
+   "views": 7,
    "saved": 0,
    "shares": 0,
    "total_interactions": 1
@@ -741,7 +779,7 @@
    "curtidas": 0,
    "comentarios": 0,
    "reach": 2,
-   "views": 3,
+   "views": 4,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -758,7 +796,7 @@
    "curtidas": 0,
    "comentarios": 0,
    "reach": 3,
-   "views": 4,
+   "views": 5,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -775,7 +813,7 @@
    "curtidas": 0,
    "comentarios": 0,
    "reach": 2,
-   "views": 5,
+   "views": 6,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -792,7 +830,7 @@
    "curtidas": 0,
    "comentarios": 0,
    "reach": 2,
-   "views": 2,
+   "views": 3,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -809,7 +847,7 @@
    "curtidas": 0,
    "comentarios": 0,
    "reach": 2,
-   "views": 4,
+   "views": 5,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -826,7 +864,7 @@
    "curtidas": 0,
    "comentarios": 0,
    "reach": 2,
-   "views": 7,
+   "views": 8,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -843,7 +881,7 @@
    "curtidas": 0,
    "comentarios": 0,
    "reach": 4,
-   "views": 6,
+   "views": 7,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -860,7 +898,7 @@
    "curtidas": 1,
    "comentarios": 0,
    "reach": 3,
-   "views": 6,
+   "views": 7,
    "saved": 0,
    "shares": 0,
    "total_interactions": 1
@@ -877,7 +915,7 @@
    "curtidas": 0,
    "comentarios": 0,
    "reach": 2,
-   "views": 2,
+   "views": 3,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -894,7 +932,7 @@
    "curtidas": 0,
    "comentarios": 0,
    "reach": 2,
-   "views": 4,
+   "views": 5,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -911,7 +949,7 @@
    "curtidas": 0,
    "comentarios": 0,
    "reach": 2,
-   "views": 2,
+   "views": 3,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -928,7 +966,7 @@
    "curtidas": 1,
    "comentarios": 0,
    "reach": 3,
-   "views": 8,
+   "views": 9,
    "saved": 0,
    "shares": 0,
    "total_interactions": 1
@@ -945,7 +983,7 @@
    "curtidas": 0,
    "comentarios": 0,
    "reach": 2,
-   "views": 7,
+   "views": 8,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -962,7 +1000,7 @@
    "curtidas": 0,
    "comentarios": 0,
    "reach": 2,
-   "views": 2,
+   "views": 3,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -979,7 +1017,7 @@
    "curtidas": 0,
    "comentarios": 0,
    "reach": 2,
-   "views": 5,
+   "views": 6,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -996,7 +1034,7 @@
    "curtidas": 1,
    "comentarios": 0,
    "reach": 2,
-   "views": 2,
+   "views": 4,
    "saved": 0,
    "shares": 0,
    "total_interactions": 1
@@ -1013,7 +1051,7 @@
    "curtidas": 2,
    "comentarios": 0,
    "reach": 4,
-   "views": 9,
+   "views": 11,
    "saved": 0,
    "shares": 0,
    "total_interactions": 2
@@ -1030,44 +1068,10 @@
    "curtidas": 0,
    "comentarios": 0,
    "reach": 3,
-   "views": 7,
+   "views": 9,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
-  },
-  {
-   "id": "17966873670192959",
-   "data": "2026-10-14T07:28:04+0000",
-   "link": "https://www.instagram.com/p/Ded2LESm3QJ/",
-   "tipo": "Imagem",
-   "conteudo": "Jogo do dia",
-   "titulo": "13 jogos para o concurso 3804 — o que os dados mostram",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 0,
-   "comentarios": 0,
-   "reach": 3,
-   "views": 4,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 0
-  },
-  {
-   "id": "18032874065909461",
-   "data": "2026-10-14T06:45:43+0000",
-   "link": "https://www.instagram.com/p/DedxUWcFZoF/",
-   "tipo": "Imagem",
-   "conteudo": "Jogo do dia",
-   "titulo": "13 jogos para o concurso 3804 — o que os dados mostram",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 1,
-   "comentarios": 0,
-   "reach": 3,
-   "views": 6,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 1
   }
  ],
  "avisos": []
