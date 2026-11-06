@@ -1,7 +1,7 @@
 {
- "atualizado": "05/11/2026 17:39",
+ "atualizado": "06/11/2026 16:57",
  "conta": "radar15br",
- "posts_total": 260,
+ "posts_total": 262,
  "seguidores": [
   {
    "data": "2026-10-25",
@@ -50,9 +50,47 @@
   {
    "data": "2026-11-05",
    "seguidores": 12
+  },
+  {
+   "data": "2026-11-06",
+   "seguidores": 12
   }
  ],
  "posts": [
+  {
+   "id": "18077668613744191",
+   "data": "2026-11-06T08:03:42+0000",
+   "link": "https://www.instagram.com/p/DfZIiYIm6aU/",
+   "tipo": "Imagem",
+   "conteudo": "Jogo do dia",
+   "titulo": "🎯 13 JOGOS PRONTOS — CONCURSO 3823",
+   "concurso": 3823,
+   "estilo_legenda": "chamativo",
+   "curtidas": 0,
+   "comentarios": 0,
+   "reach": 2,
+   "views": 2,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 0
+  },
+  {
+   "id": "18119039005813898",
+   "data": "2026-11-06T08:03:22+0000",
+   "link": "https://www.instagram.com/reel/DfZId5ZCEl_/",
+   "tipo": "Reel",
+   "conteudo": "Resultado",
+   "titulo": "RESULTADO do concurso 3822 — 7 acertos",
+   "concurso": 3822,
+   "estilo_legenda": null,
+   "curtidas": 0,
+   "comentarios": 0,
+   "reach": 2,
+   "views": 2,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 0
+  },
   {
    "id": "18104648336529781",
    "data": "2026-11-05T08:02:34+0000",
@@ -1038,40 +1076,6 @@
    "saved": 0,
    "shares": 0,
    "total_interactions": 1
-  },
-  {
-   "id": "18118384043290421",
-   "data": "2026-10-15T06:14:34+0000",
-   "link": "https://www.instagram.com/p/DegSjr-lnqI/",
-   "tipo": "Imagem",
-   "conteudo": "Resultado",
-   "titulo": "RESULTADO do concurso 3804 — 8 acertos",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 2,
-   "comentarios": 0,
-   "reach": 4,
-   "views": 11,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 2
-  },
-  {
-   "id": "17961369810232621",
-   "data": "2026-10-14T07:39:04+0000",
-   "link": "https://www.instagram.com/p/Ded3blvFeWG/",
-   "tipo": "Imagem",
-   "conteudo": "Jogo do dia",
-   "titulo": "13 jogos para o concurso 3804 — o que os dados mostram",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 0,
-   "comentarios": 0,
-   "reach": 3,
-   "views": 9,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 0
   }
  ],
  "avisos": []
