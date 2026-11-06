@@ -275,5 +275,26 @@
   "estilo_legenda": "informativo",
   "id": "18104648336529781",
   "simulado": false
+ },
+ {
+  "concurso": 3822,
+  "quando": "2026-11-06 08:03",
+  "rede": "instagram",
+  "formato": "resultado",
+  "estilo": "radar",
+  "acertos": 7,
+  "simulado": false,
+  "tipo": "reel",
+  "id": "18119039005813898"
+ },
+ {
+  "concurso": 3823,
+  "quando": "2026-11-06 08:03",
+  "rede": "instagram",
+  "formato": "feed",
+  "estilo": "radar",
+  "estilo_legenda": "chamativo",
+  "id": "18077668613744191",
+  "simulado": false
  }
 ]
