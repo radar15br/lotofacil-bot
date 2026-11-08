@@ -1,5 +1,5 @@
 {
- "atualizado": "07/11/2026 15:02",
+ "atualizado": "08/11/2026 15:21",
  "conta": "radar15br",
  "posts_total": 264,
  "seguidores": [
@@ -58,6 +58,10 @@
   {
    "data": "2026-11-07",
    "seguidores": 12
+  },
+  {
+   "data": "2026-11-08",
+   "seguidores": 12
   }
  ],
  "posts": [
@@ -90,7 +94,7 @@
    "curtidas": 0,
    "comentarios": 0,
    "reach": 2,
-   "views": 6,
+   "views": 7,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
