@@ -1,7 +1,7 @@
 {
- "atualizado": "08/11/2026 15:21",
+ "atualizado": "09/11/2026 19:59",
  "conta": "radar15br",
- "posts_total": 264,
+ "posts_total": 266,
  "seguidores": [
   {
    "data": "2026-10-25",
@@ -62,9 +62,47 @@
   {
    "data": "2026-11-08",
    "seguidores": 12
+  },
+  {
+   "data": "2026-11-09",
+   "seguidores": 12
   }
  ],
  "posts": [
+  {
+   "id": "18149680726570310",
+   "data": "2026-11-09T08:12:20+0000",
+   "link": "https://www.instagram.com/p/Dfg36ICFjFn/",
+   "tipo": "Imagem",
+   "conteudo": "Jogo do dia",
+   "titulo": "13 jogos para o concurso 3825 — o que os dados mostram",
+   "concurso": 3825,
+   "estilo_legenda": "informativo",
+   "curtidas": 0,
+   "comentarios": 0,
+   "reach": 1,
+   "views": 1,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 0
+  },
+  {
+   "id": "17908127340355914",
+   "data": "2026-11-09T08:11:59+0000",
+   "link": "https://www.instagram.com/reel/Dfg31_fHJLa/",
+   "tipo": "Reel",
+   "conteudo": "Resultado",
+   "titulo": "RESULTADO do concurso 3824 — 9 acertos",
+   "concurso": 3824,
+   "estilo_legenda": null,
+   "curtidas": 1,
+   "comentarios": 0,
+   "reach": 2,
+   "views": 4,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 1
+  },
   {
    "id": "18136689955674623",
    "data": "2026-11-07T07:23:52+0000",
@@ -1050,40 +1088,6 @@
    "saved": 0,
    "shares": 0,
    "total_interactions": 1
-  },
-  {
-   "id": "18042217775827022",
-   "data": "2026-10-15T07:27:38+0000",
-   "link": "https://www.instagram.com/p/Dega63JGy4W/",
-   "tipo": "Imagem",
-   "conteudo": "Jogo do dia",
-   "titulo": "🎯 13 JOGOS PRONTOS — CONCURSO 3805",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 0,
-   "comentarios": 0,
-   "reach": 2,
-   "views": 8,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 0
-  },
-  {
-   "id": "18106927514199748",
-   "data": "2026-10-15T07:18:14+0000",
-   "link": "https://www.instagram.com/p/DegZ2ACnAuT/",
-   "tipo": "Imagem",
-   "conteudo": "Jogo do dia",
-   "titulo": "🎯 13 JOGOS PRONTOS — CONCURSO 3805",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 0,
-   "comentarios": 0,
-   "reach": 2,
-   "views": 3,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 0
   }
  ],
  "avisos": []
