@@ -1,7 +1,7 @@
 {
- "atualizado": "09/11/2026 19:59",
+ "atualizado": "10/11/2026 17:28",
  "conta": "radar15br",
- "posts_total": 266,
+ "posts_total": 268,
  "seguidores": [
   {
    "data": "2026-10-25",
@@ -66,9 +66,47 @@
   {
    "data": "2026-11-09",
    "seguidores": 12
+  },
+  {
+   "data": "2026-11-10",
+   "seguidores": 12
   }
  ],
  "posts": [
+  {
+   "id": "18120983200949522",
+   "data": "2026-11-10T08:33:39+0000",
+   "link": "https://www.instagram.com/p/DfjfJDOFn_j/",
+   "tipo": "Imagem",
+   "conteudo": "Jogo do dia",
+   "titulo": "🎯 13 JOGOS PRONTOS — CONCURSO 3826",
+   "concurso": 3826,
+   "estilo_legenda": "chamativo",
+   "curtidas": 1,
+   "comentarios": 0,
+   "reach": 2,
+   "views": 2,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 1
+  },
+  {
+   "id": "18133763254857648",
+   "data": "2026-11-10T08:33:18+0000",
+   "link": "https://www.instagram.com/reel/DfjfEEzAk_C/",
+   "tipo": "Reel",
+   "conteudo": "Resultado",
+   "titulo": "✅ 11 ACERTOS no concurso 3825",
+   "concurso": 3825,
+   "estilo_legenda": null,
+   "curtidas": 1,
+   "comentarios": 0,
+   "reach": 2,
+   "views": 1,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 1
+  },
   {
    "id": "18149680726570310",
    "data": "2026-11-09T08:12:20+0000",
@@ -80,8 +118,8 @@
    "estilo_legenda": "informativo",
    "curtidas": 0,
    "comentarios": 0,
-   "reach": 1,
-   "views": 1,
+   "reach": 2,
+   "views": 3,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -1054,40 +1092,6 @@
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
-  },
-  {
-   "id": "18112552496036717",
-   "data": "2026-10-16T06:10:14+0000",
-   "link": "https://www.instagram.com/p/Dei220LEU2r/",
-   "tipo": "Imagem",
-   "conteudo": "Jogo do dia",
-   "titulo": "O placar aberto — concurso 3806",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 0,
-   "comentarios": 0,
-   "reach": 2,
-   "views": 3,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 0
-  },
-  {
-   "id": "18125520155485313",
-   "data": "2026-10-16T06:09:59+0000",
-   "link": "https://www.instagram.com/p/Dei20_gkUXZ/",
-   "tipo": "Imagem",
-   "conteudo": "Resultado",
-   "titulo": "RESULTADO do concurso 3805 — 8 acertos",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 1,
-   "comentarios": 0,
-   "reach": 3,
-   "views": 9,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 1
   }
  ],
  "avisos": []
