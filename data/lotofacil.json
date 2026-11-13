@@ -122462,6 +122462,7 @@
   "acumulado": false,
   "ganhadores_15": 0,
   "rateios": {},
-  "fonte": "espelho"
+  "fonte": "caixa",
+  "verificado": true
  }
 ]
