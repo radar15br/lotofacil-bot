@@ -1,7 +1,7 @@
 {
- "atualizado": "12/11/2026 17:49",
+ "atualizado": "13/11/2026 17:29",
  "conta": "radar15br",
- "posts_total": 272,
+ "posts_total": 274,
  "seguidores": [
   {
    "data": "2026-10-25",
@@ -78,9 +78,47 @@
   {
    "data": "2026-11-12",
    "seguidores": 12
+  },
+  {
+   "data": "2026-11-13",
+   "seguidores": 12
   }
  ],
  "posts": [
+  {
+   "id": "17882543376554492",
+   "data": "2026-11-13T02:28:51+0000",
+   "link": "https://www.instagram.com/p/Dfqjx3HmzYK/",
+   "tipo": "Imagem",
+   "conteudo": "Jogo do dia",
+   "titulo": "🎯 13 JOGOS PRONTOS — CONCURSO 3829",
+   "concurso": 3829,
+   "estilo_legenda": "chamativo",
+   "curtidas": 1,
+   "comentarios": 0,
+   "reach": 3,
+   "views": 5,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 1
+  },
+  {
+   "id": "18066071792523699",
+   "data": "2026-11-13T02:28:32+0000",
+   "link": "https://www.instagram.com/reel/DfqjuJ-lqVF/",
+   "tipo": "Reel",
+   "conteudo": "Resultado",
+   "titulo": "✅ 11 ACERTOS no concurso 3828",
+   "concurso": 3828,
+   "estilo_legenda": null,
+   "curtidas": 1,
+   "comentarios": 0,
+   "reach": 3,
+   "views": 9,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 1
+  },
   {
    "id": "18101861687416807",
    "data": "2026-11-12T08:29:47+0000",
@@ -177,8 +215,8 @@
    "estilo_legenda": null,
    "curtidas": 1,
    "comentarios": 0,
-   "reach": 4,
-   "views": 4,
+   "reach": 5,
+   "views": 5,
    "saved": 0,
    "shares": 0,
    "total_interactions": 1
@@ -194,8 +232,8 @@
    "estilo_legenda": "informativo",
    "curtidas": 0,
    "comentarios": 0,
-   "reach": 3,
-   "views": 5,
+   "reach": 4,
+   "views": 7,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -211,8 +249,8 @@
    "estilo_legenda": null,
    "curtidas": 1,
    "comentarios": 0,
-   "reach": 3,
-   "views": 6,
+   "reach": 4,
+   "views": 7,
    "saved": 0,
    "shares": 0,
    "total_interactions": 1
@@ -1063,40 +1101,6 @@
    "comentarios": 0,
    "reach": 2,
    "views": 3,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 0
-  },
-  {
-   "id": "18169131538467450",
-   "data": "2026-10-17T06:16:28+0000",
-   "link": "https://www.instagram.com/p/DelcXZAFVfp/",
-   "tipo": "Imagem",
-   "conteudo": "Jogo do dia",
-   "titulo": "13 jogos para o concurso 3807 — o que os dados mostram",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 0,
-   "comentarios": 0,
-   "reach": 2,
-   "views": 5,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 0
-  },
-  {
-   "id": "18140892541617437",
-   "data": "2026-10-17T05:55:56+0000",
-   "link": "https://www.instagram.com/p/DelaA5THITg/",
-   "tipo": "Imagem",
-   "conteudo": "Jogo do dia",
-   "titulo": "13 jogos para o concurso 3807 — o que os dados mostram",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 0,
-   "comentarios": 0,
-   "reach": 2,
-   "views": 8,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
