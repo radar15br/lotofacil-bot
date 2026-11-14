@@ -1,7 +1,7 @@
 {
- "atualizado": "13/11/2026 17:29",
+ "atualizado": "14/11/2026 15:44",
  "conta": "radar15br",
- "posts_total": 274,
+ "posts_total": 276,
  "seguidores": [
   {
    "data": "2026-10-25",
@@ -82,9 +82,47 @@
   {
    "data": "2026-11-13",
    "seguidores": 12
+  },
+  {
+   "data": "2026-11-14",
+   "seguidores": 11
   }
  ],
  "posts": [
+  {
+   "id": "18103999973528858",
+   "data": "2026-11-14T07:43:29+0000",
+   "link": "https://www.instagram.com/p/DftslRhlvtv/",
+   "tipo": "Imagem",
+   "conteudo": "Jogo do dia",
+   "titulo": "O placar aberto — concurso 3830",
+   "concurso": 3830,
+   "estilo_legenda": "prova_social",
+   "curtidas": 1,
+   "comentarios": 0,
+   "reach": 2,
+   "views": 2,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 1
+  },
+  {
+   "id": "18200175970390261",
+   "data": "2026-11-14T07:43:10+0000",
+   "link": "https://www.instagram.com/reel/Dftshf_jaRw/",
+   "tipo": "Reel",
+   "conteudo": "Resultado",
+   "titulo": "RESULTADO do concurso 3829 — 8 acertos",
+   "concurso": 3829,
+   "estilo_legenda": null,
+   "curtidas": 1,
+   "comentarios": 0,
+   "reach": 2,
+   "views": 3,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 1
+  },
   {
    "id": "17882543376554492",
    "data": "2026-11-13T02:28:51+0000",
@@ -1067,40 +1105,6 @@
    "comentarios": 0,
    "reach": 3,
    "views": 5,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 0
-  },
-  {
-   "id": "17993679561056929",
-   "data": "2026-10-17T06:58:03+0000",
-   "link": "https://www.instagram.com/p/DelhH9XFvHo/",
-   "tipo": "Imagem",
-   "conteudo": "Jogo do dia",
-   "titulo": "13 jogos para o concurso 3807 — o que os dados mostram",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 0,
-   "comentarios": 0,
-   "reach": 2,
-   "views": 6,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 0
-  },
-  {
-   "id": "17962639512218567",
-   "data": "2026-10-17T06:50:48+0000",
-   "link": "https://www.instagram.com/p/DelgS24lkF0/",
-   "tipo": "Imagem",
-   "conteudo": "Jogo do dia",
-   "titulo": "13 jogos para o concurso 3807 — o que os dados mostram",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 0,
-   "comentarios": 0,
-   "reach": 2,
-   "views": 3,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
