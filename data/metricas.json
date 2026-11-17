@@ -1,7 +1,7 @@
 {
- "atualizado": "16/11/2026 19:53",
+ "atualizado": "17/11/2026 18:46",
  "conta": "radar15br",
- "posts_total": 278,
+ "posts_total": 280,
  "seguidores": [
   {
    "data": "2026-10-25",
@@ -94,9 +94,47 @@
   {
    "data": "2026-11-16",
    "seguidores": 11
+  },
+  {
+   "data": "2026-11-17",
+   "seguidores": 11
   }
  ],
  "posts": [
+  {
+   "id": "18579117769076689",
+   "data": "2026-11-17T09:23:49+0000",
+   "link": "https://www.instagram.com/p/Df1mcn6IInZ/",
+   "tipo": "Imagem",
+   "conteudo": "Jogo do dia",
+   "titulo": "🎯 13 JOGOS PRONTOS — CONCURSO 3832",
+   "concurso": 3832,
+   "estilo_legenda": "chamativo",
+   "curtidas": 2,
+   "comentarios": 0,
+   "reach": 2,
+   "views": 3,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 2
+  },
+  {
+   "id": "17977804152159214",
+   "data": "2026-11-17T09:23:28+0000",
+   "link": "https://www.instagram.com/reel/Df1mYbgCM8r/",
+   "tipo": "Reel",
+   "conteudo": "Resultado",
+   "titulo": "RESULTADO do concurso 3831 — 7 acertos",
+   "concurso": 3831,
+   "estilo_legenda": null,
+   "curtidas": 0,
+   "comentarios": 0,
+   "reach": 2,
+   "views": 3,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 0
+  },
   {
    "id": "18032415614873559",
    "data": "2026-11-16T08:09:19+0000",
@@ -1082,40 +1120,6 @@
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
-  },
-  {
-   "id": "18168035518470820",
-   "data": "2026-10-20T06:22:06+0000",
-   "link": "https://www.instagram.com/p/DetLZULlPTx/",
-   "tipo": "Imagem",
-   "conteudo": "Jogo do dia",
-   "titulo": "O placar aberto — concurso 3809",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 0,
-   "comentarios": 0,
-   "reach": 2,
-   "views": 3,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 0
-  },
-  {
-   "id": "18036853160847527",
-   "data": "2026-10-20T06:21:52+0000",
-   "link": "https://www.instagram.com/p/DetLXjplOMM/",
-   "tipo": "Imagem",
-   "conteudo": "Resultado",
-   "titulo": "RESULTADO do concurso 3807 — 10 acertos",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 1,
-   "comentarios": 0,
-   "reach": 4,
-   "views": 7,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 1
   }
  ],
  "avisos": []
