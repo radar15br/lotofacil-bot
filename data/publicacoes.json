@@ -485,5 +485,26 @@
   "estilo_legenda": "chamativo",
   "id": "18579117769076689",
   "simulado": false
+ },
+ {
+  "concurso": 3832,
+  "quando": "2026-11-18 08:46",
+  "rede": "instagram",
+  "formato": "resultado",
+  "estilo": "radar",
+  "acertos": 10,
+  "simulado": false,
+  "tipo": "reel",
+  "id": "18120228278471231"
+ },
+ {
+  "concurso": 3833,
+  "quando": "2026-11-18 08:47",
+  "rede": "instagram",
+  "formato": "feed",
+  "estilo": "radar",
+  "estilo_legenda": "prova_social",
+  "id": "18106716758364904",
+  "simulado": false
  }
 ]
