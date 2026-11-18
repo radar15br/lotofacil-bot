@@ -1,7 +1,7 @@
 {
- "atualizado": "17/11/2026 18:46",
+ "atualizado": "18/11/2026 18:26",
  "conta": "radar15br",
- "posts_total": 280,
+ "posts_total": 282,
  "seguidores": [
   {
    "data": "2026-10-25",
@@ -98,9 +98,47 @@
   {
    "data": "2026-11-17",
    "seguidores": 11
+  },
+  {
+   "data": "2026-11-18",
+   "seguidores": 11
   }
  ],
  "posts": [
+  {
+   "id": "18106716758364904",
+   "data": "2026-11-18T08:47:09+0000",
+   "link": "https://www.instagram.com/p/Df4HDC9m2me/",
+   "tipo": "Imagem",
+   "conteudo": "Jogo do dia",
+   "titulo": "O placar aberto — concurso 3833",
+   "concurso": 3833,
+   "estilo_legenda": "prova_social",
+   "curtidas": 1,
+   "comentarios": 0,
+   "reach": 4,
+   "views": 8,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 1
+  },
+  {
+   "id": "18120228278471231",
+   "data": "2026-11-18T08:46:50+0000",
+   "link": "https://www.instagram.com/reel/Df4G_TAjWH3/",
+   "tipo": "Reel",
+   "conteudo": "Resultado",
+   "titulo": "RESULTADO do concurso 3832 — 10 acertos",
+   "concurso": 3832,
+   "estilo_legenda": null,
+   "curtidas": 1,
+   "comentarios": 0,
+   "reach": 2,
+   "views": 6,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 1
+  },
   {
    "id": "18579117769076689",
    "data": "2026-11-17T09:23:49+0000",
@@ -1083,40 +1121,6 @@
    "comentarios": 0,
    "reach": 2,
    "views": 5,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 0
-  },
-  {
-   "id": "17915553690544234",
-   "data": "2026-10-20T07:24:50+0000",
-   "link": "https://www.instagram.com/p/DetSkvJlSa0/",
-   "tipo": "Imagem",
-   "conteudo": "Jogo do dia",
-   "titulo": "O placar aberto — concurso 3809",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 0,
-   "comentarios": 0,
-   "reach": 2,
-   "views": 4,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 0
-  },
-  {
-   "id": "17987559279087806",
-   "data": "2026-10-20T06:41:15+0000",
-   "link": "https://www.instagram.com/p/DetNlk4lf4P/",
-   "tipo": "Imagem",
-   "conteudo": "Jogo do dia",
-   "titulo": "O placar aberto — concurso 3809",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 0,
-   "comentarios": 0,
-   "reach": 2,
-   "views": 4,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
