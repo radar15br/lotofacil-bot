@@ -1,7 +1,7 @@
 {
- "atualizado": "18/11/2026 18:26",
+ "atualizado": "19/11/2026 18:31",
  "conta": "radar15br",
- "posts_total": 282,
+ "posts_total": 284,
  "seguidores": [
   {
    "data": "2026-10-25",
@@ -102,9 +102,47 @@
   {
    "data": "2026-11-18",
    "seguidores": 11
+  },
+  {
+   "data": "2026-11-19",
+   "seguidores": 11
   }
  ],
  "posts": [
+  {
+   "id": "18026194643719808",
+   "data": "2026-11-19T03:56:44+0000",
+   "link": "https://www.instagram.com/p/Df6Km5QFEBk/",
+   "tipo": "Imagem",
+   "conteudo": "Jogo do dia",
+   "titulo": "13 jogos para o concurso 3834 — o que os dados mostram",
+   "concurso": 3834,
+   "estilo_legenda": "informativo",
+   "curtidas": 0,
+   "comentarios": 0,
+   "reach": 2,
+   "views": 2,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 0
+  },
+  {
+   "id": "17930747961430637",
+   "data": "2026-11-19T03:56:27+0000",
+   "link": "https://www.instagram.com/reel/Df6KjM1jkBO/",
+   "tipo": "Reel",
+   "conteudo": "Resultado",
+   "titulo": "RESULTADO do concurso 3833 — 7 acertos",
+   "concurso": 3833,
+   "estilo_legenda": null,
+   "curtidas": 1,
+   "comentarios": 0,
+   "reach": 2,
+   "views": 3,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 1
+  },
   {
    "id": "18106716758364904",
    "data": "2026-11-18T08:47:09+0000",
@@ -1087,40 +1125,6 @@
    "comentarios": 0,
    "reach": 3,
    "views": 9,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 0
-  },
-  {
-   "id": "18110450258353066",
-   "data": "2026-10-21T06:21:40+0000",
-   "link": "https://www.instagram.com/p/DevwIxilYiZ/",
-   "tipo": "Imagem",
-   "conteudo": "Resultado",
-   "titulo": "RESULTADO do concurso 3809 — 8 acertos",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 0,
-   "comentarios": 0,
-   "reach": 2,
-   "views": 8,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 0
-  },
-  {
-   "id": "18340240081277226",
-   "data": "2026-10-20T07:33:52+0000",
-   "link": "https://www.instagram.com/p/DetTm1VG9yQ/",
-   "tipo": "Imagem",
-   "conteudo": "Jogo do dia",
-   "titulo": "O placar aberto — concurso 3809",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 0,
-   "comentarios": 0,
-   "reach": 2,
-   "views": 5,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
