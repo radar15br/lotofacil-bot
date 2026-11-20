@@ -1,7 +1,7 @@
 {
- "atualizado": "19/11/2026 18:31",
+ "atualizado": "20/11/2026 18:04",
  "conta": "radar15br",
- "posts_total": 284,
+ "posts_total": 286,
  "seguidores": [
   {
    "data": "2026-10-25",
@@ -106,9 +106,47 @@
   {
    "data": "2026-11-19",
    "seguidores": 11
+  },
+  {
+   "data": "2026-11-20",
+   "seguidores": 11
   }
  ],
  "posts": [
+  {
+   "id": "18021430706949504",
+   "data": "2026-11-20T03:44:51+0000",
+   "link": "https://www.instagram.com/p/Df8uClCANNs/",
+   "tipo": "Imagem",
+   "conteudo": "Jogo do dia",
+   "titulo": "🎯 13 JOGOS PRONTOS — CONCURSO 3835",
+   "concurso": 3835,
+   "estilo_legenda": "chamativo",
+   "curtidas": 1,
+   "comentarios": 0,
+   "reach": 2,
+   "views": 3,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 1
+  },
+  {
+   "id": "18134790169683890",
+   "data": "2026-11-20T03:44:29+0000",
+   "link": "https://www.instagram.com/reel/Df8t_NhHJej/",
+   "tipo": "Reel",
+   "conteudo": "Resultado",
+   "titulo": "RESULTADO do concurso 3834 — 10 acertos",
+   "concurso": 3834,
+   "estilo_legenda": null,
+   "curtidas": 1,
+   "comentarios": 0,
+   "reach": 3,
+   "views": 4,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 1
+  },
   {
    "id": "18026194643719808",
    "data": "2026-11-19T03:56:44+0000",
@@ -1091,40 +1129,6 @@
    "comentarios": 0,
    "reach": 2,
    "views": 5,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 0
-  },
-  {
-   "id": "17905656231348349",
-   "data": "2026-10-21T06:37:47+0000",
-   "link": "https://www.instagram.com/p/Devx_AiluEV/",
-   "tipo": "Imagem",
-   "conteudo": "Jogo do dia",
-   "titulo": "13 jogos para o concurso 3810 — o que os dados mostram",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 0,
-   "comentarios": 0,
-   "reach": 2,
-   "views": 11,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 0
-  },
-  {
-   "id": "18634459717024267",
-   "data": "2026-10-21T06:21:54+0000",
-   "link": "https://www.instagram.com/p/DevwKsKFdjM/",
-   "tipo": "Imagem",
-   "conteudo": "Jogo do dia",
-   "titulo": "13 jogos para o concurso 3810 — o que os dados mostram",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 0,
-   "comentarios": 0,
-   "reach": 3,
-   "views": 9,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
