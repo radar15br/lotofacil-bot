@@ -1,5 +1,5 @@
 {
- "atualizado": "21/11/2026 17:05",
+ "atualizado": "22/11/2026 17:21",
  "conta": "radar15br",
  "posts_total": 286,
  "seguidores": [
@@ -114,6 +114,10 @@
   {
    "data": "2026-11-21",
    "seguidores": 11
+  },
+  {
+   "data": "2026-11-22",
+   "seguidores": 12
   }
  ],
  "posts": [
@@ -128,8 +132,8 @@
    "estilo_legenda": "chamativo",
    "curtidas": 1,
    "comentarios": 0,
-   "reach": 2,
-   "views": 3,
+   "reach": 3,
+   "views": 4,
    "saved": 0,
    "shares": 0,
    "total_interactions": 1
@@ -332,8 +336,8 @@
    "estilo_legenda": "chamativo",
    "curtidas": 1,
    "comentarios": 0,
-   "reach": 3,
-   "views": 6,
+   "reach": 4,
+   "views": 8,
    "saved": 0,
    "shares": 0,
    "total_interactions": 1
@@ -349,7 +353,7 @@
    "estilo_legenda": null,
    "curtidas": 1,
    "comentarios": 0,
-   "reach": 3,
+   "reach": 4,
    "views": 10,
    "saved": 0,
    "shares": 0,
@@ -381,13 +385,13 @@
    "titulo": "RESULTADO do concurso 3827 — 10 acertos",
    "concurso": 3827,
    "estilo_legenda": null,
-   "curtidas": 1,
+   "curtidas": 2,
    "comentarios": 0,
-   "reach": 4,
-   "views": 5,
+   "reach": 5,
+   "views": 6,
    "saved": 0,
    "shares": 0,
-   "total_interactions": 1
+   "total_interactions": 2
   },
   {
    "id": "17973900458960717",
@@ -432,13 +436,13 @@
    "titulo": "🎯 13 JOGOS PRONTOS — CONCURSO 3826",
    "concurso": 3826,
    "estilo_legenda": "chamativo",
-   "curtidas": 1,
+   "curtidas": 2,
    "comentarios": 0,
    "reach": 4,
    "views": 5,
    "saved": 0,
    "shares": 0,
-   "total_interactions": 1
+   "total_interactions": 2
   },
   {
    "id": "18133763254857648",
