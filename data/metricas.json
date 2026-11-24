@@ -1,7 +1,7 @@
 {
- "atualizado": "22/11/2026 17:21",
+ "atualizado": "23/11/2026 21:50",
  "conta": "radar15br",
- "posts_total": 286,
+ "posts_total": 288,
  "seguidores": [
   {
    "data": "2026-10-25",
@@ -118,9 +118,47 @@
   {
    "data": "2026-11-22",
    "seguidores": 12
+  },
+  {
+   "data": "2026-11-23",
+   "seguidores": 12
   }
  ],
  "posts": [
+  {
+   "id": "18100565714120426",
+   "data": "2026-11-23T09:18:23+0000",
+   "link": "https://www.instagram.com/p/DgFCmGhnNnE/",
+   "tipo": "Imagem",
+   "conteudo": "Jogo do dia",
+   "titulo": "O placar aberto — concurso 3836",
+   "concurso": 3836,
+   "estilo_legenda": "prova_social",
+   "curtidas": 2,
+   "comentarios": 0,
+   "reach": 3,
+   "views": 6,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 2
+  },
+  {
+   "id": "17888981754504832",
+   "data": "2026-11-23T09:18:03+0000",
+   "link": "https://www.instagram.com/reel/DgFChc0COiO/",
+   "tipo": "Reel",
+   "conteudo": "Resultado",
+   "titulo": "RESULTADO do concurso 3835 — 8 acertos",
+   "concurso": 3835,
+   "estilo_legenda": null,
+   "curtidas": 0,
+   "comentarios": 0,
+   "reach": 4,
+   "views": 9,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 0
+  },
   {
    "id": "18021430706949504",
    "data": "2026-11-20T03:44:51+0000",
@@ -132,8 +170,8 @@
    "estilo_legenda": "chamativo",
    "curtidas": 1,
    "comentarios": 0,
-   "reach": 3,
-   "views": 4,
+   "reach": 4,
+   "views": 5,
    "saved": 0,
    "shares": 0,
    "total_interactions": 1
@@ -149,8 +187,8 @@
    "estilo_legenda": null,
    "curtidas": 1,
    "comentarios": 0,
-   "reach": 3,
-   "views": 4,
+   "reach": 4,
+   "views": 5,
    "saved": 0,
    "shares": 0,
    "total_interactions": 1
@@ -166,8 +204,8 @@
    "estilo_legenda": "informativo",
    "curtidas": 0,
    "comentarios": 0,
-   "reach": 2,
-   "views": 2,
+   "reach": 3,
+   "views": 3,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
@@ -183,8 +221,8 @@
    "estilo_legenda": null,
    "curtidas": 1,
    "comentarios": 0,
-   "reach": 2,
-   "views": 3,
+   "reach": 3,
+   "views": 4,
    "saved": 0,
    "shares": 0,
    "total_interactions": 1
@@ -1106,40 +1144,6 @@
    "saved": 0,
    "shares": 0,
    "total_interactions": 1
-  },
-  {
-   "id": "18227558572335480",
-   "data": "2026-10-21T07:39:46+0000",
-   "link": "https://www.instagram.com/p/Dev5FBunARp/",
-   "tipo": "Imagem",
-   "conteudo": "Jogo do dia",
-   "titulo": "13 jogos para o concurso 3810 — o que os dados mostram",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 0,
-   "comentarios": 0,
-   "reach": 2,
-   "views": 6,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 0
-  },
-  {
-   "id": "18249747361310374",
-   "data": "2026-10-21T07:26:30+0000",
-   "link": "https://www.instagram.com/p/Dev3ju_G1jw/",
-   "tipo": "Imagem",
-   "conteudo": "Jogo do dia",
-   "titulo": "13 jogos para o concurso 3810 — o que os dados mostram",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 0,
-   "comentarios": 0,
-   "reach": 2,
-   "views": 5,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 0
   }
  ],
  "avisos": []
