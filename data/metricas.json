@@ -1,7 +1,7 @@
 {
- "atualizado": "23/11/2026 21:50",
+ "atualizado": "24/11/2026 20:01",
  "conta": "radar15br",
- "posts_total": 288,
+ "posts_total": 290,
  "seguidores": [
   {
    "data": "2026-10-25",
@@ -122,9 +122,47 @@
   {
    "data": "2026-11-23",
    "seguidores": 12
+  },
+  {
+   "data": "2026-11-24",
+   "seguidores": 12
   }
  ],
  "posts": [
+  {
+   "id": "18116293486868571",
+   "data": "2026-11-24T06:21:46+0000",
+   "link": "https://www.instagram.com/p/DgHTLUFkfd8/",
+   "tipo": "Imagem",
+   "conteudo": "Jogo do dia",
+   "titulo": "13 jogos para o concurso 3837 — o que os dados mostram",
+   "concurso": 3837,
+   "estilo_legenda": "informativo",
+   "curtidas": 0,
+   "comentarios": 0,
+   "reach": 1,
+   "views": 1,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 0
+  },
+  {
+   "id": "18132441607860496",
+   "data": "2026-11-24T06:21:24+0000",
+   "link": "https://www.instagram.com/reel/DgHTHJNj_VM/",
+   "tipo": "Reel",
+   "conteudo": "Resultado",
+   "titulo": "RESULTADO do concurso 3836 — 9 acertos",
+   "concurso": 3836,
+   "estilo_legenda": null,
+   "curtidas": 0,
+   "comentarios": 0,
+   "reach": 2,
+   "views": 2,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 0
+  },
   {
    "id": "18100565714120426",
    "data": "2026-11-23T09:18:23+0000",
@@ -1110,40 +1148,6 @@
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
-  },
-  {
-   "id": "17880622170553958",
-   "data": "2026-10-22T06:25:20+0000",
-   "link": "https://www.instagram.com/p/DeyVWrWlieP/",
-   "tipo": "Imagem",
-   "conteudo": "Jogo do dia",
-   "titulo": "🎯 13 JOGOS PRONTOS — CONCURSO 3811",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 0,
-   "comentarios": 0,
-   "reach": 2,
-   "views": 4,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 0
-  },
-  {
-   "id": "17894300976614303",
-   "data": "2026-10-22T06:25:05+0000",
-   "link": "https://www.instagram.com/p/DeyVU6BFoBy/",
-   "tipo": "Imagem",
-   "conteudo": "Resultado",
-   "titulo": "RESULTADO do concurso 3810 — 8 acertos",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 1,
-   "comentarios": 0,
-   "reach": 2,
-   "views": 5,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 1
   }
  ],
  "avisos": []
