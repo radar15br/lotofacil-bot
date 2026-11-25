@@ -1,7 +1,7 @@
 {
- "atualizado": "24/11/2026 20:01",
+ "atualizado": "25/11/2026 19:30",
  "conta": "radar15br",
- "posts_total": 290,
+ "posts_total": 292,
  "seguidores": [
   {
    "data": "2026-10-25",
@@ -126,9 +126,47 @@
   {
    "data": "2026-11-24",
    "seguidores": 12
+  },
+  {
+   "data": "2026-11-25",
+   "seguidores": 12
   }
  ],
  "posts": [
+  {
+   "id": "17974596696196195",
+   "data": "2026-11-25T05:04:12+0000",
+   "link": "https://www.instagram.com/p/DgJvGMLlbnP/",
+   "tipo": "Imagem",
+   "conteudo": "Jogo do dia",
+   "titulo": "🎯 13 JOGOS PRONTOS — CONCURSO 3838",
+   "concurso": 3838,
+   "estilo_legenda": "chamativo",
+   "curtidas": 0,
+   "comentarios": 0,
+   "reach": 1,
+   "views": 1,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 0
+  },
+  {
+   "id": "18232642156329435",
+   "data": "2026-11-25T05:03:52+0000",
+   "link": "https://www.instagram.com/reel/DgJvCZvzq4G/",
+   "tipo": "Reel",
+   "conteudo": "Resultado",
+   "titulo": "RESULTADO do concurso 3837 — 9 acertos",
+   "concurso": 3837,
+   "estilo_legenda": null,
+   "curtidas": 0,
+   "comentarios": 0,
+   "reach": 1,
+   "views": 1,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 0
+  },
   {
    "id": "18116293486868571",
    "data": "2026-11-24T06:21:46+0000",
@@ -1111,40 +1149,6 @@
    "comentarios": 0,
    "reach": 2,
    "views": 6,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 0
-  },
-  {
-   "id": "17908702821576812",
-   "data": "2026-10-22T07:27:42+0000",
-   "link": "https://www.instagram.com/p/DeycfgOFRHX/",
-   "tipo": "Imagem",
-   "conteudo": "Jogo do dia",
-   "titulo": "🎯 13 JOGOS PRONTOS — CONCURSO 3811",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 0,
-   "comentarios": 0,
-   "reach": 3,
-   "views": 6,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 0
-  },
-  {
-   "id": "18094966940443521",
-   "data": "2026-10-22T06:39:08+0000",
-   "link": "https://www.instagram.com/p/DeyW7uQnMDr/",
-   "tipo": "Imagem",
-   "conteudo": "Jogo do dia",
-   "titulo": "🎯 13 JOGOS PRONTOS — CONCURSO 3811",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 0,
-   "comentarios": 0,
-   "reach": 2,
-   "views": 5,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
