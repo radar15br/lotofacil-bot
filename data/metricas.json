@@ -1,7 +1,7 @@
 {
- "atualizado": "25/11/2026 19:30",
+ "atualizado": "26/11/2026 19:20",
  "conta": "radar15br",
- "posts_total": 292,
+ "posts_total": 294,
  "seguidores": [
   {
    "data": "2026-10-25",
@@ -130,9 +130,47 @@
   {
    "data": "2026-11-25",
    "seguidores": 12
+  },
+  {
+   "data": "2026-11-26",
+   "seguidores": 12
   }
  ],
  "posts": [
+  {
+   "id": "17999691870021358",
+   "data": "2026-11-26T09:45:35+0000",
+   "link": "https://www.instagram.com/p/DgM0GEIm-ev/",
+   "tipo": "Imagem",
+   "conteudo": "Jogo do dia",
+   "titulo": "O placar aberto — concurso 3839",
+   "concurso": 3839,
+   "estilo_legenda": "prova_social",
+   "curtidas": 0,
+   "comentarios": 0,
+   "reach": 2,
+   "views": 3,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 0
+  },
+  {
+   "id": "18174487708476546",
+   "data": "2026-11-26T09:45:16+0000",
+   "link": "https://www.instagram.com/reel/DgM0CFyB3v6/",
+   "tipo": "Reel",
+   "conteudo": "Resultado",
+   "titulo": "RESULTADO do concurso 3838 — 9 acertos",
+   "concurso": 3838,
+   "estilo_legenda": null,
+   "curtidas": 0,
+   "comentarios": 0,
+   "reach": 1,
+   "views": 3,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 0
+  },
   {
    "id": "17974596696196195",
    "data": "2026-11-25T05:04:12+0000",
@@ -212,8 +250,8 @@
    "estilo_legenda": "prova_social",
    "curtidas": 2,
    "comentarios": 0,
-   "reach": 3,
-   "views": 6,
+   "reach": 4,
+   "views": 7,
    "saved": 0,
    "shares": 0,
    "total_interactions": 2
@@ -1115,40 +1153,6 @@
    "comentarios": 0,
    "reach": 2,
    "views": 5,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 0
-  },
-  {
-   "id": "18138325201653230",
-   "data": "2026-10-23T06:19:08+0000",
-   "link": "https://www.instagram.com/p/De05cFrnNaL/",
-   "tipo": "Imagem",
-   "conteudo": "Resultado",
-   "titulo": "RESULTADO do concurso 3811 — 10 acertos",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 0,
-   "comentarios": 0,
-   "reach": 3,
-   "views": 5,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 0
-  },
-  {
-   "id": "17877905952574041",
-   "data": "2026-10-22T07:36:46+0000",
-   "link": "https://www.instagram.com/p/Deydh0WFZ_K/",
-   "tipo": "Imagem",
-   "conteudo": "Jogo do dia",
-   "titulo": "🎯 13 JOGOS PRONTOS — CONCURSO 3811",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 0,
-   "comentarios": 0,
-   "reach": 2,
-   "views": 6,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
