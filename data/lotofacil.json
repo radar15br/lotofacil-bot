@@ -122734,5 +122734,30 @@
    "11": 7.0
   },
   "fonte": "caixa"
+ },
+ {
+  "concurso": 3838,
+  "data": "2026-11-25",
+  "dezenas": [
+   1,
+   2,
+   5,
+   7,
+   8,
+   10,
+   11,
+   12,
+   13,
+   15,
+   16,
+   17,
+   20,
+   23,
+   25
+  ],
+  "acumulado": false,
+  "ganhadores_15": 0,
+  "rateios": {},
+  "fonte": "espelho"
  }
 ]
