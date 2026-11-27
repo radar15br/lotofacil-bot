@@ -122760,5 +122760,37 @@
   "rateios": {},
   "fonte": "caixa",
   "verificado": true
+ },
+ {
+  "concurso": 3839,
+  "data": "2026-11-26",
+  "data_proximo": "2026-11-27",
+  "dezenas": [
+   1,
+   3,
+   4,
+   5,
+   7,
+   8,
+   9,
+   10,
+   12,
+   14,
+   15,
+   18,
+   19,
+   21,
+   24
+  ],
+  "acumulado": true,
+  "ganhadores_15": 0,
+  "rateios": {
+   "15": 0.0,
+   "14": 1829.85,
+   "13": 35.0,
+   "12": 14.0,
+   "11": 7.0
+  },
+  "fonte": "caixa"
  }
 ]
