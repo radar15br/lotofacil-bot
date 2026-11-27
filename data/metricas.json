@@ -1,7 +1,7 @@
 {
- "atualizado": "26/11/2026 19:20",
+ "atualizado": "27/11/2026 18:57",
  "conta": "radar15br",
- "posts_total": 294,
+ "posts_total": 296,
  "seguidores": [
   {
    "data": "2026-10-25",
@@ -134,9 +134,47 @@
   {
    "data": "2026-11-26",
    "seguidores": 12
+  },
+  {
+   "data": "2026-11-27",
+   "seguidores": 12
   }
  ],
  "posts": [
+  {
+   "id": "18031754768872808",
+   "data": "2026-11-27T09:47:59+0000",
+   "link": "https://www.instagram.com/p/DgPZKbYlSEb/",
+   "tipo": "Imagem",
+   "conteudo": "Jogo do dia",
+   "titulo": "13 jogos para o concurso 3840 — o que os dados mostram",
+   "concurso": 3840,
+   "estilo_legenda": "informativo",
+   "curtidas": 0,
+   "comentarios": 0,
+   "reach": 1,
+   "views": 1,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 0
+  },
+  {
+   "id": "18640352476028443",
+   "data": "2026-11-27T09:47:40+0000",
+   "link": "https://www.instagram.com/reel/DgPZGnesZOu/",
+   "tipo": "Reel",
+   "conteudo": "Resultado",
+   "titulo": "RESULTADO do concurso 3839 — 9 acertos",
+   "concurso": 3839,
+   "estilo_legenda": null,
+   "curtidas": 0,
+   "comentarios": 0,
+   "reach": 2,
+   "views": 2,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 0
+  },
   {
    "id": "17999691870021358",
    "data": "2026-11-26T09:45:35+0000",
@@ -1119,40 +1157,6 @@
    "comentarios": 0,
    "reach": 3,
    "views": 7,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 0
-  },
-  {
-   "id": "18112947641033689",
-   "data": "2026-10-23T06:33:44+0000",
-   "link": "https://www.instagram.com/p/De07HCTEQxl/",
-   "tipo": "Imagem",
-   "conteudo": "Jogo do dia",
-   "titulo": "O placar aberto — concurso 3812",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 0,
-   "comentarios": 0,
-   "reach": 3,
-   "views": 5,
-   "saved": 0,
-   "shares": 0,
-   "total_interactions": 0
-  },
-  {
-   "id": "17950261446339279",
-   "data": "2026-10-23T06:19:27+0000",
-   "link": "https://www.instagram.com/p/De05eA7nBXF/",
-   "tipo": "Imagem",
-   "conteudo": "Jogo do dia",
-   "titulo": "O placar aberto — concurso 3812",
-   "concurso": null,
-   "estilo_legenda": null,
-   "curtidas": 0,
-   "comentarios": 0,
-   "reach": 2,
-   "views": 5,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0
